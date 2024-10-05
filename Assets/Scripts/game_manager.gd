@@ -4,4 +4,3 @@ extends Node2D
 
 func get_enemy_base_location() -> Vector2:
 	return get_node("EnemyBase").global_position
-
