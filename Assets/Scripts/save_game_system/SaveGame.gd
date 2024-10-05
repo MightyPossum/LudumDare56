@@ -15,9 +15,8 @@ func _ready() -> void:
 
 
 func on_menu_initialized() -> void:
-	if save_config.get_current_save_file():
-		pass
-		#GLOBALVARIABLES.main_menu_node.set_load_button_active_status(true)
+	if not save_config.get_current_save_file():
+		GLOBALVARIABLES.main_menu_node.set_load_button_active_status(true)
 
 func save_master_config_file() -> void:
 	save_config.set_save_file_details()
@@ -50,7 +49,7 @@ func load_from_file() -> void:
 func load_data(save_file_path) -> void:
 	save_config.set_current_save_file(save_file_path)
 	load_from_file()
-	save_game_data.apply_load_values()
+	save_game_data.load_data()
 
 ## verify that the save directory is available
 func verify_save_directory(path : String) -> void:

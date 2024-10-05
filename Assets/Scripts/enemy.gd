@@ -35,7 +35,6 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if is_alive:	
 		if current_health <= 0:
-			await get_tree().create_timer(.5).timeout
 			die()
 		
 		if is_alive:	
