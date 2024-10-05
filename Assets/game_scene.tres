@@ -1,0 +1,14 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://cht8s0ttm77by"]
+
+[ext_resource type="Texture2D" uid="uid://7yl7cyp24pqi" path="res://Assets/SpriteTests/Map.png" id="1_wspvg"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7mwcx"]
+texture = ExtResource("1_wspvg")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/size_in_atlas = Vector2i(1, 2)
+1:0/0 = 0
+
+[resource]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_7mwcx")
