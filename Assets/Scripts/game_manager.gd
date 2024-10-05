@@ -7,13 +7,17 @@ var ongoing_wave = false
 
 func _ready():
 	GLOBALVARIABLES.game_manager = self
-	if GLOBALVARIABLES.round_counter >= 1:
-		main_ui.set_upgrade_panel_visibility(true)
-		main_ui.set_start_wave_button_visibility(false)
-	else:
+	if GLOBALVARIABLES.round_counter == 0:
 		setup_creature_defaults()
 		main_ui.set_upgrade_panel_visibility(false)
 		main_ui.set_start_wave_button_visibility(true)
+	elif GLOBALVARIABLES.round_counter >= 1:
+		main_ui.set_upgrade_panel_visibility(true)
+		main_ui.set_start_wave_button_visibility(true)
+	else:
+		setup_creature_defaults()
+		main_ui.set_upgrade_panel_visibility(false)
+		main_ui.set_start_wave_button_visibility(false)
 
 func _process(_delta):
 	if ongoing_wave:
