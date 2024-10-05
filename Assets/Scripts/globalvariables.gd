@@ -1,8 +1,8 @@
 extends Node
 
 enum CREATURE_TYPES {
-    SLIME,
-    IMP,
+	SLIME,
+	IMP,
 }
 
 var creature_manager = {}
@@ -32,6 +32,7 @@ var main_menu_node : Control
 
 var upgrade_chosen: bool = false
 var round_counter: int = 0
+var bosses_left: int = 0
 var player_resource: int = 0
 
-var ally_count = 0
+var ally_count: int = 0
