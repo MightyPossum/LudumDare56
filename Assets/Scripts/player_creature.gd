@@ -83,3 +83,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		navgationAgent2D.set_target_position(body.global_position)
 		targeted_enemy = true
 		enemy_queue.append(body)
+
+func set_spawn_position(spawn_position : Vector2) -> void:
+	global_position = spawn_position
