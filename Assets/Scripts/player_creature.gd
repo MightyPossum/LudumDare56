@@ -26,6 +26,7 @@ func _ready() -> void:
 	health_bar.max_value = max_health
 	health_bar.value = current_health
 	health_bar.visible = current_health < max_health
+	$Sprite2D/AnimationPlayer.play("Walk")
 
 func _physics_process(delta: float) -> void:
 	if navgationAgent2D.is_target_reachable() and int(navgationAgent2D.distance_to_target() > game_manager.distance_to_enemy):
