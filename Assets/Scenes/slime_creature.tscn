@@ -53,7 +53,7 @@ bg_color = Color(0.252028, 0.252028, 0.252028, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hqvuu"]
 bg_color = Color(0.207843, 0.713726, 0.231373, 1)
 
-[node name="PlayerCreature" type="RigidBody2D" groups=["ally"]]
+[node name="Slime" type="RigidBody2D" groups=["ally"]]
 mass = 0.001
 gravity_scale = 0.0
 script = ExtResource("1_48n4s")
