@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://bd3mdc4w83hhw"]
+[gd_scene load_steps=2 format=3 uid="uid://bd3mdc4w83hhw"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/main_ui.gd" id="1_uplmm"]
 
 [node name="MainUI" type="Control"]
 layout_mode = 3
@@ -9,8 +11,10 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("1_uplmm")
 
-[node name="Start Wave Button" type="Button" parent="."]
+[node name="StartWaveButton" type="Button" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,3 +26,5 @@ offset_bottom = -230.405
 grow_horizontal = 2
 grow_vertical = 2
 text = "Start Wave"
+
+[connection signal="button_up" from="StartWaveButton" to="." method="_on_start_wave_button_button_up"]

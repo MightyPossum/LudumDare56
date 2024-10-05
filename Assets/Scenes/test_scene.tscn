@@ -1,13 +1,13 @@
-[gd_scene load_steps=10 format=4 uid="uid://dutubfq3i05yk"]
+[gd_scene load_steps=9 format=4 uid="uid://djogwpf0o3e0"]
 
-[ext_resource type="Script" path="res://Assets/Scripts/game_manager.gd" id="1_1m18h"]
-[ext_resource type="PackedScene" uid="uid://bd3mdc4w83hhw" path="res://Assets/Scenes/main_ui.tscn" id="2_b87o6"]
-[ext_resource type="Texture2D" uid="uid://7yl7cyp24pqi" path="res://Assets/SpriteTests/Map.png" id="2_djf18"]
-[ext_resource type="Texture2D" uid="uid://b1rfe7t0l2xhi" path="res://icon.svg" id="3_1krg0"]
-[ext_resource type="PackedScene" uid="uid://dhkfonlnmcmr3" path="res://Assets/Scenes/enemy.tscn" id="4_1pvox"]
+[ext_resource type="Script" path="res://Assets/Scripts/game_manager.gd" id="1_gmeow"]
+[ext_resource type="PackedScene" uid="uid://bd3mdc4w83hhw" path="res://Assets/Scenes/main_ui.tscn" id="2_f0fq5"]
+[ext_resource type="Texture2D" uid="uid://7yl7cyp24pqi" path="res://Assets/SpriteTests/Map.png" id="3_ndp46"]
+[ext_resource type="Texture2D" uid="uid://b1rfe7t0l2xhi" path="res://icon.svg" id="4_i1i7l"]
+[ext_resource type="PackedScene" uid="uid://dhkfonlnmcmr3" path="res://Assets/Scenes/enemy.tscn" id="5_hpy4p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7mwcx"]
-texture = ExtResource("2_djf18")
+texture = ExtResource("3_ndp46")
 1:1/0 = 0
 3:1/0 = 0
 3:2/0 = 0
@@ -16,19 +16,16 @@ texture = ExtResource("2_djf18")
 sources/0 = SubResource("TileSetAtlasSource_7mwcx")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_3bvqs"]
-vertices = PackedVector2Array(1144.98, 635.969, 759.977, 634.969, 818.68, 625.188, 300.094, 547.938, 515.508, 634.328, 13.9531, 633.023, 148.094, 578.797, 350.703, 356.922, 202.563, 391.188, 62.4766, 502.57, 159.938, 267.609, 161.172, 191.828, 323, 114.141, 323, 253.313, 1144.02, 11, 796.32, 594.711, 59.5078, 391.563, 695.773, 556.352, 46.5703, 387.547, 543.383, 526.258, 498.977, 409.133, 497.977, 285.953, 454.977, 183.172, 333.242, 108.406, 11.0469, 11, 85.1406, 193.063, 34.6406, 237.82)
+vertices = PackedVector2Array(1144.98, 635.969, 759.977, 634.969, 818.68, 625.188, 300.094, 547.938, 515.508, 634.328, 13.9531, 633.023, 148.094, 578.797, 350.703, 356.922, 202.563, 391.188, 62.4766, 502.57, 159.938, 267.609, 161.172, 191.828, 323, 114.141, 323, 253.313, 1144.02, 11, 796.32, 594.711, 59.5078, 391.563, 695.773, 556.352, 46.5703, 387.547, 543.383, 526.258, 499.578, 410.719, 551.828, 246.797, 452.359, 181.563, 333.242, 108.406, 11.0469, 11, 85.1406, 193.063, 34.6406, 237.82)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 4, 5, 6), PackedInt32Array(7, 4, 3, 8), PackedInt32Array(9, 6, 5), PackedInt32Array(10, 11, 12, 13, 8), PackedInt32Array(14, 0, 2, 15), PackedInt32Array(13, 7, 8), PackedInt32Array(16, 10, 8, 9), PackedInt32Array(14, 15, 17), PackedInt32Array(18, 16, 9, 5), PackedInt32Array(14, 17, 19, 20, 21), PackedInt32Array(14, 21, 22), PackedInt32Array(14, 22, 23), PackedInt32Array(24, 14, 23), PackedInt32Array(24, 23, 12, 11, 25), PackedInt32Array(24, 25, 26), PackedInt32Array(5, 24, 26, 18)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(78, 503, 200, 406, 284, 541, 151, 568), PackedVector2Array(89, 203, 151, 202, 150, 264, 56, 380, 45, 242), PackedVector2Array(1, 1, 4, 643, 1155, 646, 1154, 1), PackedVector2Array(360, 353, 333, 252, 333, 120, 447, 190, 488, 288, 489, 411, 536, 535, 693, 566, 790, 603, 801, 618, 543, 661)])
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8qsuv"]
-size = Vector2(331, 43)
+outlines = Array[PackedVector2Array]([PackedVector2Array(78, 503, 200, 406, 284, 541, 151, 568), PackedVector2Array(89, 203, 151, 202, 150, 264, 56, 380, 45, 242), PackedVector2Array(1, 1, 4, 643, 1155, 646, 1154, 1), PackedVector2Array(360, 353, 333, 252, 333, 120, 447, 190, 540, 251, 489, 411, 536, 535, 693, 566, 790, 603, 801, 618, 543, 661)])
 
 [node name="GameManager" type="Node2D"]
-script = ExtResource("1_1m18h")
+script = ExtResource("1_gmeow")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="MainUI" parent="CanvasLayer" instance=ExtResource("2_b87o6")]
+[node name="MainUI" parent="CanvasLayer" instance=ExtResource("2_f0fq5")]
 unique_name_in_owner = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -46,91 +43,83 @@ navigation_polygon = SubResource("NavigationPolygon_3bvqs")
 
 [node name="Creatures" type="Node2D" parent="."]
 
-[node name="spawnLocation" type="Area2D" parent="Creatures"]
-position = Vector2(-462, 311)
-
-[node name="spawnArea" type="CollisionShape2D" parent="Creatures/spawnLocation"]
-unique_name_in_owner = true
-position = Vector2(162.5, 11.5)
-shape = SubResource("RectangleShape2D_8qsuv")
-
 [node name="EnemyBase" type="Node2D" parent="."]
 position = Vector2(490, -166)
 
 [node name="Sprite2D" type="Sprite2D" parent="EnemyBase"]
 scale = Vector2(0.24, 0.24)
-texture = ExtResource("3_1krg0")
+texture = ExtResource("4_i1i7l")
 
 [node name="Environment" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Environment"]
 position = Vector2(-93, -87)
 scale = Vector2(1.07813, 1.09375)
-texture = ExtResource("3_1krg0")
+texture = ExtResource("4_i1i7l")
 
 [node name="Sprite2D5" type="Sprite2D" parent="Environment"]
 position = Vector2(-67, 38)
 scale = Vector2(1.07813, 1.09375)
-texture = ExtResource("3_1krg0")
+texture = ExtResource("4_i1i7l")
 
 [node name="Sprite2D6" type="Sprite2D" parent="Environment"]
 position = Vector2(-15, 167)
 scale = Vector2(1.07813, 1.09375)
-texture = ExtResource("3_1krg0")
+texture = ExtResource("4_i1i7l")
 
 [node name="Sprite2D7" type="Sprite2D" parent="Environment"]
 position = Vector2(58, 290)
 scale = Vector2(1.07813, 1.09375)
-texture = ExtResource("3_1krg0")
+texture = ExtResource("4_i1i7l")
 
 [node name="Sprite2D8" type="Sprite2D" parent="Environment"]
 position = Vector2(200, 292)
 scale = Vector2(1.07813, 1.09375)
-texture = ExtResource("3_1krg0")
+texture = ExtResource("4_i1i7l")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Environment"]
 position = Vector2(-334, 211)
 rotation = -0.791371
 scale = Vector2(1, 0.902344)
-texture = ExtResource("3_1krg0")
+texture = ExtResource("4_i1i7l")
 
 [node name="Sprite2D3" type="Sprite2D" parent="Environment"]
 position = Vector2(-273, 223)
 rotation = -0.232941
 scale = Vector2(1, 0.902344)
-texture = ExtResource("3_1krg0")
+texture = ExtResource("4_i1i7l")
 
 [node name="Sprite2D4" type="Sprite2D" parent="Environment"]
 position = Vector2(-392, -6)
 rotation = -0.898656
 scale = Vector2(0.798962, 0.720939)
-texture = ExtResource("3_1krg0")
+texture = ExtResource("4_i1i7l")
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="PlayerCreature" parent="Enemies" instance=ExtResource("4_1pvox")]
+[node name="PlayerCreature" parent="Enemies" instance=ExtResource("5_hpy4p")]
 position = Vector2(175, -143)
 
-[node name="PlayerCreature2" parent="Enemies" instance=ExtResource("4_1pvox")]
+[node name="PlayerCreature2" parent="Enemies" instance=ExtResource("5_hpy4p")]
 position = Vector2(27, -213)
 
-[node name="PlayerCreature3" parent="Enemies" instance=ExtResource("4_1pvox")]
+[node name="PlayerCreature3" parent="Enemies" instance=ExtResource("5_hpy4p")]
 position = Vector2(-223, -216)
 
-[node name="PlayerCreature4" parent="Enemies" instance=ExtResource("4_1pvox")]
+[node name="PlayerCreature4" parent="Enemies" instance=ExtResource("5_hpy4p")]
 position = Vector2(-228, -138)
 
-[node name="PlayerCreature5" parent="Enemies" instance=ExtResource("4_1pvox")]
+[node name="PlayerCreature5" parent="Enemies" instance=ExtResource("5_hpy4p")]
 position = Vector2(-347, -165)
 
-[node name="PlayerCreature6" parent="Enemies" instance=ExtResource("4_1pvox")]
+[node name="PlayerCreature6" parent="Enemies" instance=ExtResource("5_hpy4p")]
 position = Vector2(-264, -47)
 
-[node name="PlayerCreature7" parent="Enemies" instance=ExtResource("4_1pvox")]
+[node name="PlayerCreature7" parent="Enemies" instance=ExtResource("5_hpy4p")]
 position = Vector2(96, -125)
 
-[node name="PlayerCreature8" parent="Enemies" instance=ExtResource("4_1pvox")]
+[node name="PlayerCreature8" parent="Enemies" instance=ExtResource("5_hpy4p")]
 position = Vector2(192, -198)
 
-[node name="PlayerCreature9" parent="Enemies" instance=ExtResource("4_1pvox")]
+[node name="PlayerCreature9" parent="Enemies" instance=ExtResource("5_hpy4p")]
 position = Vector2(390, -155)
