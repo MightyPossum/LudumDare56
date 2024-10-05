@@ -17,6 +17,7 @@ var attack_target: String = "enemy"
 
 var pathing_initalized : bool = false
 var targeted_enemy : bool = false
+var ongoing_wave : bool = true
 
 var movment_speed : int = 100
 
@@ -27,26 +28,27 @@ func _ready() -> void:
 	health_bar.visible = current_health < max_health
 
 func _physics_process(delta: float) -> void:
-	if navgationAgent2D.is_target_reachable() and int(navgationAgent2D.distance_to_target() > game_manager.distance_to_enemy):
-		var next_location = navgationAgent2D.get_next_path_position()
-		var direction = global_position.direction_to(next_location)
-		global_position += direction * delta * movment_speed
-	elif navgationAgent2D.is_target_reachable() and enemy_queue.size() == 0:
-		pathing_initalized = false
+	if ongoing_wave:
+		if navgationAgent2D.is_target_reachable() and int(navgationAgent2D.distance_to_target() > game_manager.distance_to_enemy):
+			var next_location = navgationAgent2D.get_next_path_position()
+			var direction = global_position.direction_to(next_location)
+			global_position += direction * delta * movment_speed
+		elif navgationAgent2D.is_target_reachable() and enemy_queue.size() == 0:
+			pathing_initalized = false
 
-	if !pathing_initalized:
-		pathing_initalized = true
-		navgationAgent2D.set_target_position(game_manager.get_enemy_base_location())
+		if !pathing_initalized:
+			pathing_initalized = true
+			navgationAgent2D.set_target_position(game_manager.get_enemy_base_location())
 
-	if enemy_queue.size() > 0 and not in_combat:
-		in_combat = true
-		attack()
-		await get_tree().create_timer(attack_speed).timeout
-		in_combat = false
-	
-	if current_health <= 0:
-		await get_tree().create_timer(.5).timeout
-		die()
+		if enemy_queue.size() > 0 and not in_combat:
+			in_combat = true
+			attack()
+			await get_tree().create_timer(attack_speed).timeout
+			in_combat = false
+		
+		if current_health <= 0:
+			await get_tree().create_timer(.5).timeout
+			die()
 
 func die() -> void:
 	#TODO: Give money to player
