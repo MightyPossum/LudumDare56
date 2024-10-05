@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhkfonlnmcmr3"]
+
+[ext_resource type="Texture2D" uid="uid://dw2l0e8di7e8y" path="res://Assets/SpriteTests/Durgen.png" id="2_syhgr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4etqh"]
+radius = 2.0
+
+[node name="PlayerCreature" type="RigidBody2D" groups=["enemy"]]
+mass = 0.001
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4etqh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(-0.125, 0.127)
+texture = ExtResource("2_syhgr")
+hframes = 2
+frame = 1
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
