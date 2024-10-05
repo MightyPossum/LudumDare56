@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://dhkfonlnmcmr3"]
+[gd_scene load_steps=12 format=3 uid="uid://dhkfonlnmcmr3"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/enemy.gd" id="1_6mq23"]
+[ext_resource type="PackedScene" uid="uid://sggolq6n2t6p" path="res://Assets/Scenes/attack_projectile.tscn" id="2_jrtg2"]
 [ext_resource type="Texture2D" uid="uid://bpnxbh8ryrx2k" path="res://Assets/Sprites/Enemy1.png" id="2_lgthj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4etqh"]
@@ -14,6 +15,21 @@ bg_color = Color(0.252028, 0.252028, 0.252028, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mgfq0"]
 bg_color = Color(0.207843, 0.713726, 0.231373, 1)
+
+[sub_resource type="Animation" id="Animation_fvu5c"]
+resource_name = "Hurt"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
 
 [sub_resource type="Animation" id="Animation_myf0w"]
 resource_name = "Idle"
@@ -49,25 +65,30 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tt7ap"]
 _data = {
+"Hurt": SubResource("Animation_fvu5c"),
 "Idle": SubResource("Animation_myf0w"),
 "RESET": SubResource("Animation_aaf7k")
 }
 
 [node name="Enemy" type="RigidBody2D" groups=["enemy"]]
+collision_layer = 3
+collision_mask = 3
 mass = 0.001
 gravity_scale = 0.0
 script = ExtResource("1_6mq23")
+attack_projectile = ExtResource("2_jrtg2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_4etqh")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["enemy"]]
+position = Vector2(0, -1)
 texture = ExtResource("2_lgthj")
-hframes = 3
+hframes = 4
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["enemy"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_8kcvb")
