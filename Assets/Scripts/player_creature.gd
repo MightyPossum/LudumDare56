@@ -1,25 +1,24 @@
 extends RigidBody2D
 
-var max_health: int = GLOBALVARIABLES.player_creature_max_health
-@export var current_health: int = max_health
-@export var attack_speed: float = .2
-var in_combat: bool = false
-var is_alive: bool = true
-
-@export var attack_damage: int = 10
+var max_health: int = 100
 var enemy_queue: Array = []
-
 var attack_target: String = "enemy"
+var current_health: int
+var attack_speed: float = 0.2
+var attack_damage: int = 10
+var movement_speed : int = 100
+var shooting_range : int = 40
+
 
 @onready var health_bar: ProgressBar = $health_bar
 @onready var navgationAgent2D : NavigationAgent2D = get_node("NavigationAgent2D")
-# var game_manager : Node2D = GLOBALVARIABLES.game_manager
 
 var pathing_initalized : bool = false
 var targeted_enemy : bool = false
 var ongoing_wave : bool = false
+var in_combat: bool = false
+var is_alive: bool = true
 
-var movment_speed : int = 100
 
 var has_been_damaged = false;
 var damage_timer = 0.5;
@@ -49,12 +48,16 @@ func _physics_process(delta: float) -> void:
 	if navgationAgent2D.is_target_reachable() and int(navgationAgent2D.distance_to_target() > GLOBALVARIABLES.game_manager.distance_to_enemy):
 		var next_location = navgationAgent2D.get_next_path_position()
 		var direction = global_position.direction_to(next_location)
+<<<<<<< HEAD
 		if direction.x < 0:
 			$Sprite2D.flip_h = true
 		else:
 			$Sprite2D.flip_h = false
 			pass
 		global_position += direction * delta * movment_speed
+=======
+		global_position += direction * delta * movement_speed
+>>>>>>> main
 	elif navgationAgent2D.is_target_reachable() and enemy_queue.size() == 0:
 		pathing_initalized = false
 
@@ -117,3 +120,14 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 func set_spawn_position(spawn_position : Vector2) -> void:
 	global_position = spawn_position
+<<<<<<< HEAD
+=======
+
+func initialize_values(initial_values : Dictionary) -> void:
+	max_health = initial_values.health
+	current_health = max_health
+	attack_speed = initial_values.attack_speed/100
+	movement_speed = initial_values.movement_speed
+	shooting_range = initial_values.range
+	attack_damage = initial_values.damage
+>>>>>>> main

@@ -3,9 +3,10 @@
 [ext_resource type="Script" path="res://Assets/Scripts/game_manager.gd" id="1_1m18h"]
 [ext_resource type="PackedScene" uid="uid://bd3mdc4w83hhw" path="res://Assets/Scenes/main_ui.tscn" id="2_b87o6"]
 [ext_resource type="Script" path="res://Assets/Scripts/camera.gd" id="2_hn1cj"]
-[ext_resource type="TileSet" uid="uid://b6gwh8a204ny1" path="res://Assets/game_scene.tres" id="3_wkmjf"]
+[ext_resource type="TileSet" uid="uid://cht8s0ttm77by" path="res://Assets/game_scene.tres" id="3_wkmjf"]
 [ext_resource type="PackedScene" uid="uid://dhkfonlnmcmr3" path="res://Assets/Scenes/enemy.tscn" id="4_1pvox"]
-[ext_resource type="PackedScene" uid="uid://lbo6xjbw7r3h" path="res://Assets/Scenes/base.tscn" id="6_08l80"]
+[ext_resource type="PackedScene" path="res://Assets/Scenes/base.tscn" id="6_08l80"]
+
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_57g3h"]
 vertices = PackedVector2Array(1158.71, 1177.09, 1596.07, 1172.9, 1302.69, 1404.94, 1110, 1331, 1110, 1188.04, 766.891, 1408.06, 767.883, 1499.03, 730.133, 1427, 727.867, 1249.84, 508.961, 1499.96, 583.938, 1427, 508.031, 1208.77, 585.063, 1252.16, 764, 1202.77, 59.8438, 448.023, 59.1563, 405.063, 673.969, 408.93, 536.789, 449.023, 672.969, 760.969, 539.211, 561.742, 225, 3099.07, -322.117, 3102.92, -323.867, 2967.93, -3, 2965.94, 225, 3002.98, 1186, 2361.98, 1186, 2495, 930.906, 2495, 668, 2361.01, 668, 2899.93, 934.094, 2839.07, 1601.98, 2264, 1823.03, 2264, 1824.97, 3005.98, 1655.92, 2462.08, 764, 1111.92, 1153.71, 1109.06, 841.156, 1186.96, -3, 2904.92, 1659.08, 2833.93, 1821.99, 630.039, 1821, 1818.09, 1603.02, 1820.09, 1596.31, 1714.73, 1590.7, 1534.07, 1406.96, 2460.07, 1404.03, 1719.74, 500.602, 703.031, 155.82, 702.023, 155.172, 664.578, 348, 656.594, 1124.19, 738.07, 1121.18, 894.039, 508.594, 896.953, 987, 762.031, 348, 566.742, 1306.69, 1532.06, 838.844, 1331, 1592.93, 734.93, 987, 633.953)
