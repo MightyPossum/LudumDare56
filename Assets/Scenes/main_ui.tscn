@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://bd3mdc4w83hhw"]
+[gd_scene load_steps=3 format=3 uid="uid://ddimcbpr5m7ka"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/main_ui.gd" id="1_noerh"]
+[ext_resource type="PackedScene" uid="uid://dj511m4n3sc7d" path="res://Assets/Scenes/upgrade_panel.tscn" id="2_ue1l5"]
 
 [node name="MainUI" type="Control"]
 layout_mode = 3
@@ -9,6 +12,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("1_noerh")
 
 [node name="Start Wave Button" type="Button" parent="."]
 layout_mode = 1
@@ -22,3 +26,7 @@ offset_bottom = -230.405
 grow_horizontal = 2
 grow_vertical = 2
 text = "Start Wave"
+
+[node name="Upgrade Panel" parent="." instance=ExtResource("2_ue1l5")]
+visible = false
+layout_mode = 1

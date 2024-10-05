@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=4 uid="uid://dutubfq3i05yk"]
+[gd_scene load_steps=10 format=4 uid="uid://dutubfq3i05yk"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/game_manager.gd" id="1_1m18h"]
 [ext_resource type="PackedScene" uid="uid://dit4glur1qa1s" path="res://Assets/Scenes/player_creature.tscn" id="1_tekts"]
+[ext_resource type="PackedScene" uid="uid://ddimcbpr5m7ka" path="res://Assets/Scenes/main_ui.tscn" id="2_24v2q"]
 [ext_resource type="Texture2D" uid="uid://7yl7cyp24pqi" path="res://Assets/SpriteTests/Map.png" id="2_djf18"]
 [ext_resource type="Texture2D" uid="uid://b1rfe7t0l2xhi" path="res://icon.svg" id="3_1krg0"]
 [ext_resource type="PackedScene" uid="uid://dhkfonlnmcmr3" path="res://Assets/Scenes/enemy.tscn" id="4_1pvox"]
@@ -22,6 +23,10 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(78, 503, 200, 406, 284,
 
 [node name="GameManager" type="Node2D"]
 script = ExtResource("1_1m18h")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MainUI" parent="CanvasLayer" instance=ExtResource("2_24v2q")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(89, 40)
