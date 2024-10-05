@@ -9,20 +9,20 @@ var creature_manager = {}
 
 var creature_defaults = {
     CREATURE_TYPES.SLIME : {
-        "health" : 10,
-        "movement_speed" : 10,
-        "range" : 15,
-        "damage" : 1,
-        "attack_speed" : 20,
-        "summon_amount" : 1,
-    },
-    CREATURE_TYPES.IMP : {
-        "health" : 10,
+        "health" : 100,
         "movement_speed" : 100,
         "range" : 15,
         "damage" : 1,
         "attack_speed" : 20,
-        "summon_amount" : 0,
+        "summon_amount" : 11,
+    },
+    CREATURE_TYPES.IMP : {
+        "health" : 100,
+        "movement_speed" : 100,
+        "range" : 15,
+        "damage" : 1,
+        "attack_speed" : 20,
+        "summon_amount" : 10,
     },
     }
 

@@ -1,7 +1,6 @@
 extends RigidBody2D
 
-var max_health: int = GLOBALVARIABLES.player_creature_max_health
-
+var max_health: int = 100
 var enemy_queue: Array = []
 var attack_target: String = "enemy"
 var current_health: int
@@ -89,7 +88,7 @@ func set_spawn_position(spawn_position : Vector2) -> void:
 
 func initialize_values(initial_values : Dictionary) -> void:
 	max_health = initial_values.health
-	current_health = initial_values.max_health
+	current_health = max_health
 	attack_speed = initial_values.attack_speed/100
 	movement_speed = initial_values.movement_speed
 	shooting_range = initial_values.range
