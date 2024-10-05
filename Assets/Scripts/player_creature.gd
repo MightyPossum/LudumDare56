@@ -1,7 +1,6 @@
 extends RigidBody2D
 
 var max_health: int = 100
-var max_health: int = 100
 var enemy_queue: Array = []
 var attack_target: String = "enemy"
 var current_health: int
