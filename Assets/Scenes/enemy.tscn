@@ -1,13 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhkfonlnmcmr3"]
+[gd_scene load_steps=6 format=3 uid="uid://dhkfonlnmcmr3"]
 
+[ext_resource type="Script" path="res://Assets/Scripts/enemy.gd" id="1_6mq23"]
 [ext_resource type="Texture2D" uid="uid://dw2l0e8di7e8y" path="res://Assets/SpriteTests/Durgen.png" id="2_syhgr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4etqh"]
 radius = 2.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yl7d8"]
+bg_color = Color(0.252028, 0.252028, 0.252028, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mgfq0"]
+bg_color = Color(0.207843, 0.713726, 0.231373, 1)
+
 [node name="PlayerCreature" type="RigidBody2D" groups=["enemy"]]
 mass = 0.001
 gravity_scale = 0.0
+script = ExtResource("1_6mq23")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_4etqh")
@@ -19,3 +27,17 @@ hframes = 2
 frame = 1
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="health_bar" type="ProgressBar" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -2.0
+offset_top = -3.0
+offset_right = 2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_yl7d8")
+theme_override_styles/fill = SubResource("StyleBoxFlat_mgfq0")
+value = 65.0
+show_percentage = false

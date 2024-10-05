@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dit4glur1qa1s"]
+[gd_scene load_steps=7 format=3 uid="uid://dit4glur1qa1s"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/player_creature.gd" id="1_34ym2"]
 [ext_resource type="Texture2D" uid="uid://ccq8gjvk8r64i" path="res://Assets/SpriteTests/Spirit.png" id="2_4h1rf"]
@@ -9,7 +9,13 @@ radius = 2.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_tp6vr"]
 radius = 61.0082
 
-[node name="PlayerCreature" type="RigidBody2D"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h4ehh"]
+bg_color = Color(0.252028, 0.252028, 0.252028, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hqvuu"]
+bg_color = Color(0.207843, 0.713726, 0.231373, 1)
+
+[node name="PlayerCreature" type="RigidBody2D" groups=["ally"]]
 mass = 0.001
 gravity_scale = 0.0
 script = ExtResource("1_34ym2")
@@ -30,5 +36,19 @@ frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_tp6vr")
+
+[node name="health_bar" type="ProgressBar" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -2.0
+offset_top = -3.0
+offset_right = 2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_h4ehh")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hqvuu")
+value = 65.0
+show_percentage = false
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
