@@ -1,0 +1,98 @@
+[gd_scene load_steps=10 format=3 uid="uid://u1gqgbracsg"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/player_creature.gd" id="1_cfrtp"]
+[ext_resource type="Texture2D" uid="uid://cho3ybe2cqht4" path="res://Assets/Sprites/Slime.png" id="2_8o8lx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4etqh"]
+radius = 16.0
+
+[sub_resource type="Animation" id="Animation_wmcs7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_8nqjt"]
+resource_name = "Walk"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_leq05"]
+_data = {
+"RESET": SubResource("Animation_wmcs7"),
+"Walk": SubResource("Animation_8nqjt")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tp6vr"]
+radius = 112.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h4ehh"]
+bg_color = Color(0.252028, 0.252028, 0.252028, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hqvuu"]
+bg_color = Color(0.207843, 0.713726, 0.231373, 1)
+
+[node name="PlayerCreature" type="RigidBody2D" groups=["ally"]]
+mass = 0.001
+gravity_scale = 0.0
+script = ExtResource("1_cfrtp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4etqh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.964706, 0, 0.827451, 1)
+position = Vector2(0, 1.78814e-07)
+texture = ExtResource("2_8o8lx")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_leq05")
+}
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 16.0
+path_postprocessing = 1
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_tp6vr")
+
+[node name="health_bar" type="ProgressBar" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -2.0
+offset_top = -3.0
+offset_right = 2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_h4ehh")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hqvuu")
+value = 65.0
+show_percentage = false
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
