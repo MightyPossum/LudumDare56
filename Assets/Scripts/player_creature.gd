@@ -118,8 +118,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 func set_spawn_position(spawn_position : Vector2) -> void:
 	global_position = spawn_position
-<<<<<<< HEAD
-=======
 
 func initialize_values(initial_values : Dictionary) -> void:
 	max_health = initial_values.health
