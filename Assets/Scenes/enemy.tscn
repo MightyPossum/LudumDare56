@@ -53,7 +53,7 @@ _data = {
 "RESET": SubResource("Animation_aaf7k")
 }
 
-[node name="PlayerCreature" type="RigidBody2D" groups=["enemy"]]
+[node name="Enemy" type="RigidBody2D" groups=["enemy"]]
 mass = 0.001
 gravity_scale = 0.0
 script = ExtResource("1_6mq23")
