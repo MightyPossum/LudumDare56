@@ -14,7 +14,7 @@ var creature_defaults = {
         "range" : 15,
         "damage" : 1,
         "attack_speed" : 20,
-        "summon_amount" : 1,
+        "summon_amount" : 11,
     },
     CREATURE_TYPES.IMP : {
         "health" : 100,
@@ -22,7 +22,7 @@ var creature_defaults = {
         "range" : 15,
         "damage" : 1,
         "attack_speed" : 20,
-        "summon_amount" : 1,
+        "summon_amount" : 10,
     },
     }
 
@@ -31,7 +31,6 @@ var main_ui : Control
 
 var upgrade_chosen: bool = false
 var round_counter: int = 0
-var bosses_left: int = 0
 var player_resource: int = 0
 
-var ally_count: int = 0
+var ally_count = 0

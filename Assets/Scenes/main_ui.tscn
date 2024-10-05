@@ -36,6 +36,7 @@ theme_override_font_sizes/font_size = 50
 text = "Start Round"
 
 [node name="BoxContainer" type="BoxContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -46,22 +47,17 @@ metadata/_edit_use_anchors_ = true
 
 [node name="BossesLeft" type="Label" parent="BoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 3
 text = "Bosses Left: 0"
 
 [node name="AttemptTracker" type="Label" parent="BoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 3
 text = "Attampt Nr: 0"
 
 [node name="AllyTracker" type="Label" parent="BoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 3
 text = "Allys Left: 0"
-
-[node name="Gold" type="Label" parent="BoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 6
-text = "Gold: 0"
 
 [connection signal="button_up" from="MarginContainer/StartWaveButton" to="." method="_on_start_wave_button_button_up"]
