@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dit4glur1qa1s"]
 
-[ext_resource type="Script" path="res://Assets/Scripts/player_creature.gd" id="1_34ym2"]
-[ext_resource type="Texture2D" uid="uid://cho3ybe2cqht4" path="res://Assets/Sprites/Slime.png" id="2_tiahi"]
+[ext_resource type="Script" path="res://Assets/Scripts/player_creature.gd" id="1_48n4s"]
+[ext_resource type="Texture2D" uid="uid://cho3ybe2cqht4" path="res://Assets/Sprites/Slime.png" id="2_4bscf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4etqh"]
 radius = 16.0
@@ -56,14 +56,14 @@ bg_color = Color(0.207843, 0.713726, 0.231373, 1)
 [node name="PlayerCreature" type="RigidBody2D" groups=["ally"]]
 mass = 0.001
 gravity_scale = 0.0
-script = ExtResource("1_34ym2")
+script = ExtResource("1_48n4s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_4etqh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 1.78814e-07)
-texture = ExtResource("2_tiahi")
+texture = ExtResource("2_4bscf")
 hframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]

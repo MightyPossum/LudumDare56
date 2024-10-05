@@ -1,12 +1,13 @@
 extends RigidBody2D
 
-const max_health: int = 100
-@export var current_health: int = max_health
-@export var attack_speed: float = 1.0
+@export var max_health: int = 100
+@export var kill_value: int = 1000
+
+var current_health: int
+var attack_speed: float = 1.0
 var in_combat: bool = false
 var is_alive: = true 
-
-@export var attack_damage: int = 10
+var attack_damage: int = 10
 var enemy_queue: Array = []
 
 var attack_target: String = "ally"
@@ -15,39 +16,41 @@ var attack_target: String = "ally"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	current_health = max_health
 	health_bar.max_value = max_health
 	health_bar.value = current_health
 	health_bar.visible = current_health < max_health
 	$AnimationPlayer.play("Idle")
+	print(current_health)
 
 func _physics_process(_delta: float) -> void:
-	if enemy_queue.size() > 0 and not in_combat:
-		in_combat = true
-		attack()
-		await get_tree().create_timer(attack_speed).timeout
-		in_combat = false
-	
-	if current_health <= 0:
-		await get_tree().create_timer(.5).timeout
-		die()
+	if is_alive:
+		if current_health <= 0:
+			die()
+
+		if is_alive:
+			if enemy_queue.size() > 0 and not in_combat:
+				in_combat = true
+				attack()
+				await get_tree().create_timer(attack_speed).timeout
+				in_combat = false
 
 
 func die() -> void:
 	#TODO: Give money to player
 	#TODO: Play death animation
 	enemy_queue.clear()
+	GLOBALVARIABLES.player_resource += kill_value
 	is_alive = false
 	visible = false
 	
-
 func attack() -> void:
 	if enemy_queue.size() > 0:
 		var enemy = enemy_queue[0]
 		if enemy:
-			if enemy.has_method("take_damage"):
-				var is_enemy_alive = enemy.take_damage(attack_damage)
-				if not is_enemy_alive:
-					enemy_queue.erase(enemy)
+			var is_enemy_alive = enemy.take_damage(attack_damage)
+			if not is_enemy_alive:
+				enemy_queue.erase(enemy)
 		else:
 			pass
 
