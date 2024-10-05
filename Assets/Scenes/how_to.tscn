@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://devi8aq6y51fc"]
+
+[ext_resource type="Script" path="res://Assets/Scenes/button.gd" id="1_tsho4"]
+
+[node name="MarginContainer" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 46.0
+offset_top = 26.0
+offset_right = -46.0
+offset_bottom = -26.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "How to play:
+In [b]LudumDare56[/b] you try to help your little friends to navigate the garden. 
+
+"
+autowrap_mode = 2
+
+[node name="ReturnMenu" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 30
+text = "Back to Main Menu"
+script = ExtResource("1_tsho4")
+
+[connection signal="pressed" from="VBoxContainer/ReturnMenu" to="VBoxContainer/ReturnMenu" method="_on_pressed"]
