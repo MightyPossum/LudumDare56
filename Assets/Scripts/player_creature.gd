@@ -31,7 +31,14 @@ func _physics_process(delta: float) -> void:
 	if navgationAgent2D.is_target_reachable() and int(navgationAgent2D.distance_to_target() > GLOBALVARIABLES.game_manager.distance_to_enemy):
 		var next_location = navgationAgent2D.get_next_path_position()
 		var direction = global_position.direction_to(next_location)
+
+		if direction.x < 0:
+			$Sprite2D.flip_h = true
+		else:
+			$Sprite2D.flip_h = false
+			pass
 		global_position += direction * delta * movement_speed
+
 	elif navgationAgent2D.is_target_reachable() and enemy_queue.size() == 0:
 		pathing_initalized = false
 
@@ -50,8 +57,6 @@ func _physics_process(delta: float) -> void:
 		die()
 
 func die() -> void:
-	#TODO: Give money to player
-	#TODO: Play death animation
 	enemy_queue.clear()
 	is_alive = false
 	visible = false
