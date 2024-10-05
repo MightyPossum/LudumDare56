@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dj511m4n3sc7d"]
+[gd_scene load_steps=5 format=3 uid="uid://b3t2t6md2csxs"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/upgrade_panel.gd" id="1_a1e3g"]
 [ext_resource type="Texture2D" uid="uid://dtnknil6qib2a" path="res://Assets/SpriteTests/hud_heartHalf.png" id="1_nnxu8"]
