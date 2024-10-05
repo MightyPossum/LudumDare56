@@ -59,5 +59,7 @@ func take_damage(damage: int) -> bool:
 	return is_alive
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.get_parent().is_in_group(attack_target):
-		enemy_queue.append(body.get_parent())
+	if body.is_in_group(attack_target):
+		#navgationAgent2D.set_target_position(body.global_position)
+		#targeted_enemy = true
+		enemy_queue.append(body)
