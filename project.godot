@@ -15,6 +15,14 @@ run/main_scene="res://Assets/Scenes/game_scene.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GLOBALVARIABLES="*res://Assets/Scripts/globalvariables.gd"
+
+[display]
+
+window/size/always_on_top=true
+
 [global_group]
 
 enemy="NPC that attack the player"

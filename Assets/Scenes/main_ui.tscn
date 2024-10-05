@@ -14,7 +14,8 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_noerh")
 
-[node name="Start Wave Button" type="Button" parent="."]
+[node name="StartWaveButton" type="Button" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -30,3 +31,4 @@ text = "Start Wave"
 [node name="Upgrade Panel" parent="." instance=ExtResource("2_ue1l5")]
 visible = false
 layout_mode = 1
+[connection signal="button_up" from="StartWaveButton" to="." method="_on_start_wave_button_button_up"]
