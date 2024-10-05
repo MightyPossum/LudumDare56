@@ -42,11 +42,12 @@ func spawn_creatures() -> void:
 	var goblin_creature : PackedScene = load("res://Assets/Scenes/goblin_creature.tscn")
 
 	for creature in GLOBALVARIABLES.creature_manager:
-		for i in range(0,GLOBALVARIABLES.creature_manager.get(creature).summon_amount):
+		var creature_values = GLOBALVARIABLES.creature_manager.get(creature)
+		for i in range(0,creature_values.summon_amount):
 			var creature_type : PackedScene
 			if creature == GLOBALVARIABLES.CREATURE_TYPES.SLIME:
 				creature_type = slime_creature
-			elif creature == GLOBALVARIABLES.CREATURE_TYPES.GOBLIN:
+			elif creature == GLOBALVARIABLES.CREATURE_TYPES.IMP:
 				creature_type = goblin_creature
 			else:
 				push_error("Creature not found")
@@ -59,6 +60,7 @@ func spawn_creatures() -> void:
 			var spawn_vector = Vector2(x_position, y_position)
 			var spawn_creature = creature_type.instantiate()
 			spawn_creature.set_spawn_position(spawn_vector)
+			spawn_creature.initialize_values(creature_values)
 			%Creatures.add_child(spawn_creature)
 			await get_tree().create_timer(0.25).timeout
 		

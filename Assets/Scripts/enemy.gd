@@ -1,18 +1,22 @@
 extends RigidBody2D
 
-@export var max_health: int = 100
-@export var kill_value: int = 1000
+@export var max_health : int = 100
+@export var kill_value : int = 1000
+@export var attack_damage : int = 10
+@export var attack_speed_delay : float = 20
+@export var shooting_range : int = 50
+@export var is_boss : bool = false
 
-var current_health: int
-var attack_speed: float = 1.0
-var in_combat: bool = false
-var is_alive: = true 
-var attack_damage: int = 10
-var enemy_queue: Array = []
+@onready var health_bar: ProgressBar = $health_bar
 
 var attack_target: String = "ally"
 
-@onready var health_bar: ProgressBar = $health_bar
+var current_health : int
+var attack_speed : float = 1.0
+var enemy_queue: Array = []
+
+var in_combat : bool = false
+var is_alive : bool = true 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,7 +25,7 @@ func _ready() -> void:
 	health_bar.value = current_health
 	health_bar.visible = current_health < max_health
 	$AnimationPlayer.play("Idle")
-	print(current_health)
+	attack_speed = attack_speed_delay/100.0
 
 func _physics_process(_delta: float) -> void:
 	if is_alive:
