@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bd3mdc4w83hhw"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/main_ui.gd" id="1_noerh"]
-[ext_resource type="PackedScene" path="res://Assets/Scenes/upgrade_panel.tscn" id="2_ue1l5"]
+[ext_resource type="PackedScene" uid="uid://b3t2t6md2csxs" path="res://Assets/Scenes/upgrade_panel.tscn" id="2_ue1l5"]
 
 [node name="MainUI" type="Control"]
 layout_mode = 3
