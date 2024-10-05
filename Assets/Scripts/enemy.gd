@@ -8,6 +8,11 @@ extends RigidBody2D
 @export var is_boss : bool = false
 
 @onready var health_bar: ProgressBar = $health_bar
+var has_been_damaged = false;
+var damage_timer = 0.5;
+var timer = 0.0;
+
+@export var attack_projectile: PackedScene
 
 var attack_target: String = "ally"
 

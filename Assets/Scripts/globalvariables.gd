@@ -22,7 +22,7 @@ var creature_defaults = {
         "range" : 15,
         "damage" : 1,
         "attack_speed" : 20,
-        "summon_amount" : 1,
+        "summon_amount" : 0,
     },
     }
 
