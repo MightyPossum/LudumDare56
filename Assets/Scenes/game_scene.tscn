@@ -40,9 +40,6 @@ navigation_polygon = SubResource("NavigationPolygon_3bvqs")
 
 [node name="PlayerCreature15" parent="Creatures" instance=ExtResource("1_tekts")]
 position = Vector2(-162, 179)
-current_health = 100
-attack_speed = 0.2
-attack_damage = 10
 
 [node name="EnemyBase" type="Node2D" parent="."]
 position = Vector2(490, -166)
