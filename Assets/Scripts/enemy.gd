@@ -33,10 +33,12 @@ func _ready() -> void:
 	attack_speed = attack_speed_delay/100.0
 
 func _physics_process(delta: float) -> void:
-	if is_alive:
+	if is_alive:	
 		if current_health <= 0:
+			await get_tree().create_timer(.5).timeout
 			die()
-		if is_alive:
+		
+		if is_alive:	
 			if has_been_damaged:
 				$AnimationPlayer.play("Hurt")
 				timer += delta
@@ -68,7 +70,7 @@ func attack() -> void:
 			bullet.position = global_position
 			bullet.attack_damage = attack_damage
 			bullet.attack_target = attack_target
-						
+			
 			if enemy.has_method("take_damage"):
 				var is_enemy_alive = enemy.take_damage(0)
 				if not is_enemy_alive:

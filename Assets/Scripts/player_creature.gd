@@ -54,7 +54,6 @@ func _physics_process(delta: float) -> void:
 		else:
 			$Sprite2D.flip_h = false
 			pass
-
 		global_position += direction * delta * movement_speed
 
 	elif navgationAgent2D.is_target_reachable() and enemy_queue.size() == 0:
@@ -75,8 +74,6 @@ func _physics_process(delta: float) -> void:
 		die()
 
 func die() -> void:
-	#TODO: Give money to player
-	#TODO: Play death animation
 	enemy_queue.clear()
 	is_alive = false
 	visible = false
