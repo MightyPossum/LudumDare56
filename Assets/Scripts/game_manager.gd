@@ -39,7 +39,7 @@ func start_wave() -> void:
 func spawn_creatures() -> void:
 	
 	var slime_creature : PackedScene = load("res://Assets/Scenes/slime_creature.tscn")
-	var goblin_creature : PackedScene = load("res://Assets/Scenes/goblin_creature.tscn")
+	var goblin_creature : PackedScene = load("res://Assets/Scenes/imp_creature.tscn")
 
 	for creature in GLOBALVARIABLES.creature_manager:
 		var creature_values = GLOBALVARIABLES.creature_manager.get(creature)
