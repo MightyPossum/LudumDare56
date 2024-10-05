@@ -1,30 +1,30 @@
 extends Node
 
 enum CREATURE_TYPES {
-    SLIME,
-    IMP,
+	SLIME,
+	IMP,
 }
 
 var creature_manager = {}
 
 var creature_defaults = {
-    CREATURE_TYPES.SLIME : {
-        "health" : 10,
-        "movement_speed" : 10,
-        "range" : 15,
-        "damage" : 1,
-        "attack_speed" : 20,
-        "summon_amount" : 1,
-    },
-    CREATURE_TYPES.IMP : {
-        "health" : 10,
-        "movement_speed" : 100,
-        "range" : 15,
-        "damage" : 1,
-        "attack_speed" : 20,
-        "summon_amount" : 0,
-    },
-    }
+	CREATURE_TYPES.SLIME : {
+		"health" : 10,
+		"movement_speed" : 10,
+		"range" : 15,
+		"damage" : 1,
+		"attack_speed" : 20,
+		"summon_amount" : 1,
+	},
+	CREATURE_TYPES.IMP : {
+		"health" : 10,
+		"movement_speed" : 100,
+		"range" : 15,
+		"damage" : 1,
+		"attack_speed" : 20,
+		"summon_amount" : 0,
+	},
+	}
 
 var game_manager : Node2D
 var main_ui : Control

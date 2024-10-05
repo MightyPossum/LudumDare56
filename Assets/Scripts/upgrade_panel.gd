@@ -1,6 +1,6 @@
 extends Control
 
-@onready var grid_container: GridContainer = $PanelContainer/GridContainer
+@onready var gold: Label = $BoxContainer/Gold
 
 func _on_hp_upgrade_pressed() -> void:
 	var add_hp: int  = 10
@@ -14,3 +14,6 @@ func _on_ally_upgrade_pressed() -> void:
 	visible = false
 	GLOBALVARIABLES.main_ui.set_upgrade_panel_visibility(false)
 	GLOBALVARIABLES.main_ui.set_start_wave_button_visibility(true)
+
+func update_gold_label():
+	gold.text = str("Gold: " + str(GLOBALVARIABLES.player_resource))
