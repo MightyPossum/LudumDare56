@@ -9,7 +9,7 @@ var is_alive: = true
 @export var attack_damage: int = 10
 var enemy_queue: Array = []
 
-@export_enum("ally", 'enemy') var attack_target: String
+var attack_target: String = "ally"
 
 @onready var health_bar: ProgressBar = $health_bar
 

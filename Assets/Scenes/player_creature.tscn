@@ -19,7 +19,6 @@ bg_color = Color(0.207843, 0.713726, 0.231373, 1)
 mass = 0.001
 gravity_scale = 0.0
 script = ExtResource("1_34ym2")
-attack_target = "enemy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_4etqh")

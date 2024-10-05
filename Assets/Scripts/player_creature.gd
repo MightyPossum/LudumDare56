@@ -9,7 +9,7 @@ var is_alive: bool = true
 @export var attack_damage: int = 10
 var enemy_queue: Array = []
 
-@export_enum("ally", 'enemy') var attack_target: String
+var attack_target: String = "enemy"
 
 @onready var health_bar: ProgressBar = $health_bar
 @onready var navgationAgent2D : NavigationAgent2D = get_node("NavigationAgent2D")
