@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ccq8gjvk8r64i" path="res://Assets/SpriteTests/Spirit.png" id="2_4h1rf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4etqh"]
-radius = 2.0
+radius = 17.8885
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tp6vr"]
 radius = 61.0082
@@ -30,6 +30,7 @@ hframes = 2
 frame = 1
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 2.0
 
 [node name="Area2D" type="Area2D" parent="."]
 
