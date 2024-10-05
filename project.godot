@@ -14,6 +14,15 @@ config/name="LudumDare56"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[global_group]
+
+enemy="NPC that attack the player"
+ally="Your own npcs"
+
+[physics]
+
+2d/default_gravity_vector=Vector2(0, 0)
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
