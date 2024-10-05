@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-const max_health: int = 100
+var max_health: int = GLOBALVARIABLES.player_creature_max_health
 @export var current_health: int = max_health
 @export var attack_speed: float = .2
 var in_combat: bool = false
@@ -13,7 +13,7 @@ var attack_target: String = "enemy"
 
 @onready var health_bar: ProgressBar = $health_bar
 @onready var navgationAgent2D : NavigationAgent2D = get_node("NavigationAgent2D")
-@onready var game_manager : Node2D = get_parent().get_parent()
+# var game_manager : Node2D = GLOBALVARIABLES.game_manager
 
 var pathing_initalized : bool = false
 var targeted_enemy : bool = false
@@ -29,7 +29,7 @@ func _ready() -> void:
 	$Sprite2D/AnimationPlayer.play("Walk")
 
 func _physics_process(delta: float) -> void:
-	if navgationAgent2D.is_target_reachable() and int(navgationAgent2D.distance_to_target() > game_manager.distance_to_enemy):
+	if navgationAgent2D.is_target_reachable() and int(navgationAgent2D.distance_to_target() > GLOBALVARIABLES.game_manager.distance_to_enemy):
 		var next_location = navgationAgent2D.get_next_path_position()
 		var direction = global_position.direction_to(next_location)
 		global_position += direction * delta * movment_speed
@@ -38,7 +38,7 @@ func _physics_process(delta: float) -> void:
 
 	if !pathing_initalized:
 		pathing_initalized = true
-		navgationAgent2D.set_target_position(game_manager.get_enemy_base_location())
+		navgationAgent2D.set_target_position(GLOBALVARIABLES.game_manager.get_enemy_base_location())
 
 	if enemy_queue.size() > 0 and not in_combat:
 		in_combat = true
@@ -56,6 +56,7 @@ func die() -> void:
 	enemy_queue.clear()
 	is_alive = false
 	visible = false
+	GLOBALVARIABLES.ally_count -= 1
 	
 
 func attack() -> void:
