@@ -16,6 +16,7 @@ func _ready():
 		main_ui.set_start_wave_button_visibility(true)
 	else:
 		setup_creature_defaults()
+		SaveGame.start_new_game()
 		main_ui.set_upgrade_panel_visibility(false)
 		main_ui.set_start_wave_button_visibility(false)
 
@@ -33,6 +34,7 @@ func win() -> void:
 
 func lose() -> void:
 	GLOBALVARIABLES.round_counter += 1
+	SaveGame.save_game()
 	get_tree().reload_current_scene()
 	
 func start_wave() -> void:

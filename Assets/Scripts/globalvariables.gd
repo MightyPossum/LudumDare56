@@ -22,12 +22,13 @@ var creature_defaults = {
         "range" : 15,
         "damage" : 1,
         "attack_speed" : 20,
-        "summon_amount" : 1,
+        "summon_amount" : 0,
     },
     }
 
 var game_manager : Node2D
 var main_ui : Control
+var main_menu_node : Control
 
 var upgrade_chosen: bool = false
 var round_counter: int = 0
