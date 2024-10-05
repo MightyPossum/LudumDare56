@@ -12,7 +12,7 @@ func get_enemy_base_location() -> Vector2:
 	return get_node("EnemyBase").global_position
 
 func start_wave() -> void:
-	#main_ui.set_start_wave_button_visibility(false)
+	main_ui.set_start_wave_button_visibility(false)
 	spawn_creatures()
 
 func spawn_creatures() -> void:
