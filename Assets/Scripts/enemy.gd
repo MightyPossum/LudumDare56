@@ -18,6 +18,7 @@ func _ready() -> void:
 	health_bar.max_value = max_health
 	health_bar.value = current_health
 	health_bar.visible = current_health < max_health
+	$AnimationPlayer.play("Idle")
 
 func _physics_process(_delta: float) -> void:
 	if enemy_queue.size() > 0 and not in_combat:
