@@ -1,9 +1,7 @@
-[gd_scene load_steps=10 format=4 uid="uid://dutubfq3i05yk"]
+[gd_scene load_steps=9 format=4 uid="uid://dutubfq3i05yk"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/game_manager.gd" id="1_1m18h"]
 [ext_resource type="PackedScene" uid="uid://bd3mdc4w83hhw" path="res://Assets/Scenes/main_ui.tscn" id="2_b87o6"]
-[ext_resource type="Texture2D" uid="uid://7yl7cyp24pqi" path="res://Assets/SpriteTests/Map.png" id="2_djf18"]
-[ext_resource type="PackedScene" uid="uid://dit4glur1qa1s" path="res://Assets/Scenes/player_creature.tscn" id="1_tekts"]
 [ext_resource type="Script" path="res://Assets/Scripts/camera.gd" id="2_hn1cj"]
 [ext_resource type="Texture2D" uid="uid://b1rfe7t0l2xhi" path="res://icon.svg" id="3_1krg0"]
 [ext_resource type="TileSet" uid="uid://cht8s0ttm77by" path="res://Assets/game_scene.tres" id="3_wkmjf"]
@@ -15,7 +13,7 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32
 outlines = Array[PackedVector2Array]([PackedVector2Array(49, 395, 50, 458, 524, 458, 529, 552, 338, 557, 338, 647, 145, 655, 146, 712, 491, 713, 499, 907, 1131, 904, 1134, 748, 1583, 745, 1586, 1163, 1168, 1167, 1163, 1099, 754, 1102, 754, 1193, 498, 1199, 499, 1510, 778, 1509, 777, 1418, 1293, 1415, 1297, 1542, 1581, 1544, 1586, 1705, 1394, 1710, 1397, 2470, 1646, 2472, 1649, 2824, 944, 2829, 941, 2505, 1196, 2505, 1196, 2352, 658, 2351, 658, 2890, -13, 2895, -13, 2956, -334, 2958, -332, 3113, 235, 3109, 235, 3013, 1835, 3016, 1833, 2254, 1612, 2254, 1613, 1830, 1831, 1828, 1832, 620, 977, 624, 977, 752, 683, 751, 684, 399), PackedVector2Array(594, 1262, 593, 1416, 713, 1414, 717, 1264), PackedVector2Array(851, 1197, 850, 1321, 1099, 1320, 1098, 1197)])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8qsuv"]
-size = Vector2(331, 43)
+size = Vector2(178.5, 43)
 
 [node name="GameManager" type="Node2D"]
 script = ExtResource("1_1m18h")
@@ -58,7 +56,7 @@ position = Vector2(-462, 311)
 
 [node name="spawnArea" type="CollisionShape2D" parent="Creatures/spawnLocation"]
 unique_name_in_owner = true
-position = Vector2(162.5, 11.5)
+position = Vector2(373.75, -297)
 shape = SubResource("RectangleShape2D_8qsuv")
 
 [node name="EnemyBase" type="Node2D" parent="."]
