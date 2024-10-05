@@ -11,13 +11,16 @@ func _ready():
 		setup_creature_defaults()
 		main_ui.set_upgrade_panel_visibility(false)
 		main_ui.set_start_wave_button_visibility(true)
+		main_ui.set_label_container_visibility(true)
 	elif GLOBALVARIABLES.round_counter >= 1:
 		main_ui.set_upgrade_panel_visibility(true)
 		main_ui.set_start_wave_button_visibility(true)
+		main_ui.set_label_container_visibility(false)
 	else:
 		setup_creature_defaults()
 		main_ui.set_upgrade_panel_visibility(false)
 		main_ui.set_start_wave_button_visibility(false)
+		
 
 func _process(_delta):
 	if ongoing_wave:
@@ -36,7 +39,7 @@ func lose() -> void:
 	get_tree().reload_current_scene()
 	
 func start_wave() -> void:
-	main_ui.set_start_wave_button_visibility(false)
+	# main_ui.set_start_wave_button_visibility(false)
 	ongoing_wave = true
 	spawn_creatures()
 

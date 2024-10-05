@@ -14,9 +14,14 @@ func _process(_delta):
 	ally_tracker.text = "Allys Left: " + str(GLOBALVARIABLES.ally_count)
 	gold.text = "Gold: " + str(GLOBALVARIABLES.player_resource)
 
-	
 func _on_start_wave_button_button_up() -> void:
+	set_start_wave_button_visibility(false)
+	set_upgrade_panel_visibility(false)
+	set_label_container_visibility(true)
 	GLOBALVARIABLES.game_manager.start_wave()
+
+func set_label_container_visibility(toggle : bool):
+	$BoxContainer.visible = toggle
 
 func set_start_wave_button_visibility(toggle : bool):
 	%StartWaveButton.visible = toggle
