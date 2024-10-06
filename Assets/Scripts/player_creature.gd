@@ -64,7 +64,7 @@ func _physics_process(delta: float) -> void:
 		navgationAgent2D.set_target_position(GLOBALVARIABLES.game_manager.get_enemy_base_location())
 
 	if enemy_queue.size() > 0 and not in_combat:
-		in_combat = true
+		in_combat = true		
 		attack()
 		await get_tree().create_timer(attack_speed).timeout
 		in_combat = false
@@ -86,7 +86,7 @@ func attack() -> void:
 		if enemy:
 			var bullet = attack_projectile.instantiate()
 			bullet.target_position = Vector2(enemy.position.x, enemy.position.y)
-			bullet.shooter = "Slime"
+			bullet.shooter = get_name()
 			get_parent().add_child(bullet)
 			bullet.position = global_position
 			bullet.attack_damage = attack_damage
@@ -120,7 +120,7 @@ func set_spawn_position(spawn_position : Vector2) -> void:
 func initialize_values(initial_values : Dictionary) -> void:
 	max_health = initial_values.health
 	current_health = max_health
-	attack_speed = initial_values.attack_speed/100
+	attack_speed = initial_values.attack_speed
 	movement_speed = initial_values.movement_speed
 	shooting_range = initial_values.range
 	attack_damage = initial_values.damage
