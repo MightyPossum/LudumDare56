@@ -125,7 +125,7 @@ Buy: 10g"
 [node name="AllyUpgradeImp" type="Button" parent="HBoxContainer/ImpUpgrade/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Add Slime: +1
+text = "Add Imp: +1
 Buy: 10g"
 
 [node name="DamageUpgradeImp" type="Button" parent="HBoxContainer/ImpUpgrade/GridContainer"]
@@ -161,7 +161,7 @@ Buy: 10g"
 [node name="AllyUpgradeGhost" type="Button" parent="HBoxContainer/GhostUpgrade/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Add Slime: +1
+text = "Add Ghost: +1
 Buy: 10g"
 
 [node name="DamageUpgradeGhost" type="Button" parent="HBoxContainer/GhostUpgrade/GridContainer"]
