@@ -14,7 +14,7 @@ var creature_defaults = {
 		"movement_speed" : 100,
 		"range" : 15,
 		"damage" : 1,
-		"attack_speed" : 20,
+		"attack_speed" : 1,
 		"summon_amount" : 1,
 	},
 	CREATURE_TYPES.IMP : {
@@ -22,7 +22,7 @@ var creature_defaults = {
 		"movement_speed" : 100,
 		"range" : 15,
 		"damage" : 1,
-		"attack_speed" : 20,
+		"attack_speed" : 2,
 		"summon_amount" : 0,
 	},
 	CREATURE_TYPES.GHOST : {
@@ -30,7 +30,7 @@ var creature_defaults = {
 		"movement_speed" : 100,
 		"range" : 15,
 		"damage" : 1,
-		"attack_speed" : 20,
+		"attack_speed" : 1,
 		"summon_amount" : 0,
 	},
 	}
