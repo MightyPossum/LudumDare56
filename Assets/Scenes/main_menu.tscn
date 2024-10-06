@@ -5,7 +5,16 @@
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_3sss1"]
 size = Vector2(50, 50)
 
-[node name="MainMenu" type="MarginContainer"]
+[node name="Panel" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="MainMenu" type="MarginContainer" parent="."]
+layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0381944
 anchor_top = 0.0385802
@@ -20,67 +29,68 @@ theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 60
 theme_override_constants/margin_bottom = 40
 script = ExtResource("1_bmx4v")
+metadata/_edit_use_anchors_ = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMenu"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Title" type="Label" parent="HBoxContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="MainMenu/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
 text = "LudumDare56"
 horizontal_alignment = 1
 
-[node name="MenuOptions" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
+[node name="MenuOptions" type="VBoxContainer" parent="MainMenu/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="NewGame" type="Button" parent="HBoxContainer/VBoxContainer/MenuOptions"]
+[node name="NewGame" type="Button" parent="MainMenu/HBoxContainer/VBoxContainer/MenuOptions"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "New Game"
 
-[node name="LoadGame" type="Button" parent="HBoxContainer/VBoxContainer/MenuOptions"]
+[node name="LoadGame" type="Button" parent="MainMenu/HBoxContainer/VBoxContainer/MenuOptions"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Load game"
 
-[node name="HowTo" type="Button" parent="HBoxContainer/VBoxContainer/MenuOptions"]
+[node name="HowTo" type="Button" parent="MainMenu/HBoxContainer/VBoxContainer/MenuOptions"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "How to "
 
-[node name="ExitGame" type="Button" parent="HBoxContainer/VBoxContainer/MenuOptions"]
+[node name="ExitGame" type="Button" parent="MainMenu/HBoxContainer/VBoxContainer/MenuOptions"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Exit Game"
 
-[node name="Version" type="Label" parent="HBoxContainer/VBoxContainer"]
+[node name="Version" type="Label" parent="MainMenu/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "ver 0.2-mvp"
 
-[node name="DevTeam" type="Label" parent="HBoxContainer/VBoxContainer"]
+[node name="DevTeam" type="Label" parent="MainMenu/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Jumping Possum"
 
-[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="MainMenu/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 
-[node name="Logo" type="TextureRect" parent="HBoxContainer/CenterContainer"]
+[node name="Logo" type="TextureRect" parent="MainMenu/HBoxContainer/CenterContainer"]
 layout_mode = 2
 texture = SubResource("PlaceholderTexture2D_3sss1")
 
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/MenuOptions/NewGame" to="." method="_on_new_game_pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/MenuOptions/LoadGame" to="." method="_on_load_game_pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/MenuOptions/HowTo" to="." method="_on_how_to_pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/MenuOptions/ExitGame" to="." method="_on_exit_game_pressed"]
+[connection signal="pressed" from="MainMenu/HBoxContainer/VBoxContainer/MenuOptions/NewGame" to="MainMenu" method="_on_new_game_pressed"]
+[connection signal="pressed" from="MainMenu/HBoxContainer/VBoxContainer/MenuOptions/LoadGame" to="MainMenu" method="_on_load_game_pressed"]
+[connection signal="pressed" from="MainMenu/HBoxContainer/VBoxContainer/MenuOptions/HowTo" to="MainMenu" method="_on_how_to_pressed"]
+[connection signal="pressed" from="MainMenu/HBoxContainer/VBoxContainer/MenuOptions/ExitGame" to="MainMenu" method="_on_exit_game_pressed"]
