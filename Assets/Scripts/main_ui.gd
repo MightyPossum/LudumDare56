@@ -39,6 +39,8 @@ func _on_power_up_pressed(power_type : String) -> void:
 			delay_time = GLOBALVARIABLES.boost_power_time
 		"shield":
 			delay_time = GLOBALVARIABLES.shield_power_time
+	%GodPowerActivation.play()
+
 	
 	handle_power(power_type, delay_time)
 	toggle_powers()

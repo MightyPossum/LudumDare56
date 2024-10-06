@@ -10,6 +10,7 @@ extends Control
 var gold = GLOBALVARIABLES.player_resource
 
 func _on_upgrade_pressed(creature: String, upgrade: int) -> void:
+	%MenuClick.play()
 	match creature:
 		"Slime":
 			upgrade_type(upgrade, GLOBALVARIABLES.CREATURE_TYPES.SLIME)

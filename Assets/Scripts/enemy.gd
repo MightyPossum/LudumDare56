@@ -118,6 +118,7 @@ func attack(enemy : RigidBody2D) -> void:
 		var bullet = attack_projectile.instantiate()
 		
 		bullet.init(enemy, "enemy", global_position,attack_damage,attack_target)
+		%AttackSound.play()
 
 		get_parent().add_child(bullet)
 		

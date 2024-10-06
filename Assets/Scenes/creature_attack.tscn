@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgo87160hq6s6"]
+
+[ext_resource type="AudioStream" uid="uid://b2khm8u8s8upt" path="res://Assets/Sounds/CreatureAttack.ogg" id="1_k6w15"]
+
+[node name="CreatureAttack" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_k6w15")
+volume_db = -12.333
+pitch_scale = 0.76

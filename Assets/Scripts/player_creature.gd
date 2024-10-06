@@ -110,13 +110,13 @@ func die() -> void:
 func attack(enemy : RigidBody2D) -> void:
 	var bullet = attack_projectile.instantiate()
 	bullet.init(enemy, get_name(), global_position,attack_damage,attack_target)
-	
+	%CreatureAttack.play()
 	get_parent().add_child(bullet)
 				
 	var is_enemy_alive = enemy.take_damage(0)
 	if not is_enemy_alive:
 		enemy_queue.erase(enemy)
-
+	
 func take_damage(damage: int) -> bool:
 	if is_alive and not has_shield:
 		current_health = max(current_health - damage, 0)
