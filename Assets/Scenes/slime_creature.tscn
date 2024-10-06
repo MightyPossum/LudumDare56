@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://dit4glur1qa1s"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/player_creature.gd" id="1_34ym2"]
-[ext_resource type="PackedScene" path="res://Assets/Scenes/attack_projectile.tscn" id="2_k862t"]
+[ext_resource type="PackedScene" uid="uid://sggolq6n2t6p" path="res://Assets/Scenes/attack_projectile.tscn" id="2_k862t"]
 [ext_resource type="Texture2D" uid="uid://cho3ybe2cqht4" path="res://Assets/Sprites/Slime.png" id="2_tiahi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4etqh"]
