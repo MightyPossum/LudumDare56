@@ -1,11 +1,21 @@
 extends Node2D
 
-var ongoing_wave = false
-
 @export var distance_to_enemy = 20
 @onready var main_ui : Control = %MainUI
 
+var next_location : Array
+
+var ongoing_wave : bool = false
+var all_spawned :bool  = false
+
 func _ready():
+	next_location = [
+		get_node("Enemies/Boss1").global_position,
+		get_node("Enemies/Boss2").global_position,
+		get_node("Enemies/Boss3").global_position,
+		get_node("Enemies/Boss4").global_position,
+		get_node("EnemyBase").global_position,
+	]
 	GLOBALVARIABLES.game_manager = self
 	if GLOBALVARIABLES.round_counter == 0:
 		main_ui.set_upgrade_panel_visibility(false)
@@ -22,14 +32,24 @@ func _ready():
 		main_ui.set_stats_visibility(true)
 
 func _process(_delta):
-	if ongoing_wave:
+	if ongoing_wave && all_spawned:
 		if GLOBALVARIABLES.ally_count <= 0:
 			lose()
 
-func get_enemy_base_location() -> Vector2:
-	return get_node("EnemyBase").global_position
+func get_next_location() -> Vector2:
+	if not %NavigationRegion2D.is_baking():
+		%NavigationRegion2D.bake_navigation_polygon()
+	return next_location.front()
+
+func is_location_base(current_next_location_vector : Vector2) -> bool:
+	if current_next_location_vector == next_location.back():
+		return true
+	else:
+		return false
+
 
 func win() -> void:
+	await get_tree().create_timer(2).timeout
 	get_tree().quit()
 	
 
@@ -71,10 +91,13 @@ func spawn_creatures() -> void:
 			spawn_creature.set_spawn_position(spawn_vector)
 			spawn_creature.initialize_values(creature_values)
 			%Creatures.add_child(spawn_creature)
-			await get_tree().create_timer(0.25).timeout
-		
-func _on_bass_range_body_entered(_body: Node2D) -> void:
-	win()
+			await get_tree().create_timer(.25).timeout
+	
+	all_spawned = true
+
+func _on_bass_range_body_entered(body: Node2D) -> void:
+	if body.is_in_group("ally"):
+		win()
 
 func setup_creature_defaults() -> void:
 	GLOBALVARIABLES.creature_manager = GLOBALVARIABLES.creature_defaults.duplicate(true)

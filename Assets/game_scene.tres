@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://b6gwh8a204ny1"]
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://cht8s0ttm77by"]
 
 [ext_resource type="Texture2D" uid="uid://7yl7cyp24pqi" path="res://Assets/SpriteTests/Map.png" id="1_wspvg"]
 
@@ -8,9 +8,12 @@ texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/size_in_atlas = Vector2i(1, 2)
 1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-14.375, -31.75, 14.875, -31.5, 14.625, 30.75, -16.125, 31.75)
 2:0/size_in_atlas = Vector2i(1, 4)
 2:0/0 = 0
 
 [resource]
 tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 3
+physics_layer_0/collision_mask = 3
 sources/0 = SubResource("TileSetAtlasSource_7mwcx")
