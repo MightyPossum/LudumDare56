@@ -8,11 +8,14 @@ var projectile_sprite
 @onready var sprite = $Sprite
 
 func _ready():
+	print(shooter)
 	match shooter:
 		"Slime":
 			sprite.texture = preload("res://Assets/Sprites/Slime.png")
 		"Imp":
 			sprite.texture = preload("res://Assets/Sprites/Imp.png")
+		"Ghost":
+			sprite.texture = preload("res://Assets/Sprites/Ghost.png")
 		"Enemy":
 			sprite.texture = preload("res://Assets/Sprites/Enemy1.png")
 

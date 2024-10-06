@@ -3,7 +3,7 @@ extends RigidBody2D
 @export var max_health : int = 100
 @export var kill_value : int = 1000
 @export var attack_damage : int = 10
-@export var attack_speed_delay : float = 20
+@export var attack_speed_delay : float = 0.2
 @export var shooting_range : int = 50
 @export var is_boss : bool = false
 
@@ -30,7 +30,7 @@ func _ready() -> void:
 	health_bar.value = current_health
 	health_bar.visible = current_health < max_health
 	$AnimationPlayer.play("Idle")
-	attack_speed = attack_speed_delay/100.0
+	attack_speed = attack_speed_delay
 
 func _physics_process(delta: float) -> void:
 	if is_alive:	

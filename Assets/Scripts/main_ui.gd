@@ -26,9 +26,26 @@ func set_upgrade_panel_visibility(toggle : bool):
 	%UpgradePanel.visible = toggle
 	%UpgradePanel.update_gold_label()
 	
+func _on_power_up_pressed(power_type : String) -> void:
+	var delay_time : float
+	match power_type:
+		"boost":
+			delay_time = GLOBALVARIABLES.boost_power_time
+		"shield":
+			delay_time = GLOBALVARIABLES.shield_power_time
+	
+	handle_power(power_type, delay_time)
+	toggle_powers()
+	await get_tree().create_timer(delay_time).timeout
+	toggle_powers()
 
+func handle_power(power_type : String, delay_time : float) -> void:
+	match power_type:
+		"boost":
+			EVENTS.boost_activated.emit(delay_time)
+		"shield":
+			EVENTS.shield_activated.emit(delay_time)
 
-func _on_power_up_pressed() -> void:
-	EVENTS.power_up_creatures.emit()
-	await get_tree().create_timer(5).timeout	
-	EVENTS.power_up_creatures.emit()
+func toggle_powers() -> void:
+	%BoostPower.disabled = !%BoostPower.disabled
+	%ShieldPower.disabled = !%ShieldPower.disabled

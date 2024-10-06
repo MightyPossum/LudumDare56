@@ -5,10 +5,9 @@ var enemy_queue: Array = []
 var attack_target: String = "enemy"
 var current_health: int
 var attack_speed: float = 0.2
-var attack_damage: int = 10
-var movement_speed : int = 100
+var attack_damage: float = 10
+var movement_speed : float = 100
 var shooting_range : int = 40
-
 
 @onready var health_bar: ProgressBar = $health_bar
 @onready var navgationAgent2D : NavigationAgent2D = get_node("NavigationAgent2D")
@@ -18,12 +17,13 @@ var targeted_enemy : bool = false
 var ongoing_wave : bool = false
 var in_combat : bool = false
 var is_alive : bool = true
-var has_power_up : bool = false
-
 
 var has_been_damaged = false;
 var damage_timer = 0.5;
 var timer = 0.0;
+
+var has_boost : bool = false
+var has_shield : bool = false
 
 @export var attack_projectile: PackedScene
 
@@ -32,53 +32,60 @@ func _ready() -> void:
 	health_bar.max_value = max_health
 	health_bar.value = current_health
 	health_bar.visible = current_health < max_health
-	EVENTS.power_up_creatures.connect(on_power_up_creatures_signal_received)
+	EVENTS.boost_activated.connect(handle_boost_activation)
+	EVENTS.shield_activated.connect(handle_shield_activation)
 
 	$Sprite2D/AnimationPlayer.play("walk")
 
 func _physics_process(delta: float) -> void:
+	if is_alive:
+		if current_health <= 0:
+			die()
 	
-	if has_been_damaged:
-		$Sprite2D/AnimationPlayer.play("Hurt")
-		timer += delta
-		if timer >= damage_timer:
-			has_been_damaged = false
-			timer = 0.0
-	else:
-		
-		var walk_animation : String = "Walk"
-		if has_power_up:
-			walk_animation = "Walk_power"
-		$Sprite2D/AnimationPlayer.play(walk_animation)
-	
-	
-	if navgationAgent2D.is_target_reachable() and int(navgationAgent2D.distance_to_target() > GLOBALVARIABLES.game_manager.distance_to_enemy):
-		var next_location = navgationAgent2D.get_next_path_position()
-		var direction = global_position.direction_to(next_location)
-
-		if direction.x < 0:
-			$Sprite2D.flip_h = true
+	if is_alive:
+		if has_been_damaged:
+			$Sprite2D/AnimationPlayer.play("Hurt")
+			timer += delta
+			if timer >= damage_timer:
+				has_been_damaged = false
+				timer = 0.0
 		else:
-			$Sprite2D.flip_h = false
-			pass
-		global_position += direction * delta * movement_speed
+			
+			var walk_animation : String
 
-	elif navgationAgent2D.is_target_reachable() and enemy_queue.size() == 0:
-		pathing_initalized = false
+			if has_boost:
+				walk_animation = "Walk_power"
+			elif has_shield:
+				walk_animation = "Walk_shield"
+			else:
+				walk_animation = "Walk"
 
-	if !pathing_initalized:
-		pathing_initalized = true
-		navgationAgent2D.set_target_position(GLOBALVARIABLES.game_manager.get_enemy_base_location())
+			$Sprite2D/AnimationPlayer.play(walk_animation)
+		
+		
+		if navgationAgent2D.is_target_reachable() and int(navgationAgent2D.distance_to_target() > GLOBALVARIABLES.game_manager.distance_to_enemy):
+			var next_location = navgationAgent2D.get_next_path_position()
+			var direction = global_position.direction_to(next_location)
 
-	if enemy_queue.size() > 0 and not in_combat:
-		in_combat = true		
-		attack()
-		await get_tree().create_timer(attack_speed).timeout
-		in_combat = false
-	
-	if current_health <= 0:
-		await get_tree().create_timer(.5).timeout
-		die()
+			if direction.x < 0:
+				$Sprite2D.flip_h = true
+			else:
+				$Sprite2D.flip_h = false
+				pass
+			global_position += direction * delta * movement_speed
+
+		elif navgationAgent2D.is_target_reachable() and enemy_queue.size() == 0:
+			pathing_initalized = false
+
+		if !pathing_initalized:
+			pathing_initalized = true
+			navgationAgent2D.set_target_position(GLOBALVARIABLES.game_manager.get_enemy_base_location())
+
+		if enemy_queue.size() > 0 and not in_combat:
+			in_combat = true		
+			attack()
+			await get_tree().create_timer(attack_speed).timeout
+			in_combat = false
 
 func die() -> void:
 	enemy_queue.clear()
@@ -107,7 +114,7 @@ func attack() -> void:
 			pass
 
 func take_damage(damage: int) -> bool:
-	if is_alive:
+	if is_alive and not has_shield:
 		current_health = max(current_health - damage, 0)
 		health_bar.value = current_health
 		health_bar.visible = current_health < max_health
@@ -132,5 +139,24 @@ func initialize_values(initial_values : Dictionary) -> void:
 	shooting_range = initial_values.range
 	attack_damage = initial_values.damage
 
-func on_power_up_creatures_signal_received() -> void:
-	has_power_up = !has_power_up
+func handle_boost_activation(boost_time : float) -> void:
+	has_boost = true
+	
+	var boost_power_factor = GLOBALVARIABLES.boost_power_factor
+	
+	attack_damage = attack_damage*boost_power_factor
+	movement_speed = movement_speed*boost_power_factor
+	attack_speed = attack_speed/boost_power_factor
+
+	await get_tree().create_timer(boost_time).timeout
+	
+	has_boost = false
+	
+	attack_damage = attack_damage/boost_power_factor
+	movement_speed = movement_speed/boost_power_factor
+	attack_speed = attack_speed*boost_power_factor
+
+func handle_shield_activation(shield_time : float) -> void:
+	has_shield = true
+	await get_tree().create_timer(shield_time).timeout
+	has_shield = false

@@ -9,4 +9,8 @@ extends Node
 # ADD THE CONNECTED FUNCTION TO THE CATCHER, func _on_cash_amount_changed(cash_value: int) -> void
 
 @warning_ignore("unused_signal")
-signal power_up_creatures()
+signal boost_activated(boost_timer : float)
+
+@warning_ignore("unused_signal")
+signal shield_activated(shield_timer : float)
+
