@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqlbwctppngov"]
+
+[ext_resource type="Texture2D" uid="uid://7yl7cyp24pqi" path="res://Assets/SpriteTests/Map.png" id="1_o0b4b"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_o0b4b")
+region_enabled = true
+region_rect = Rect2(64, 1, 32, 127)
+
+[node name="Polygon2D" type="Polygon2D" parent="Sprite2D"]
+visible = false
+polygon = PackedVector2Array(-16, -64, 16, -64, 16, 64, -16, 64)

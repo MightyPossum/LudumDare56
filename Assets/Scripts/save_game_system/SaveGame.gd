@@ -39,7 +39,6 @@ func start_new_game() -> void:
 
 ## Saves to the actual file
 func save_to_file() -> void:
-	print(USER_DATA_PATH + save_config.get_current_save_file())
 	print(ResourceSaver.save(save_game_data, USER_DATA_PATH + save_config.get_current_save_file()))
 
 func load_from_file() -> void:
@@ -60,7 +59,6 @@ func save_game() -> void:
 	save_game_data.save_data()
 
 	save_master_config_file()
-	print("saving to file")
 	save_to_file()
 
 func change_current_save(save_path : String) -> void:

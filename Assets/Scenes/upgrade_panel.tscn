@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3t2t6md2csxs"]
+[gd_scene load_steps=4 format=3 uid="uid://b3t2t6md2csxs"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/upgrade_panel.gd" id="1_a1e3g"]
-[ext_resource type="Texture2D" uid="uid://dtnknil6qib2a" path="res://Assets/SpriteTests/hud_heartHalf.png" id="1_nnxu8"]
-[ext_resource type="Texture2D" uid="uid://ccq8gjvk8r64i" path="res://Assets/SpriteTests/Spirit.png" id="3_ys85l"]
+[ext_resource type="AudioStream" uid="uid://1wbn8dxrpw8d" path="res://Assets/Sounds/MenuClick.ogg" id="2_i3pi7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vr7u1"]
 font_size = 60
@@ -17,10 +16,18 @@ grow_vertical = 2
 script = ExtResource("1_a1e3g")
 metadata/_edit_use_anchors_ = true
 
+[node name="MenuClick" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(280, 245)
+stream = ExtResource("2_i3pi7")
+
 [node name="PanelContainer" type="PanelContainer" parent="."]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="BoxContainer" type="BoxContainer" parent="."]
@@ -41,31 +48,166 @@ text = "UPGRADES"
 label_settings = SubResource("LabelSettings_vr7u1")
 
 [node name="Gold" type="Label" parent="BoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 6
 theme_override_font_sizes/font_size = 30
 text = "Gold: 0"
 horizontal_alignment = 1
 
-[node name="GridContainer" type="GridContainer" parent="."]
-layout_mode = 2
-offset_left = 447.0
-offset_top = 297.0
-offset_right = 705.0
-offset_bottom = 350.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-columns = 7
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.150174
+anchor_top = 0.33642
+anchor_right = 0.850694
+anchor_bottom = 0.779321
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="HpUpgrade" type="Button" parent="GridContainer"]
+[node name="SlimUpgrads" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
-text = "HP: +10"
-icon = ExtResource("1_nnxu8")
 
-[node name="AllyUpgrade" type="Button" parent="GridContainer"]
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer/SlimUpgrads"]
 layout_mode = 2
-text = "Ally: +1"
-icon = ExtResource("3_ys85l")
 
-[connection signal="pressed" from="GridContainer/HpUpgrade" to="." method="_on_hp_upgrade_pressed"]
-[connection signal="pressed" from="GridContainer/AllyUpgrade" to="." method="_on_ally_upgrade_pressed"]
+[node name="Title" type="Label" parent="HBoxContainer/SlimUpgrads/GridContainer"]
+layout_mode = 2
+text = "Slim Upgrades
+"
+horizontal_alignment = 1
+
+[node name="HpUpgradeSlime" type="Button" parent="HBoxContainer/SlimUpgrads/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "HP: +10
+Buy: 10g"
+
+[node name="AllyUpgradeSlime" type="Button" parent="HBoxContainer/SlimUpgrads/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Add Slime: +1
+Buy: 10g"
+
+[node name="DamageUpgradeSlime" type="Button" parent="HBoxContainer/SlimUpgrads/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Damage: +2
+Buy: 10g"
+
+[node name="AttackSpeedUpgradeSlime" type="Button" parent="HBoxContainer/SlimUpgrads/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Attack Speed: +1
+Buy: 10g"
+
+[node name="ImpUpgrade" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer/ImpUpgrade"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="HBoxContainer/ImpUpgrade/GridContainer"]
+layout_mode = 2
+text = "Imp Upgrades
+"
+horizontal_alignment = 1
+
+[node name="HpUpgradeImp" type="Button" parent="HBoxContainer/ImpUpgrade/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "HP: +10
+Buy: 10g"
+
+[node name="AllyUpgradeImp" type="Button" parent="HBoxContainer/ImpUpgrade/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Add Imp: +1
+Buy: 10g"
+
+[node name="DamageUpgradeImp" type="Button" parent="HBoxContainer/ImpUpgrade/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Damage: +2
+Buy: 10g"
+
+[node name="AttackSpeedUpgradeImp" type="Button" parent="HBoxContainer/ImpUpgrade/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Attack Speed: +1
+Buy: 10g"
+
+[node name="GhostUpgrade" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer/GhostUpgrade"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="HBoxContainer/GhostUpgrade/GridContainer"]
+layout_mode = 2
+text = "Ghost Upgrades
+"
+horizontal_alignment = 1
+
+[node name="HpUpgradeGhost" type="Button" parent="HBoxContainer/GhostUpgrade/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "HP: +10
+Buy: 10g"
+
+[node name="AllyUpgradeGhost" type="Button" parent="HBoxContainer/GhostUpgrade/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Add Ghost: +1
+Buy: 10g"
+
+[node name="DamageUpgradeGhost" type="Button" parent="HBoxContainer/GhostUpgrade/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Damage: +2
+Buy: 10g"
+
+[node name="AttackSpeedUpgradeGhost" type="Button" parent="HBoxContainer/GhostUpgrade/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Attack Speed: +1
+Buy: 10g"
+
+[node name="GodPowers" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer/GodPowers"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="HBoxContainer/GodPowers/GridContainer"]
+layout_mode = 2
+text = "God Powers"
+horizontal_alignment = 1
+
+[node name="EmpowerUpgrade" type="Button" parent="HBoxContainer/GodPowers/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Empower Creatures
+Buy: 10000g"
+
+[node name="ShieldUpgrade" type="Button" parent="HBoxContainer/GodPowers/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Shield
+Buy: 10000g"
+
+[connection signal="pressed" from="HBoxContainer/SlimUpgrads/GridContainer/HpUpgradeSlime" to="." method="_on_upgrade_pressed" binds= ["Slime", 1]]
+[connection signal="pressed" from="HBoxContainer/SlimUpgrads/GridContainer/AllyUpgradeSlime" to="." method="_on_upgrade_pressed" binds= ["Slime", 2]]
+[connection signal="pressed" from="HBoxContainer/SlimUpgrads/GridContainer/DamageUpgradeSlime" to="." method="_on_upgrade_pressed" binds= ["Slime", 3]]
+[connection signal="pressed" from="HBoxContainer/SlimUpgrads/GridContainer/AttackSpeedUpgradeSlime" to="." method="_on_upgrade_pressed" binds= ["Slime", 4]]
+[connection signal="pressed" from="HBoxContainer/ImpUpgrade/GridContainer/HpUpgradeImp" to="." method="_on_upgrade_pressed" binds= ["Imp", 1]]
+[connection signal="pressed" from="HBoxContainer/ImpUpgrade/GridContainer/AllyUpgradeImp" to="." method="_on_upgrade_pressed" binds= ["Imp", 2]]
+[connection signal="pressed" from="HBoxContainer/ImpUpgrade/GridContainer/DamageUpgradeImp" to="." method="_on_upgrade_pressed" binds= ["Imp", 3]]
+[connection signal="pressed" from="HBoxContainer/ImpUpgrade/GridContainer/AttackSpeedUpgradeImp" to="." method="_on_upgrade_pressed" binds= ["Imp", 4]]
+[connection signal="pressed" from="HBoxContainer/GhostUpgrade/GridContainer/HpUpgradeGhost" to="." method="_on_upgrade_pressed" binds= ["Ghost", 1]]
+[connection signal="pressed" from="HBoxContainer/GhostUpgrade/GridContainer/AllyUpgradeGhost" to="." method="_on_upgrade_pressed" binds= ["Ghost", 2]]
+[connection signal="pressed" from="HBoxContainer/GhostUpgrade/GridContainer/DamageUpgradeGhost" to="." method="_on_upgrade_pressed" binds= ["Ghost", 3]]
+[connection signal="pressed" from="HBoxContainer/GhostUpgrade/GridContainer/AttackSpeedUpgradeGhost" to="." method="_on_upgrade_pressed" binds= ["Ghost", 4]]

@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GLOBALVARIABLES="*res://Assets/Scripts/globalvariables.gd"
 SaveGame="*res://Assets/Scripts/save_game_system/SaveGame.gd"
+EVENTS="*res://Assets/Scripts/events.gd"
 
 [display]
 

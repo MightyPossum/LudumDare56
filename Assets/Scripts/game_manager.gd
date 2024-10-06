@@ -1,51 +1,73 @@
 extends Node2D
 
-var ongoing_wave = false
-
 @export var distance_to_enemy = 20
 @onready var main_ui : Control = %MainUI
 
+var next_location : Array
+
+var ongoing_wave : bool = false
+var all_spawned :bool  = false
+
 func _ready():
+	next_location = [
+		get_node("Enemies/Boss1").global_position,
+		get_node("Enemies/Boss2").global_position,
+		get_node("Enemies/Boss3").global_position,
+		get_node("Enemies/Boss4").global_position,
+		get_node("EnemyBase").global_position,
+	]
 	GLOBALVARIABLES.game_manager = self
 	if GLOBALVARIABLES.round_counter == 0:
-		setup_creature_defaults()
 		main_ui.set_upgrade_panel_visibility(false)
 		main_ui.set_start_wave_button_visibility(true)
+		main_ui.set_stats_visibility(true)
 	elif GLOBALVARIABLES.round_counter >= 1:
+		
 		main_ui.set_upgrade_panel_visibility(true)
 		main_ui.set_start_wave_button_visibility(true)
+		main_ui.set_stats_visibility(false)
 	else:
-		setup_creature_defaults()
-		SaveGame.start_new_game()
 		main_ui.set_upgrade_panel_visibility(false)
 		main_ui.set_start_wave_button_visibility(false)
+		main_ui.set_stats_visibility(true)
 
 func _process(_delta):
-	if ongoing_wave:
+	if ongoing_wave && all_spawned:
 		if GLOBALVARIABLES.ally_count <= 0:
 			lose()
 
-func get_enemy_base_location() -> Vector2:
-	return get_node("EnemyBase").global_position
+func get_next_location() -> Vector2:
+	if not %NavigationRegion2D.is_baking():
+		%NavigationRegion2D.bake_navigation_polygon()
+	return next_location.front()
+
+func is_location_base(current_next_location_vector : Vector2) -> bool:
+	if current_next_location_vector == next_location.back():
+		return true
+	else:
+		return false
+
 
 func win() -> void:
+	await get_tree().create_timer(2).timeout
 	get_tree().quit()
 	
 
 func lose() -> void:
 	GLOBALVARIABLES.round_counter += 1
-	SaveGame.save_game()
 	get_tree().reload_current_scene()
 	
 func start_wave() -> void:
 	main_ui.set_start_wave_button_visibility(false)
 	ongoing_wave = true
+	setup_creature_defaults()
 	spawn_creatures()
 
 func spawn_creatures() -> void:
 	
 	var slime_creature : PackedScene = load("res://Assets/Scenes/slime_creature.tscn")
-	var goblin_creature : PackedScene = load("res://Assets/Scenes/imp_creature.tscn")
+	var imp_creature : PackedScene = load("res://Assets/Scenes/imp_creature.tscn")
+	var ghost_creature : PackedScene = load("res://Assets/Scenes/ghost_creature.tscn")
 
 	for creature in GLOBALVARIABLES.creature_manager:
 		var creature_values = GLOBALVARIABLES.creature_manager.get(creature)
@@ -54,24 +76,28 @@ func spawn_creatures() -> void:
 			if creature == GLOBALVARIABLES.CREATURE_TYPES.SLIME:
 				creature_type = slime_creature
 			elif creature == GLOBALVARIABLES.CREATURE_TYPES.IMP:
-				creature_type = goblin_creature
-			else:
-				push_error("Creature not found")
+				creature_type = imp_creature
+			elif creature == GLOBALVARIABLES.CREATURE_TYPES.GHOST:
+				creature_type = ghost_creature
 
 			var area_middle = %spawnArea.global_position
 			var x_position = area_middle.x-%spawnArea.shape.get_size().x/2 + randi_range(1,%spawnArea.shape.get_size().x-1)
-			GLOBALVARIABLES.ally_count += 1
 			var y_position = area_middle.y-%spawnArea.shape.get_size().y/2 + randi_range(1,%spawnArea.shape.get_size().y-1)
+
+			GLOBALVARIABLES.ally_count += 1
 			
 			var spawn_vector = Vector2(x_position, y_position)
 			var spawn_creature = creature_type.instantiate()
 			spawn_creature.set_spawn_position(spawn_vector)
 			spawn_creature.initialize_values(creature_values)
 			%Creatures.add_child(spawn_creature)
-			await get_tree().create_timer(0.25).timeout
-		
-func _on_bass_range_body_entered(_body: Node2D) -> void:
-	win()
+			await get_tree().create_timer(.25).timeout
+	
+	all_spawned = true
+
+func _on_bass_range_body_entered(body: Node2D) -> void:
+	if body.is_in_group("ally"):
+		win()
 
 func setup_creature_defaults() -> void:
 	GLOBALVARIABLES.creature_manager = GLOBALVARIABLES.creature_defaults.duplicate(true)
