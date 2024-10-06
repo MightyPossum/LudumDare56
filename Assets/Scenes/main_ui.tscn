@@ -88,6 +88,7 @@ anchor_right = 0.666667
 anchor_bottom = 0.878086
 grow_horizontal = 2
 grow_vertical = 0
+alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="BoostPower" type="TextureButton" parent="GodPowers"]
