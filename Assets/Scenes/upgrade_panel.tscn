@@ -89,7 +89,7 @@ Buy: 10g"
 [node name="AllyUpgradeSlime" type="Button" parent="HBoxContainer/SlimUpgrads/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Add Slime: +1
+text = "Add Slim: +1
 Buy: 10g"
 
 [node name="DamageUpgradeSlime" type="Button" parent="HBoxContainer/SlimUpgrads/GridContainer"]

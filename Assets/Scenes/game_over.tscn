@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://b11pja4smfcbu"]
+[gd_scene load_steps=2 format=3 uid="uid://b11pja4smfcbu"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/game_over.gd" id="1_8htx8"]
 
 [node name="Panel" type="Panel"]
 anchors_preset = 15
@@ -6,6 +8,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_8htx8")
 metadata/_edit_use_anchors_ = true
 
 [node name="GameOver" type="MarginContainer" parent="."]
@@ -26,7 +29,7 @@ text = "You win!
 
 Thanks for playing our game. Don't forget to rate our game."
 
-[node name="Button" type="Button" parent="."]
+[node name="BackToMain" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.381944
@@ -37,3 +40,5 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Back to main menu"
 metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="BackToMain" to="." method="_on_back_to_main_pressed"]
