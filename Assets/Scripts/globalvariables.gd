@@ -35,6 +35,27 @@ var creature_defaults = {
 	},
 	}
 
+var creature_upgrade_costs = {
+	CREATURE_TYPES.SLIME : {
+		"health" : 100,
+		"summon_amount" : 100,
+		"damage" : 100,
+		"attack_speed" : 100,
+	},
+	CREATURE_TYPES.IMP : {
+		"health" : 100,
+		"summon_amount" : 100,
+		"damage" : 100,
+		"attack_speed" : 100,
+	},
+	CREATURE_TYPES.GHOST : {
+		"health" : 100,
+		"summon_amount" : 100,
+		"damage" : 100,
+		"attack_speed" : 100,
+	},
+}
+
 var game_manager : Node2D
 var main_ui : Control
 var main_menu_node : Control
