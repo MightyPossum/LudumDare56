@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b3t2t6md2csxs"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/upgrade_panel.gd" id="1_a1e3g"]
-[ext_resource type="AudioStream" uid="uid://1wbn8dxrpw8d" path="res://Assets/Sounds/click2.ogg" id="2_i3pi7"]
+[ext_resource type="AudioStream" uid="uid://1wbn8dxrpw8d" path="res://Assets/Sounds/MenuClick.ogg" id="2_i3pi7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vr7u1"]
 font_size = 60

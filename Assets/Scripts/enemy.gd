@@ -70,6 +70,8 @@ func attack() -> void:
 			bullet.attack_damage = attack_damage
 			bullet.attack_target = attack_target
 			
+			%AttackSound.play()
+			
 			if enemy.has_method("take_damage"):
 				var is_enemy_alive = enemy.take_damage(0)
 				if not is_enemy_alive:
