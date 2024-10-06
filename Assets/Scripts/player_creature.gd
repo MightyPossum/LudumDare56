@@ -16,8 +16,9 @@ var shooting_range : int = 40
 var pathing_initalized : bool = false
 var targeted_enemy : bool = false
 var ongoing_wave : bool = false
-var in_combat: bool = false
-var is_alive: bool = true
+var in_combat : bool = false
+var is_alive : bool = true
+var has_power_up : bool = false
 
 
 var has_been_damaged = false;
@@ -31,7 +32,9 @@ func _ready() -> void:
 	health_bar.max_value = max_health
 	health_bar.value = current_health
 	health_bar.visible = current_health < max_health
-	$Sprite2D/AnimationPlayer.play("Walk")
+	EVENTS.power_up_creatures.connect(on_power_up_creatures_signal_received)
+
+	$Sprite2D/AnimationPlayer.play("walk")
 
 func _physics_process(delta: float) -> void:
 	
@@ -42,7 +45,11 @@ func _physics_process(delta: float) -> void:
 			has_been_damaged = false
 			timer = 0.0
 	else:
-		$Sprite2D/AnimationPlayer.play("Walk")
+		
+		var walk_animation : String = "Walk"
+		if has_power_up:
+			walk_animation = "Walk_power"
+		$Sprite2D/AnimationPlayer.play(walk_animation)
 	
 	
 	if navgationAgent2D.is_target_reachable() and int(navgationAgent2D.distance_to_target() > GLOBALVARIABLES.game_manager.distance_to_enemy):
@@ -124,3 +131,6 @@ func initialize_values(initial_values : Dictionary) -> void:
 	movement_speed = initial_values.movement_speed
 	shooting_range = initial_values.range
 	attack_damage = initial_values.damage
+
+func on_power_up_creatures_signal_received() -> void:
+	has_power_up = !has_power_up

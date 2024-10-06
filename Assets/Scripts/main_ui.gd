@@ -17,6 +17,7 @@ func _process(_delta):
 	
 func _on_start_wave_button_button_up() -> void:
 	GLOBALVARIABLES.game_manager.start_wave()
+	%GodPowers.visible = true
 
 func set_start_wave_button_visibility(toggle : bool):
 	%StartWaveButton.visible = toggle
@@ -25,3 +26,9 @@ func set_upgrade_panel_visibility(toggle : bool):
 	%UpgradePanel.visible = toggle
 	%UpgradePanel.update_gold_label()
 	
+
+
+func _on_power_up_pressed() -> void:
+	EVENTS.power_up_creatures.emit()
+	await get_tree().create_timer(5).timeout	
+	EVENTS.power_up_creatures.emit()
