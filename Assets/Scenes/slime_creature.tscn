@@ -136,7 +136,6 @@ unique_name_in_owner = true
 path_postprocessing = 1
 simplify_path = true
 simplify_epsilon = 2.0
-avoidance_enabled = true
 neighbor_distance = 128.0
 avoidance_layers = 2
 avoidance_mask = 2

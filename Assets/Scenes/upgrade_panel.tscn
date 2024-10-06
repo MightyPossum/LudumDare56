@@ -260,3 +260,5 @@ Buy: 10000g"
 [connection signal="pressed" from="HBoxContainer/GhostUpgrade/GridContainer/AllyUpgradeGhost" to="." method="_on_upgrade_pressed" binds= ["Ghost", 2]]
 [connection signal="pressed" from="HBoxContainer/GhostUpgrade/GridContainer/DamageUpgradeGhost" to="." method="_on_upgrade_pressed" binds= ["Ghost", 3]]
 [connection signal="pressed" from="HBoxContainer/GhostUpgrade/GridContainer/AttackSpeedUpgradeGhost" to="." method="_on_upgrade_pressed" binds= ["Ghost", 4]]
+[connection signal="pressed" from="HBoxContainer/GodPowers/GridContainer/EmpowerUpgrade" to="." method="_on_god_upgrade_pressed" binds= ["boost"]]
+[connection signal="pressed" from="HBoxContainer/GodPowers/GridContainer/ShieldUpgrade" to="." method="_on_god_upgrade_pressed" binds= ["shield"]]

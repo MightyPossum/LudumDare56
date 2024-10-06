@@ -9,7 +9,8 @@
 radius = 2.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8kcvb"]
-radius = 200.0
+resource_local_to_scene = true
+radius = 100.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yl7d8"]
 bg_color = Color(0.252028, 0.252028, 0.252028, 1)
@@ -91,11 +92,14 @@ texture = ExtResource("2_lgthj")
 hframes = 8
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_postprocessing = 1
 
 [node name="Area" type="Area2D" parent="." groups=["enemy"]]
 unique_name_in_owner = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
+[node name="AreaShape" type="CollisionShape2D" parent="Area"]
+unique_name_in_owner = true
+visible = false
 light_mask = 3
 visibility_layer = 3
 shape = SubResource("CircleShape2D_8kcvb")
