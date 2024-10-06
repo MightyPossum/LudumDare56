@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://lbo6xjbw7r3h"]
+[gd_scene load_steps=4 format=3 uid="uid://lbo6xjbw7r3h"]
 
-[ext_resource type="Texture2D" uid="uid://b1rfe7t0l2xhi" path="res://icon.svg" id="1_qsvw0"]
+[ext_resource type="Texture2D" uid="uid://7yl7cyp24pqi" path="res://Assets/SpriteTests/Map.png" id="1_lcvjb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u5bv2"]
 radius = 100.125
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y5ogy"]
+atlas = ExtResource("1_lcvjb")
+region = Rect2(96.0397, 0, 63.9603, 64)
 
 [node name="Bass Range" type="Area2D"]
 
@@ -11,4 +15,4 @@ radius = 100.125
 shape = SubResource("CircleShape2D_u5bv2")
 
 [node name="Icon" type="Sprite2D" parent="."]
-texture = ExtResource("1_qsvw0")
+texture = SubResource("AtlasTexture_y5ogy")
