@@ -1,7 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3t2t6md2csxs"]
+[gd_scene load_steps=20 format=3 uid="uid://b3t2t6md2csxs"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/upgrade_panel.gd" id="1_a1e3g"]
 [ext_resource type="AudioStream" uid="uid://1wbn8dxrpw8d" path="res://Assets/Sounds/MenuClick.ogg" id="2_i3pi7"]
+[ext_resource type="Texture2D" uid="uid://cp5tsdovtbusu" path="res://Assets/Sprites/HealthUpgradeBtnNormal.png" id="3_51fm6"]
+[ext_resource type="Texture2D" uid="uid://c5xe4itwhpd6l" path="res://Assets/Sprites/HealthUpgradePressedBtn.png" id="4_5rd7i"]
+[ext_resource type="Texture2D" uid="uid://bgco4nkymb8av" path="res://Assets/Sprites/HealthUpgradeBtnHvr.png" id="5_q3ib7"]
+[ext_resource type="Texture2D" uid="uid://dat5rsckrufj" path="res://Assets/Sprites/HealthUpgradeDisabledBtn.png" id="6_04kk0"]
+[ext_resource type="Texture2D" uid="uid://cfh00pswy5tjr" path="res://Assets/Sprites/SlimeButtonNormal.png" id="6_uxo3s"]
+[ext_resource type="Texture2D" uid="uid://bnb22ljq650t5" path="res://Assets/Sprites/SlimeButtonPressed.png" id="7_sxcqq"]
+[ext_resource type="Texture2D" uid="uid://ccs8q2i6ixpv3" path="res://Assets/Sprites/SlimeButtonHover.png" id="8_ibf00"]
+[ext_resource type="Texture2D" uid="uid://dt8kfq2h77tn2" path="res://Assets/Sprites/SlimeButtonDisabled.png" id="9_b13hc"]
+[ext_resource type="Texture2D" uid="uid://chjkrc6vxxmqf" path="res://Assets/Sprites/ImpButtonNormal.png" id="11_8g4n3"]
+[ext_resource type="Texture2D" uid="uid://dkch5awg7x7t3" path="res://Assets/Sprites/ImpButtonPressed.png" id="12_8g0or"]
+[ext_resource type="Texture2D" uid="uid://dvfnyqgvmcm08" path="res://Assets/Sprites/ImpButtonHover.png" id="13_i00mp"]
+[ext_resource type="Texture2D" uid="uid://upj577gkeo5n" path="res://Assets/Sprites/ImpButtonDisabled.png" id="14_1em6i"]
+[ext_resource type="Texture2D" uid="uid://wn7kg5o86ajt" path="res://Assets/Sprites/GhostButtonNormal.png" id="15_up7jq"]
+[ext_resource type="Texture2D" uid="uid://bu5hy84umglry" path="res://Assets/Sprites/GhostButtonPressed.png" id="16_dshk3"]
+[ext_resource type="Texture2D" uid="uid://bcrqmtts65tkm" path="res://Assets/Sprites/GhostButtonHover.png" id="17_b7l7q"]
+[ext_resource type="Texture2D" uid="uid://j5l32ht2ix6k" path="res://Assets/Sprites/GhostButtonDisabled.png" id="18_s2ctv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vr7u1"]
 font_size = 60
@@ -76,21 +92,32 @@ layout_mode = 2
 
 [node name="Title" type="Label" parent="HBoxContainer/SlimUpgrads/GridContainer"]
 layout_mode = 2
-text = "Slim Upgrades
+text = "Slime Upgrades
 "
 horizontal_alignment = 1
 
-[node name="HpUpgradeSlime" type="Button" parent="HBoxContainer/SlimUpgrads/GridContainer"]
+[node name="HpUpgradeSlime" type="TextureButton" parent="HBoxContainer/SlimUpgrads/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "HP: +10
-Buy: 10g"
+size_flags_horizontal = 4
+tooltip_text = "Increase the HP of your Slime Creatures"
+keep_pressed_outside = true
+texture_normal = ExtResource("3_51fm6")
+texture_pressed = ExtResource("4_5rd7i")
+texture_hover = ExtResource("5_q3ib7")
+texture_disabled = ExtResource("6_04kk0")
+stretch_mode = 3
 
-[node name="AllyUpgradeSlime" type="Button" parent="HBoxContainer/SlimUpgrads/GridContainer"]
+[node name="AllyUpgradeSlime" type="TextureButton" parent="HBoxContainer/SlimUpgrads/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Add Slime: +1
-Buy: 10g"
+size_flags_horizontal = 4
+tooltip_text = "Add a Slime to your Creature Pool"
+keep_pressed_outside = true
+texture_normal = ExtResource("6_uxo3s")
+texture_pressed = ExtResource("7_sxcqq")
+texture_hover = ExtResource("8_ibf00")
+texture_disabled = ExtResource("9_b13hc")
 
 [node name="DamageUpgradeSlime" type="Button" parent="HBoxContainer/SlimUpgrads/GridContainer"]
 unique_name_in_owner = true
@@ -116,17 +143,28 @@ text = "Imp Upgrades
 "
 horizontal_alignment = 1
 
-[node name="HpUpgradeImp" type="Button" parent="HBoxContainer/ImpUpgrade/GridContainer"]
+[node name="HpUpgradeImp" type="TextureButton" parent="HBoxContainer/ImpUpgrade/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "HP: +10
-Buy: 10g"
+size_flags_horizontal = 4
+tooltip_text = "Increase the HP of your Imp Creatures"
+keep_pressed_outside = true
+texture_normal = ExtResource("3_51fm6")
+texture_pressed = ExtResource("4_5rd7i")
+texture_hover = ExtResource("5_q3ib7")
+texture_disabled = ExtResource("6_04kk0")
+stretch_mode = 3
 
-[node name="AllyUpgradeImp" type="Button" parent="HBoxContainer/ImpUpgrade/GridContainer"]
+[node name="AllyUpgradeImp" type="TextureButton" parent="HBoxContainer/ImpUpgrade/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Add Imp: +1
-Buy: 10g"
+size_flags_horizontal = 4
+tooltip_text = "Add an Imp to your Creature Pool"
+keep_pressed_outside = true
+texture_normal = ExtResource("11_8g4n3")
+texture_pressed = ExtResource("12_8g0or")
+texture_hover = ExtResource("13_i00mp")
+texture_disabled = ExtResource("14_1em6i")
 
 [node name="DamageUpgradeImp" type="Button" parent="HBoxContainer/ImpUpgrade/GridContainer"]
 unique_name_in_owner = true
@@ -152,17 +190,28 @@ text = "Ghost Upgrades
 "
 horizontal_alignment = 1
 
-[node name="HpUpgradeGhost" type="Button" parent="HBoxContainer/GhostUpgrade/GridContainer"]
+[node name="HpUpgradeGhost" type="TextureButton" parent="HBoxContainer/GhostUpgrade/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "HP: +10
-Buy: 10g"
+size_flags_horizontal = 4
+tooltip_text = "Increase the HP of your Ghost Creatures"
+keep_pressed_outside = true
+texture_normal = ExtResource("3_51fm6")
+texture_pressed = ExtResource("4_5rd7i")
+texture_hover = ExtResource("5_q3ib7")
+texture_disabled = ExtResource("6_04kk0")
+stretch_mode = 3
 
-[node name="AllyUpgradeGhost" type="Button" parent="HBoxContainer/GhostUpgrade/GridContainer"]
+[node name="AllyUpgradeGhost" type="TextureButton" parent="HBoxContainer/GhostUpgrade/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Add Ghost: +1
-Buy: 10g"
+size_flags_horizontal = 4
+tooltip_text = "Add a Ghost to your Creature Pool"
+keep_pressed_outside = true
+texture_normal = ExtResource("15_up7jq")
+texture_pressed = ExtResource("16_dshk3")
+texture_hover = ExtResource("17_b7l7q")
+texture_disabled = ExtResource("18_s2ctv")
 
 [node name="DamageUpgradeGhost" type="Button" parent="HBoxContainer/GhostUpgrade/GridContainer"]
 unique_name_in_owner = true
