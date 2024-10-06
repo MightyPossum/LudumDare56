@@ -187,6 +187,18 @@ layout_mode = 2
 text = "God Powers"
 horizontal_alignment = 1
 
+[node name="EmpowerUpgrade" type="Button" parent="HBoxContainer/GodPowers/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Empower Creatures
+Buy: 10000g"
+
+[node name="ShieldUpgrade" type="Button" parent="HBoxContainer/GodPowers/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Shield
+Buy: 10000g"
+
 [connection signal="pressed" from="HBoxContainer/SlimUpgrads/GridContainer/HpUpgradeSlime" to="." method="_on_upgrade_pressed" binds= ["Slime", 1]]
 [connection signal="pressed" from="HBoxContainer/SlimUpgrads/GridContainer/AllyUpgradeSlime" to="." method="_on_upgrade_pressed" binds= ["Slime", 2]]
 [connection signal="pressed" from="HBoxContainer/SlimUpgrads/GridContainer/DamageUpgradeSlime" to="." method="_on_upgrade_pressed" binds= ["Slime", 3]]
