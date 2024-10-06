@@ -68,7 +68,7 @@ shape = SubResource("RectangleShape2D_8qsuv")
 position = Vector2(-512, 2624)
 
 [node name="Bass Range" parent="EnemyBase" instance=ExtResource("6_08l80")]
-position = Vector2(26, -2)
+position = Vector2(-2, 1)
 
 [node name="Enemies" type="Node2D" parent="."]
 
