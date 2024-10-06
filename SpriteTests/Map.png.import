@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpv8atd1prf75"
-path="res://.godot/imported/Ghost.png-81c2a6faa5a4944ef99c089e7c7dc5a6.ctex"
+uid="uid://kqhlxg0y0pjn"
+path="res://.godot/imported/Map.png-77afb5425d02e7c45e4422a437bf072e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Ghost.png"
-dest_files=["res://.godot/imported/Ghost.png-81c2a6faa5a4944ef99c089e7c7dc5a6.ctex"]
+source_file="res://SpriteTests/Map.png"
+dest_files=["res://.godot/imported/Map.png-77afb5425d02e7c45e4422a437bf072e.ctex"]
 
 [params]
 
