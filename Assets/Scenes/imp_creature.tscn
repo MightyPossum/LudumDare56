@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://cv1ytxh7y8vba"]
+[gd_scene load_steps=15 format=3 uid="uid://cv1ytxh7y8vba"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/player_creature.gd" id="1_qpk02"]
 [ext_resource type="Texture2D" uid="uid://ctwk5e08wbhdm" path="res://Assets/Sprites/Imp.png" id="2_8rxyb"]
-[ext_resource type="PackedScene" uid="uid://bff8t0np0n0fn" path="res://Assets/Scenes/attack_projectile.tscn" id="2_g6v02"]
+[ext_resource type="PackedScene" path="res://Assets/Scenes/attack_projectile.tscn" id="2_g6v02"]
+[ext_resource type="PackedScene" uid="uid://cgo87160hq6s6" path="res://Assets/Scenes/creature_attack.tscn" id="4_tc2ak"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4etqh"]
 radius = 16.0
@@ -124,6 +125,9 @@ hframes = 8
 libraries = {
 "": SubResource("AnimationLibrary_leq05")
 }
+
+[node name="CreatureAttack" parent="Sprite2D" instance=ExtResource("4_tc2ak")]
+unique_name_in_owner = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 16.0
