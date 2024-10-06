@@ -7,6 +7,7 @@ extends Control
 
 func _ready():
 	GLOBALVARIABLES.main_ui = self
+	set_stats_visibility(false)
 
 func _process(_delta):
 	bosses_left.text = "Bosses Left: " + str(GLOBALVARIABLES.bosses_left)
@@ -20,10 +21,14 @@ func _on_start_wave_button_button_up() -> void:
 	GLOBALVARIABLES.main_ui.set_upgrade_panel_visibility(false)
 	GLOBALVARIABLES.main_ui.set_start_wave_button_visibility(false)
 	GLOBALVARIABLES.main_ui.set_stats_visibility(true)
-	%GodPowers.visible = true
 
 func set_stats_visibility(toggle: bool):
 	%StatsContainer.visible = toggle
+	%GodPowers.visible = toggle
+	%BoostPower.disabled = true
+	%ShieldPower.disabled = true
+	await get_tree().create_timer(2).timeout
+	toggle_powers()
 
 func set_start_wave_button_visibility(toggle: bool):
 	%StartWaveButton.visible = toggle
@@ -44,7 +49,7 @@ func _on_power_up_pressed(power_type : String) -> void:
 	
 	handle_power(power_type, delay_time)
 	toggle_powers()
-	await get_tree().create_timer(delay_time).timeout
+	await get_tree().create_timer(GLOBALVARIABLES.god_power_cooldown_time).timeout
 	toggle_powers()
 
 func handle_power(power_type : String, delay_time : float) -> void:
@@ -55,5 +60,15 @@ func handle_power(power_type : String, delay_time : float) -> void:
 			EVENTS.shield_activated.emit(delay_time)
 
 func toggle_powers() -> void:
-	%BoostPower.disabled = !%BoostPower.disabled
-	%ShieldPower.disabled = !%ShieldPower.disabled
+	if not GLOBALVARIABLES.boost_power_unlocked:
+		%BoostPower.disabled = true
+	else:
+		%BoostPower.disabled = !%BoostPower.disabled
+	
+	if not GLOBALVARIABLES.shield_power_unlocked:
+		%ShieldPower.disabled = true
+	else:
+		%ShieldPower.disabled = !%ShieldPower.disabled
+
+func update_upgrade_costs() -> void:
+	%UpgradePanel.update_upgrade_costs()

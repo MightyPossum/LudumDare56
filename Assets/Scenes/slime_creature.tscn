@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Assets/Scripts/player_creature.gd" id="1_34ym2"]
 [ext_resource type="PackedScene" uid="uid://bff8t0np0n0fn" path="res://Assets/Scenes/attack_projectile.tscn" id="2_k862t"]
 [ext_resource type="Texture2D" uid="uid://cho3ybe2cqht4" path="res://Assets/Sprites/Slime.png" id="2_tiahi"]
-[ext_resource type="PackedScene" path="res://Assets/Scenes/creature_attack.tscn" id="4_15hg8"]
+[ext_resource type="PackedScene" uid="uid://cgo87160hq6s6" path="res://Assets/Scenes/creature_attack.tscn" id="4_15hg8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4etqh"]
 radius = 16.0
@@ -136,7 +136,6 @@ unique_name_in_owner = true
 path_postprocessing = 1
 simplify_path = true
 simplify_epsilon = 2.0
-avoidance_enabled = true
 neighbor_distance = 128.0
 avoidance_layers = 2
 avoidance_mask = 2
