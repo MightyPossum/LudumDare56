@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Assets/Scripts/player_creature.gd" id="1_5vaq2"]
 [ext_resource type="PackedScene" path="res://Assets/Scenes/attack_projectile.tscn" id="2_s5yfp"]
-[ext_resource type="Texture2D" uid="uid://bpv8atd1prf75" path="res://Assets/Sprites/Ghost.png" id="3_4wyju"]
+[ext_resource type="Texture2D" uid="uid://r1dr8wb842gb" path="res://Assets/Sprites/Ghost.png" id="3_4wyju"]
 [ext_resource type="PackedScene" uid="uid://cgo87160hq6s6" path="res://Assets/Scenes/creature_attack.tscn" id="4_icsvh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4etqh"]
