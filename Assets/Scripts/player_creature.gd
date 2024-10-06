@@ -35,7 +35,7 @@ func _ready() -> void:
 	EVENTS.boost_activated.connect(handle_boost_activation)
 	EVENTS.shield_activated.connect(handle_shield_activation)
 
-	$Sprite2D/AnimationPlayer.play("walk")
+	$Sprite2D/AnimationPlayer.play("Walk")
 
 func _physics_process(delta: float) -> void:
 	if is_alive:
@@ -105,7 +105,9 @@ func attack() -> void:
 			bullet.position = global_position
 			bullet.attack_damage = attack_damage
 			bullet.attack_target = attack_target
-						
+			
+			%CreatureAttack.play()
+			
 			if enemy.has_method("take_damage"):
 				var is_enemy_alive = enemy.take_damage(0)
 				if not is_enemy_alive:

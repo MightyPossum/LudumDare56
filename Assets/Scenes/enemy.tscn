@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://dhkfonlnmcmr3"]
+[gd_scene load_steps=13 format=3 uid="uid://dhkfonlnmcmr3"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/enemy.gd" id="1_6mq23"]
-[ext_resource type="PackedScene" uid="uid://bff8t0np0n0fn" path="res://Assets/Scenes/attack_projectile.tscn" id="2_jrtg2"]
+[ext_resource type="PackedScene" path="res://Assets/Scenes/attack_projectile.tscn" id="2_jrtg2"]
 [ext_resource type="Texture2D" uid="uid://bpnxbh8ryrx2k" path="res://Assets/Sprites/Enemy1.png" id="2_lgthj"]
+[ext_resource type="AudioStream" uid="uid://4db6x5r4uy60" path="res://Assets/Sounds/EnemyAttack.ogg" id="4_11hsb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4etqh"]
 radius = 2.0
@@ -14,7 +15,7 @@ radius = 61.0082
 bg_color = Color(0.252028, 0.252028, 0.252028, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mgfq0"]
-bg_color = Color(0.207843, 0.713726, 0.231373, 1)
+bg_color = Color(0.726328, 0.260557, 0.235659, 1)
 
 [sub_resource type="Animation" id="Animation_fvu5c"]
 resource_name = "Hurt"
@@ -97,10 +98,10 @@ shape = SubResource("CircleShape2D_8kcvb")
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -2.0
-offset_top = -3.0
-offset_right = 2.0
-offset_bottom = -2.0
+offset_left = -4.0
+offset_top = -18.0
+offset_right = 4.0
+offset_bottom = -16.0
 grow_horizontal = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_yl7d8")
 theme_override_styles/fill = SubResource("StyleBoxFlat_mgfq0")
@@ -111,5 +112,11 @@ show_percentage = false
 libraries = {
 "": SubResource("AnimationLibrary_tt7ap")
 }
+
+[node name="AttackSound" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-4, -18)
+stream = ExtResource("4_11hsb")
+volume_db = -3.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
