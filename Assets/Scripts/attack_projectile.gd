@@ -9,6 +9,7 @@ var projectile_sprite
 @onready var sprite = $Sprite
 
 func _ready():
+	print(shooter)
 	match shooter:
 		"Slime":
 			sprite.texture = preload("res://Assets/Sprites/Slime.png")
@@ -19,7 +20,7 @@ func _ready():
 		"Enemy":
 			sprite.texture = preload("res://Assets/Sprites/Enemy1.png")
 
-	await get_tree().create_timer(1.5).timeout
+	await get_tree().create_timer(2).timeout
 	queue_free()
 
 func init(_target : RigidBody2D, _shooter : String, _position : Vector2, _attack_damage : int, _attack_target : String) -> void:
@@ -36,11 +37,15 @@ func _process(delta: float):
 		queue_free()
 
 func move_towards_target(delta: float):
-	var direction = (target_position - position).normalized()
-	position += direction * speed * delta
+	if position.distance_to(target_position) >= 2:
+		var direction = (target_position - position).normalized()
+		position += direction * speed * delta
+	else:
+		if not target.is_alive:
+			queue_free()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group(attack_target):
-		body.take_damage(attack_damage)				
-	queue_free();
+		body.call_deferred("take_damage",attack_damage)
+		queue_free();
 	

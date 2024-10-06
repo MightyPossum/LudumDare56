@@ -80,6 +80,7 @@ func _physics_process(delta: float) -> void:
 			calc_path()
 
 		if enemy_queue.size() > 0 and not in_combat:
+			calc_path()
 			in_combat = true
 			var enemy = enemy_in_range()
 			if enemy:
@@ -94,7 +95,13 @@ func enemy_in_range() -> RigidBody2D:
 		if not enemy.is_alive:
 			enemy_queue.erase(enemy)
 		if global_position.distance_to(enemy.global_position) < shooting_range:
+			#var space_state = get_world_2d().direct_space_state
+			#var query = PhysicsRayQueryParameters2D.create(global_position, enemy.global_position, collision_mask, [self])
+			#var result = space_state.intersect_ray(query)
+			#if result:
+			#	if result.get("collider").is_in_group(attack_target):
 			return enemy
+
 	return null
 
 func die() -> void:
@@ -112,12 +119,9 @@ func attack(enemy : RigidBody2D) -> void:
 	bullet.init(enemy, get_name(), global_position,attack_damage,attack_target)
 	%CreatureAttack.play()
 	get_parent().add_child(bullet)
-				
-	var is_enemy_alive = enemy.take_damage(0)
-	if not is_enemy_alive:
-		enemy_queue.erase(enemy)
 	
-func take_damage(damage: int) -> bool:
+	
+func take_damage(damage: int) -> void:
 	if is_alive and not has_shield:
 		current_health = max(current_health - damage, 0)
 		health_bar.value = current_health
@@ -125,12 +129,14 @@ func take_damage(damage: int) -> bool:
 		has_been_damaged = true
 		if current_health <= 0:
 			die()
-		
-	return is_alive
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
+	print("body entered")
+	print(body.get_groups())
+	print(attack_target)
 	if body.is_in_group(attack_target):
 		if body.is_alive:
+			print("adding body")
 			navgationAgent2D.set_target_position(body.global_position)
 			targeted_enemy = true
 			enemy_queue.append(body)
@@ -174,3 +180,6 @@ func calc_path():
 		next_location = GLOBALVARIABLES.game_manager.get_next_location()
 		navgationAgent2D.set_target_position(next_location)
 		is_location_the_base = GLOBALVARIABLES.game_manager.is_location_base(next_location)
+	else:
+		navgationAgent2D.set_target_position(enemy_queue[0].global_position)
+		

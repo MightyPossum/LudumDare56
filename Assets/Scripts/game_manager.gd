@@ -95,8 +95,9 @@ func spawn_creatures() -> void:
 	
 	all_spawned = true
 
-func _on_bass_range_body_entered(_body: Node2D) -> void:
-	win()
+func _on_bass_range_body_entered(body: Node2D) -> void:
+	if body.is_in_group("ally"):
+		win()
 
 func setup_creature_defaults() -> void:
 	GLOBALVARIABLES.creature_manager = GLOBALVARIABLES.creature_defaults.duplicate(true)

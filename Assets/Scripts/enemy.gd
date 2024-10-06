@@ -57,26 +57,28 @@ func _physics_process(delta: float) -> void:
 		else:
 			await get_tree().create_timer(attack_speed/2).timeout
 		in_combat = false
-		if navgationAgent2D.is_target_reachable() and int(navgationAgent2D.distance_to_target() > shooting_range):
-			var next_location = navgationAgent2D.get_next_path_position()
-			var direction = global_position.direction_to(next_location)
+	
+	if enemy_queue.size() > 0 and navgationAgent2D.is_target_reachable() and int(navgationAgent2D.distance_to_target() > shooting_range):
+		var next_location = navgationAgent2D.get_next_path_position()
+		var direction = global_position.direction_to(next_location)
 
-			if direction.x < 0:
-				$EnemyArt.flip_h = true
-			else:
-				$EnemyArt.flip_h = false
-				pass
-			global_position += direction * delta * movement_speed
+		if direction.x < 0:
+			$EnemyArt.flip_h = false
+		else:
+			$EnemyArt.flip_h = true
 
-		elif enemy_queue.size() <= 0 and pathing_initalized:
-			pathing_initalized = false
+		global_position += direction * delta * movement_speed
+		navgationAgent2D.set_target_position(enemy_queue[0].global_position)
 
-		if !pathing_initalized:
-			if enemy_queue.size() > 0:
-				pathing_initalized = true
-				navgationAgent2D.set_target_position(enemy_queue[0].global_position)
-			else:
-				navgationAgent2D.set_target_position(start_position)
+	elif enemy_queue.size() <= 0 and pathing_initalized:
+		pathing_initalized = false
+
+	if !pathing_initalized:
+		if enemy_queue.size() > 0:
+			pathing_initalized = true
+			navgationAgent2D.set_target_position(enemy_queue[0].global_position)
+		else:
+			navgationAgent2D.set_target_position(start_position)
 
 
 
@@ -116,18 +118,12 @@ func die() -> void:
 func attack(enemy : RigidBody2D) -> void:
 	if enemy:
 		var bullet = attack_projectile.instantiate()
-		
-		bullet.init(enemy, "enemy", global_position,attack_damage,attack_target)
+		bullet.init(enemy, "Enemy", global_position,attack_damage,attack_target)
 		%AttackSound.play()
 
 		get_parent().add_child(bullet)
-		
-		if enemy.has_method("take_damage"):
-			var is_enemy_alive = enemy.take_damage(0)
-			if not is_enemy_alive:
-				enemy_queue.erase(enemy)
 
-func take_damage(damage: int) -> bool:
+func take_damage(damage: int) -> void:
 	if is_alive:
 		current_health = max(current_health - damage, 0)
 		health_bar.value = current_health
@@ -136,8 +132,6 @@ func take_damage(damage: int) -> bool:
 		
 		if current_health <= 0:
 			die()
-		
-	return is_alive
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group(attack_target):

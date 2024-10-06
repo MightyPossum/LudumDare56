@@ -1,9 +1,9 @@
 [gd_scene load_steps=15 format=3 uid="uid://c5ytjq2r38ket"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/player_creature.gd" id="1_5vaq2"]
-[ext_resource type="PackedScene" path="res://Assets/Scenes/attack_projectile.tscn" id="2_s5yfp"]
+[ext_resource type="PackedScene" uid="uid://bff8t0np0n0fn" path="res://Assets/Scenes/attack_projectile.tscn" id="2_s5yfp"]
 [ext_resource type="Texture2D" uid="uid://r1dr8wb842gb" path="res://Assets/Sprites/Ghost.png" id="3_4wyju"]
-[ext_resource type="PackedScene" uid="uid://cgo87160hq6s6" path="res://Assets/Scenes/creature_attack.tscn" id="4_icsvh"]
+[ext_resource type="PackedScene" path="res://Assets/Scenes/creature_attack.tscn" id="4_icsvh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4etqh"]
 radius = 16.0
@@ -108,8 +108,7 @@ bg_color = Color(0.252028, 0.252028, 0.252028, 1)
 bg_color = Color(0.207843, 0.713726, 0.231373, 1)
 
 [node name="Ghost" type="RigidBody2D" groups=["ally"]]
-collision_layer = 4
-collision_mask = 4
+collision_mask = 3
 mass = 0.001
 gravity_scale = 0.0
 script = ExtResource("1_5vaq2")
@@ -142,6 +141,7 @@ radius = 16.0
 
 [node name="Area" type="Area2D" parent="."]
 unique_name_in_owner = true
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
 shape = SubResource("CircleShape2D_tp6vr")

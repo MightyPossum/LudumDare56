@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://dhkfonlnmcmr3"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/enemy.gd" id="1_6mq23"]
-[ext_resource type="PackedScene" path="res://Assets/Scenes/attack_projectile.tscn" id="2_jrtg2"]
+[ext_resource type="PackedScene" uid="uid://bff8t0np0n0fn" path="res://Assets/Scenes/attack_projectile.tscn" id="2_jrtg2"]
 [ext_resource type="Texture2D" uid="uid://bpnxbh8ryrx2k" path="res://Assets/Sprites/Enemy1.png" id="2_lgthj"]
 [ext_resource type="AudioStream" uid="uid://4db6x5r4uy60" path="res://Assets/Sounds/EnemyAttack.ogg" id="4_11hsb"]
 
@@ -72,18 +72,11 @@ _data = {
 }
 
 [node name="Enemy" type="RigidBody2D" groups=["enemy"]]
-collision_layer = 3
+collision_layer = 2
 collision_mask = 3
 mass = 0.001
 gravity_scale = 0.0
 script = ExtResource("1_6mq23")
-max_health = null
-kill_value = null
-attack_damage = null
-attack_speed_delay = null
-shooting_range = null
-movement_speed = null
-is_boss = null
 sprite = ExtResource("2_lgthj")
 attack_projectile = ExtResource("2_jrtg2")
 
@@ -101,8 +94,6 @@ hframes = 8
 
 [node name="Area" type="Area2D" parent="." groups=["enemy"]]
 unique_name_in_owner = true
-collision_layer = 3
-collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
 light_mask = 3
