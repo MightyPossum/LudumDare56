@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://bd3mdc4w83hhw"]
+[gd_scene load_steps=11 format=3 uid="uid://bd3mdc4w83hhw"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/main_ui.gd" id="1_noerh"]
 [ext_resource type="PackedScene" uid="uid://b3t2t6md2csxs" path="res://Assets/Scenes/upgrade_panel.tscn" id="2_ue1l5"]
+[ext_resource type="Texture2D" uid="uid://b2xeb6rwnny1v" path="res://Assets/Sprites/Power-up.png" id="3_buoig"]
+[ext_resource type="Texture2D" uid="uid://b1pcat75vnroe" path="res://Assets/Sprites/Power-up-clicked.png" id="4_iimdc"]
+[ext_resource type="Texture2D" uid="uid://bfa5qwwjo8ndi" path="res://Assets/Sprites/Power-up-hover.png" id="5_eril3"]
+[ext_resource type="Texture2D" uid="uid://cwqvfmyk5netl" path="res://Assets/Sprites/Power-up-disabled.png" id="6_qlmkd"]
+[ext_resource type="Texture2D" uid="uid://dx0m00ox6c4yq" path="res://Assets/Sprites/Shield.png" id="7_60sr2"]
+[ext_resource type="Texture2D" uid="uid://qlhxt2kwa8hi" path="res://Assets/Sprites/Shield-clicked.png" id="8_ha4fv"]
+[ext_resource type="Texture2D" uid="uid://c4x21o3mm8xng" path="res://Assets/Sprites/Shield-hover.png" id="9_yharj"]
+[ext_resource type="Texture2D" uid="uid://ds1mlho2hles4" path="res://Assets/Sprites/Shield-disabled.png" id="10_dokmb"]
 
 [node name="MainUI" type="Control"]
 layout_mode = 3
@@ -69,4 +77,41 @@ layout_mode = 2
 size_flags_horizontal = 6
 text = "Gold: 0"
 
+[node name="GodPowers" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -192.0
+offset_top = -104.0
+offset_right = 192.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="BoostPower" type="TextureButton" parent="GodPowers"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture_normal = ExtResource("3_buoig")
+texture_pressed = ExtResource("4_iimdc")
+texture_hover = ExtResource("5_eril3")
+texture_disabled = ExtResource("6_qlmkd")
+
+[node name="ShieldPower" type="TextureButton" parent="GodPowers"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture_normal = ExtResource("7_60sr2")
+texture_pressed = ExtResource("8_ha4fv")
+texture_hover = ExtResource("9_yharj")
+texture_disabled = ExtResource("10_dokmb")
+
 [connection signal="button_up" from="MarginContainer/StartWaveButton" to="." method="_on_start_wave_button_button_up"]
+[connection signal="pressed" from="GodPowers/BoostPower" to="." method="_on_power_up_pressed" binds= ["boost"]]
+[connection signal="pressed" from="GodPowers/ShieldPower" to="." method="_on_power_up_pressed" binds= ["shield"]]
