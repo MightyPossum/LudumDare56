@@ -8,16 +8,15 @@ var ongoing_wave = false
 func _ready():
 	GLOBALVARIABLES.game_manager = self
 	if GLOBALVARIABLES.round_counter == 0:
-		setup_creature_defaults()
 		main_ui.set_upgrade_panel_visibility(false)
 		main_ui.set_start_wave_button_visibility(true)
 		main_ui.set_stats_visibility(true)
 	elif GLOBALVARIABLES.round_counter >= 1:
+		
 		main_ui.set_upgrade_panel_visibility(true)
 		main_ui.set_start_wave_button_visibility(true)
 		main_ui.set_stats_visibility(false)
 	else:
-		setup_creature_defaults()
 		main_ui.set_upgrade_panel_visibility(false)
 		main_ui.set_start_wave_button_visibility(false)
 		main_ui.set_stats_visibility(true)
@@ -41,6 +40,7 @@ func lose() -> void:
 func start_wave() -> void:
 	main_ui.set_start_wave_button_visibility(false)
 	ongoing_wave = true
+	setup_creature_defaults()
 	spawn_creatures()
 
 func spawn_creatures() -> void:

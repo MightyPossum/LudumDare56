@@ -15,7 +15,7 @@ var creature_defaults = {
 		"range" : 15,
 		"damage" : 10,
 		"attack_speed" : 0.2,
-		"summon_amount" : 2,
+		"summon_amount" : 1,
 	},
 	CREATURE_TYPES.IMP : {
 		"health" : 100,
@@ -23,7 +23,7 @@ var creature_defaults = {
 		"range" : 15,
 		"damage" : 10,
 		"attack_speed" : 0.2,
-		"summon_amount" : 2,
+		"summon_amount" : 0,
 	},
 	CREATURE_TYPES.GHOST : {
 		"health" : 100,
@@ -31,7 +31,7 @@ var creature_defaults = {
 		"range" : 15,
 		"damage" : 10,
 		"attack_speed" : 0.2,
-		"summon_amount" : 2,
+		"summon_amount" : 0,
 	},
 	}
 
