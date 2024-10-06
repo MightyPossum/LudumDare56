@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bd3mdc4w83hhw"]
+[gd_scene load_steps=12 format=3 uid="uid://bd3mdc4w83hhw"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/main_ui.gd" id="1_noerh"]
 [ext_resource type="PackedScene" uid="uid://b3t2t6md2csxs" path="res://Assets/Scenes/upgrade_panel.tscn" id="2_ue1l5"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://qlhxt2kwa8hi" path="res://Assets/Sprites/Shield-clicked.png" id="8_ha4fv"]
 [ext_resource type="Texture2D" uid="uid://c4x21o3mm8xng" path="res://Assets/Sprites/Shield-hover.png" id="9_yharj"]
 [ext_resource type="Texture2D" uid="uid://ds1mlho2hles4" path="res://Assets/Sprites/Shield-disabled.png" id="10_dokmb"]
+[ext_resource type="AudioStream" uid="uid://bkqw4bg63utjs" path="res://Assets/Sounds/PowerUp.wav" id="11_iofbl"]
 
 [node name="MainUI" type="Control"]
 layout_mode = 3
@@ -108,6 +109,11 @@ texture_normal = ExtResource("7_60sr2")
 texture_pressed = ExtResource("8_ha4fv")
 texture_hover = ExtResource("9_yharj")
 texture_disabled = ExtResource("10_dokmb")
+
+[node name="GodPowerActivation" type="AudioStreamPlayer2D" parent="GodPowers"]
+unique_name_in_owner = true
+position = Vector2(-384, -505)
+stream = ExtResource("11_iofbl")
 
 [connection signal="button_up" from="MarginContainer/StartWaveButton" to="." method="_on_start_wave_button_button_up"]
 [connection signal="pressed" from="GodPowers/BoostPower" to="." method="_on_power_up_pressed" binds= ["boost"]]
