@@ -8,7 +8,7 @@
 radius = 2.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8kcvb"]
-radius = 61.0082
+radius = 200.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yl7d8"]
 bg_color = Color(0.252028, 0.252028, 0.252028, 1)
@@ -21,7 +21,7 @@ resource_name = "Hurt"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("EnemyArt:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -38,7 +38,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("EnemyArt:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -53,7 +53,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("EnemyArt:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -76,21 +76,36 @@ collision_mask = 3
 mass = 0.001
 gravity_scale = 0.0
 script = ExtResource("1_6mq23")
+max_health = null
+kill_value = null
+attack_damage = null
+attack_speed_delay = null
+shooting_range = null
+movement_speed = null
+is_boss = null
+sprite = ExtResource("2_lgthj")
 attack_projectile = ExtResource("2_jrtg2")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Collider" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
 shape = SubResource("CircleShape2D_4etqh")
 
-[node name="Sprite2D" type="Sprite2D" parent="." groups=["enemy"]]
+[node name="EnemyArt" type="Sprite2D" parent="." groups=["enemy"]]
+unique_name_in_owner = true
 position = Vector2(0, -1)
 texture = ExtResource("2_lgthj")
-hframes = 4
+hframes = 8
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
-[node name="Area2D" type="Area2D" parent="." groups=["enemy"]]
+[node name="Area" type="Area2D" parent="." groups=["enemy"]]
+unique_name_in_owner = true
+collision_layer = 3
+collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
+light_mask = 3
+visibility_layer = 3
 shape = SubResource("CircleShape2D_8kcvb")
 
 [node name="health_bar" type="ProgressBar" parent="."]
@@ -112,4 +127,4 @@ libraries = {
 "": SubResource("AnimationLibrary_tt7ap")
 }
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Area" to="." method="_on_area_2d_body_entered"]

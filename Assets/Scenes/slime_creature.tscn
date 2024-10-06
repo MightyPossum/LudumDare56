@@ -98,7 +98,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tp6vr"]
-radius = 112.0
+radius = 200.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h4ehh"]
 bg_color = Color(0.252028, 0.252028, 0.252028, 1)
@@ -112,7 +112,8 @@ gravity_scale = 0.0
 script = ExtResource("1_34ym2")
 attack_projectile = ExtResource("2_k862t")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Collider" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
 shape = SubResource("CircleShape2D_4etqh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -127,12 +128,18 @@ libraries = {
 }
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-path_desired_distance = 16.0
 path_postprocessing = 1
+simplify_path = true
+simplify_epsilon = 2.0
+avoidance_enabled = true
+neighbor_distance = 128.0
+avoidance_layers = 2
+avoidance_mask = 2
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area" type="Area2D" parent="."]
+unique_name_in_owner = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
 shape = SubResource("CircleShape2D_tp6vr")
 
 [node name="health_bar" type="ProgressBar" parent="."]
@@ -149,4 +156,4 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_hqvuu")
 value = 65.0
 show_percentage = false
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Area" to="." method="_on_area_2d_body_entered"]

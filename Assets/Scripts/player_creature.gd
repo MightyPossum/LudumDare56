@@ -13,6 +13,7 @@ var shooting_range : int = 40
 @onready var navgationAgent2D : NavigationAgent2D = get_node("NavigationAgent2D")
 
 var pathing_initalized : bool = false
+var is_location_the_base : bool = false
 var targeted_enemy : bool = false
 var ongoing_wave : bool = false
 var in_combat : bool = false
@@ -34,14 +35,11 @@ func _ready() -> void:
 	health_bar.visible = current_health < max_health
 	EVENTS.boost_activated.connect(handle_boost_activation)
 	EVENTS.shield_activated.connect(handle_shield_activation)
+	EVENTS.trigger_path_calc.connect(calc_path)
 
-	$Sprite2D/AnimationPlayer.play("walk")
+	$Sprite2D/AnimationPlayer.play("Walk")
 
 func _physics_process(delta: float) -> void:
-	if is_alive:
-		if current_health <= 0:
-			die()
-	
 	if is_alive:
 		if has_been_damaged:
 			$Sprite2D/AnimationPlayer.play("Hurt")
@@ -61,9 +59,9 @@ func _physics_process(delta: float) -> void:
 				walk_animation = "Walk"
 
 			$Sprite2D/AnimationPlayer.play(walk_animation)
-		
-		
-		if navgationAgent2D.is_target_reachable() and int(navgationAgent2D.distance_to_target() > GLOBALVARIABLES.game_manager.distance_to_enemy):
+
+
+		if navgationAgent2D.is_target_reachable() and ((int(navgationAgent2D.distance_to_target() > shooting_range)) or (is_location_the_base and int(navgationAgent2D.distance_to_target() > 2))):
 			var next_location = navgationAgent2D.get_next_path_position()
 			var direction = global_position.direction_to(next_location)
 
@@ -79,39 +77,45 @@ func _physics_process(delta: float) -> void:
 
 		if !pathing_initalized:
 			pathing_initalized = true
-			navgationAgent2D.set_target_position(GLOBALVARIABLES.game_manager.get_enemy_base_location())
+			calc_path()
 
 		if enemy_queue.size() > 0 and not in_combat:
-			in_combat = true		
-			attack()
-			await get_tree().create_timer(attack_speed).timeout
+			in_combat = true
+			var enemy = enemy_in_range()
+			if enemy:
+				attack(enemy)
+				await get_tree().create_timer(attack_speed).timeout
+			else:
+				await get_tree().create_timer(attack_speed/2).timeout
 			in_combat = false
+
+func enemy_in_range() -> RigidBody2D:
+	for enemy in enemy_queue:
+		if not enemy.is_alive:
+			enemy_queue.erase(enemy)
+		if global_position.distance_to(enemy.global_position) < shooting_range:
+			return enemy
+	return null
 
 func die() -> void:
 	enemy_queue.clear()
 	is_alive = false
 	visible = false
 	GLOBALVARIABLES.ally_count -= 1
-	
 
-func attack() -> void:
-	if enemy_queue.size() > 0:
-		var enemy = enemy_queue[0]
-		if enemy:
-			var bullet = attack_projectile.instantiate()
-			bullet.target_position = Vector2(enemy.position.x, enemy.position.y)
-			bullet.shooter = get_name()
-			get_parent().add_child(bullet)
-			bullet.position = global_position
-			bullet.attack_damage = attack_damage
-			bullet.attack_target = attack_target
-						
-			if enemy.has_method("take_damage"):
-				var is_enemy_alive = enemy.take_damage(0)
-				if not is_enemy_alive:
-					enemy_queue.erase(enemy)
-		else:
-			pass
+	%Area.monitoring = false
+	%Area.monitorable = false
+	%Collider.disabled = true
+
+func attack(enemy : RigidBody2D) -> void:
+	var bullet = attack_projectile.instantiate()
+	bullet.init(enemy, get_name(), global_position,attack_damage,attack_target)
+	
+	get_parent().add_child(bullet)
+				
+	var is_enemy_alive = enemy.take_damage(0)
+	if not is_enemy_alive:
+		enemy_queue.erase(enemy)
 
 func take_damage(damage: int) -> bool:
 	if is_alive and not has_shield:
@@ -119,14 +123,17 @@ func take_damage(damage: int) -> bool:
 		health_bar.value = current_health
 		health_bar.visible = current_health < max_health
 		has_been_damaged = true
+		if current_health <= 0:
+			die()
 		
 	return is_alive
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group(attack_target):
-		navgationAgent2D.set_target_position(body.global_position)
-		targeted_enemy = true
-		enemy_queue.append(body)
+		if body.is_alive:
+			navgationAgent2D.set_target_position(body.global_position)
+			targeted_enemy = true
+			enemy_queue.append(body)
 
 func set_spawn_position(spawn_position : Vector2) -> void:
 	global_position = spawn_position
@@ -136,7 +143,7 @@ func initialize_values(initial_values : Dictionary) -> void:
 	current_health = max_health
 	attack_speed = initial_values.attack_speed
 	movement_speed = initial_values.movement_speed
-	shooting_range = initial_values.range
+	shooting_range = initial_values.attack_range
 	attack_damage = initial_values.damage
 
 func handle_boost_activation(boost_time : float) -> void:
@@ -151,7 +158,7 @@ func handle_boost_activation(boost_time : float) -> void:
 	await get_tree().create_timer(boost_time).timeout
 	
 	has_boost = false
-	
+
 	attack_damage = attack_damage/boost_power_factor
 	movement_speed = movement_speed/boost_power_factor
 	attack_speed = attack_speed*boost_power_factor
@@ -160,3 +167,10 @@ func handle_shield_activation(shield_time : float) -> void:
 	has_shield = true
 	await get_tree().create_timer(shield_time).timeout
 	has_shield = false
+
+func calc_path():
+	if enemy_queue.size() <= 0:
+		var next_location : Vector2
+		next_location = GLOBALVARIABLES.game_manager.get_next_location()
+		navgationAgent2D.set_target_position(next_location)
+		is_location_the_base = GLOBALVARIABLES.game_manager.is_location_base(next_location)

@@ -14,3 +14,6 @@ signal boost_activated(boost_timer : float)
 @warning_ignore("unused_signal")
 signal shield_activated(shield_timer : float)
 
+@warning_ignore("unused_signal")
+signal trigger_path_calc()
+
