@@ -11,14 +11,16 @@ func _ready():
 		setup_creature_defaults()
 		main_ui.set_upgrade_panel_visibility(false)
 		main_ui.set_start_wave_button_visibility(true)
+		main_ui.set_stats_visibility(true)
 	elif GLOBALVARIABLES.round_counter >= 1:
 		main_ui.set_upgrade_panel_visibility(true)
 		main_ui.set_start_wave_button_visibility(true)
+		main_ui.set_stats_visibility(false)
 	else:
 		setup_creature_defaults()
-		SaveGame.start_new_game()
 		main_ui.set_upgrade_panel_visibility(false)
 		main_ui.set_start_wave_button_visibility(false)
+		main_ui.set_stats_visibility(true)
 
 func _process(_delta):
 	if ongoing_wave:
@@ -34,7 +36,6 @@ func win() -> void:
 
 func lose() -> void:
 	GLOBALVARIABLES.round_counter += 1
-	SaveGame.save_game()
 	get_tree().reload_current_scene()
 	
 func start_wave() -> void:
@@ -45,7 +46,8 @@ func start_wave() -> void:
 func spawn_creatures() -> void:
 	
 	var slime_creature : PackedScene = load("res://Assets/Scenes/slime_creature.tscn")
-	var goblin_creature : PackedScene = load("res://Assets/Scenes/imp_creature.tscn")
+	var imp_creature : PackedScene = load("res://Assets/Scenes/imp_creature.tscn")
+	var ghost_creature : PackedScene = load("res://Assets/Scenes/ghost_creature.tscn")
 
 	for creature in GLOBALVARIABLES.creature_manager:
 		var creature_values = GLOBALVARIABLES.creature_manager.get(creature)
@@ -54,14 +56,15 @@ func spawn_creatures() -> void:
 			if creature == GLOBALVARIABLES.CREATURE_TYPES.SLIME:
 				creature_type = slime_creature
 			elif creature == GLOBALVARIABLES.CREATURE_TYPES.IMP:
-				creature_type = goblin_creature
-			else:
-				push_error("Creature not found")
+				creature_type = imp_creature
+			elif creature == GLOBALVARIABLES.CREATURE_TYPES.GHOST:
+				creature_type = ghost_creature
 
 			var area_middle = %spawnArea.global_position
 			var x_position = area_middle.x-%spawnArea.shape.get_size().x/2 + randi_range(1,%spawnArea.shape.get_size().x-1)
-			GLOBALVARIABLES.ally_count += 1
 			var y_position = area_middle.y-%spawnArea.shape.get_size().y/2 + randi_range(1,%spawnArea.shape.get_size().y-1)
+
+			GLOBALVARIABLES.ally_count += 1
 			
 			var spawn_vector = Vector2(x_position, y_position)
 			var spawn_creature = creature_type.instantiate()
