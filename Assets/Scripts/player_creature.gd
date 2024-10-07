@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends CharacterBody2D
 
 var max_health: int = 100
 var enemy_queue: Array = []
@@ -41,6 +41,7 @@ func _ready() -> void:
 	EVENTS.trigger_path_calc.connect(calc_path)
 
 	$Sprite2D/AnimationPlayer.play("Walk")
+	
 
 func _physics_process(delta: float) -> void:
 	if is_alive:
@@ -65,12 +66,11 @@ func _physics_process(delta: float) -> void:
 
 		if enemy_queue.size() == 0 and targeted_enemy:
 			targeted_enemy = false
-
+		
 		if navgationAgent2D.is_target_reachable() and ((int(navgationAgent2D.distance_to_target() > shooting_range) or targeted_enemy) or (is_location_the_base and int(navgationAgent2D.distance_to_target() > 2))):
+
 			if targeted_enemy and enemy_in_view:
 				pass
-			#elif targeted_enemy and int(navgationAgent2D.distance_to_target() > shooting_range):
-			#	pass
 			else:
 
 				var next_location = navgationAgent2D.get_next_path_position()
@@ -104,7 +104,7 @@ func _physics_process(delta: float) -> void:
 				await get_tree().create_timer(attack_speed/2).timeout
 			in_combat = false
 
-func enemy_in_range() -> RigidBody2D:
+func enemy_in_range() -> CharacterBody2D:
 	for enemy in enemy_queue:
 		if not enemy.is_alive:
 			enemy_queue.erase(enemy)
@@ -128,14 +128,14 @@ func die() -> void:
 	%Area.monitorable = false
 	%Collider.disabled = true
 
-func attack(enemy : RigidBody2D) -> void:
+func attack(enemy : CharacterBody2D) -> void:
 	var bullet = attack_projectile.instantiate()
 	bullet.init(enemy, self, global_position,attack_damage,attack_target)
 	%CreatureAttack.play()
 	get_parent().add_child(bullet)
 	
 	
-func take_damage(damage: int, _damager : RigidBody2D) -> void:
+func take_damage(damage: int, _damager : CharacterBody2D) -> void:
 	if is_alive and not has_shield:
 		current_health = max(current_health - damage, 0)
 		health_bar.value = current_health

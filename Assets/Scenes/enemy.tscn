@@ -72,12 +72,18 @@ _data = {
 "RESET": SubResource("Animation_aaf7k")
 }
 
-[node name="Enemy" type="RigidBody2D" groups=["enemy"]]
+[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 2
 collision_mask = 3
-mass = 0.001
-gravity_scale = 0.0
 script = ExtResource("1_6mq23")
+max_health = null
+kill_value = null
+attack_damage = null
+attack_speed_delay = null
+shooting_range = null
+movement_speed = null
+detection_range = null
+is_boss = null
 sprite = ExtResource("2_lgthj")
 attack_projectile = ExtResource("2_jrtg2")
 

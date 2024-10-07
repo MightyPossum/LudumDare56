@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends CharacterBody2D
 
 @export var max_health : int = 100
 @export var kill_value : int = 1000
@@ -66,7 +66,7 @@ func _physics_process(delta: float) -> void:
 			await get_tree().create_timer(attack_speed/2).timeout
 		in_combat = false
 	
-	if enemy_queue.size() > 0 and navgationAgent2D.is_target_reachable() and (int(navgationAgent2D.distance_to_target() > shooting_range) or not enemy_in_view):
+	if not is_boss and enemy_queue.size() > 0 and navgationAgent2D.is_target_reachable() and (int(navgationAgent2D.distance_to_target() > shooting_range) or not enemy_in_view):
 		var next_location = navgationAgent2D.get_next_path_position()
 		var direction = global_position.direction_to(next_location)
 
@@ -88,7 +88,7 @@ func _physics_process(delta: float) -> void:
 
 
 
-func enemy_in_range() -> RigidBody2D:
+func enemy_in_range() -> CharacterBody2D:
 	for enemy in enemy_queue:
 		if not enemy.is_alive:
 			enemy_queue.erase(enemy)
@@ -126,7 +126,7 @@ func die() -> void:
 	%Area.monitorable = false
 	%Collider.disabled = true
 	
-func attack(enemy : RigidBody2D) -> void:
+func attack(enemy : CharacterBody2D) -> void:
 	if enemy:
 		var bullet = attack_projectile.instantiate()
 		bullet.init(enemy, self, global_position,attack_damage,attack_target)
@@ -134,7 +134,7 @@ func attack(enemy : RigidBody2D) -> void:
 
 		get_parent().add_child(bullet)
 
-func take_damage(damage: int, damager : RigidBody2D) -> void:
+func take_damage(damage: int, damager : CharacterBody2D) -> void:
 	if is_alive:
 		if enemy_queue.size() <= 0:
 			enemy_queue.append(damager)

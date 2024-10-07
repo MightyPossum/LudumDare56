@@ -37,6 +37,10 @@ func _process(_delta):
 	if ongoing_wave && all_spawned:
 		if GLOBALVARIABLES.ally_count <= 0:
 			lose()
+	
+	if Input.is_action_pressed("cheat"):
+		GLOBALVARIABLES.player_resource += 50000
+		GLOBALVARIABLES.main_ui.update_upgrade_costs()
 
 func get_next_location() -> Vector2:
 	if not %NavigationRegion2D.is_baking():
@@ -96,7 +100,7 @@ func spawn_creatures() -> void:
 			spawn_creature.initialize_values(creature_values)
 			spawn_creature.creature_type = creature
 			%Creatures.add_child(spawn_creature)
-			await get_tree().create_timer(.5).timeout
+			await get_tree().create_timer(.75).timeout
 	
 	all_spawned = true
 
