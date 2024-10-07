@@ -10,6 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://dqlbwctppngov" path="res://Assets/Scenes/BossWall.tscn" id="7_agkpi"]
 [ext_resource type="Texture2D" uid="uid://d342nyw4sifxk" path="res://Assets/Sprites/Boss.png" id="7_f7qsy"]
 [ext_resource type="Texture2D" uid="uid://6a63ch18r461" path="res://Assets/Background/Background.png" id="9_2u7at"]
+[ext_resource type="Texture2D" uid="uid://c6a5d0k7vvqci" path="res://Assets/Sprites/Enemy2.png" id="9_6xetl"]
+[ext_resource type="Texture2D" uid="uid://doqotrjbqwrk8" path="res://Assets/Sprites/Enemy5.png" id="9_x7tql"]
+[ext_resource type="Texture2D" uid="uid://v8clxv84q41a" path="res://Assets/Sprites/Enemy3.png" id="10_302qr"]
+[ext_resource type="Texture2D" uid="uid://r8tfas0lt6ks" path="res://Assets/Sprites/Enemy4.png" id="11_bj2d0"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_57g3h"]
 vertices = PackedVector2Array(225, 3099.07, -322.117, 3102.92, -323.867, 2967.93, -3, 2965.94, 225, 3002.94, -2.99219, 2904.94, 261, 2903.36, 261, 3003.16, 549, 3005.07, 505, 3004.78, 505, 2901.89, 549, 2901.62, 452.992, 3004.44, 409, 3004.15, 409, 2902.47, 452.992, 2902.2, 357, 3003.8, 313, 3003.51, 313, 2903.04, 357, 2902.77, 1821.55, 1168.26, 1814, 1399.84, 1322.08, 1390, 1121, 1341, 1600.82, 1181, 765, 1489, 729.32, 1489, 731, 1437, 737, 1437, 765, 1401.31, 737, 1241, 1599.46, 2456.99, 1407.13, 2459.84, 1416.87, 1732.57, 1588.7, 1809, 1602.29, 2264, 512.602, 688.781, 161, 696.758, 161, 669, 353, 669, 1601, 1521, 1321.08, 1521, 1186, 2361.98, 1186, 2495, 930.906, 2495, 667.938, 2361.01, 664.938, 2900.94, 934.094, 2839.07, 688.07, 3006, 609, 1241, 609, 1213, 777, 1213, 353, 573, 545, 573, 545, 441, 65, 441, 65, 413, 661.219, 413, 669.219, 765, 520.602, 888.867, 1109.5, 881.117, 993, 765, 1117.5, 729.156, 993, 637, 1813.16, 637, 1609.19, 720.828, 1141, 1181, 1121, 1177, 1141, 1117.21, 777, 1124.79, 829, 1177, 829, 1341, 1119.84, 1390, 1601, 1724.57, 1814, 1544, 1805.33, 1809, 1823.03, 2264, 1824.97, 3006, 1655.92, 2463, 601, 3005.41, 601, 2901.32, 1659.08, 2833.93)
@@ -172,6 +176,7 @@ attack_damage = 15
 attack_speed_delay = 0.6
 shooting_range = 150
 movement_speed = 150.0
+sprite = ExtResource("9_6xetl")
 
 [node name="Enemy7" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(432, 336)
@@ -181,6 +186,7 @@ attack_damage = 15
 attack_speed_delay = 0.6
 shooting_range = 150
 movement_speed = 150.0
+sprite = ExtResource("9_6xetl")
 
 [node name="Enemy8" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(392, 432)
@@ -208,6 +214,7 @@ attack_damage = 15
 attack_speed_delay = 0.6
 shooting_range = 150
 movement_speed = 150.0
+sprite = ExtResource("10_302qr")
 
 [node name="Enemy13" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(566, 472)
@@ -217,6 +224,7 @@ attack_damage = 15
 attack_speed_delay = 0.6
 shooting_range = 150
 movement_speed = 150.0
+sprite = ExtResource("10_302qr")
 
 [node name="Enemy14" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(536, 422)
@@ -226,6 +234,7 @@ attack_damage = 15
 attack_speed_delay = 0.6
 shooting_range = 150
 movement_speed = 150.0
+sprite = ExtResource("10_302qr")
 
 [node name="Enemy17" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(640, 384)
@@ -254,6 +263,7 @@ attack_speed_delay = 0.55
 shooting_range = 200
 movement_speed = 200.0
 detection_range = 300
+sprite = ExtResource("11_bj2d0")
 
 [node name="Enemy20" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(832, 454)
@@ -274,6 +284,7 @@ attack_speed_delay = 0.55
 shooting_range = 250
 movement_speed = 200.0
 detection_range = 250
+sprite = ExtResource("9_x7tql")
 
 [node name="Enemy24" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(856, 253)
@@ -284,6 +295,7 @@ attack_speed_delay = 0.55
 shooting_range = 250
 movement_speed = 200.0
 detection_range = 250
+sprite = ExtResource("9_x7tql")
 
 [node name="Enemy23" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(848, 328)
@@ -304,6 +316,7 @@ attack_speed_delay = 0.55
 shooting_range = 250
 movement_speed = 200.0
 detection_range = 250
+sprite = ExtResource("9_x7tql")
 
 [node name="Enemy21" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(1416, 404)
@@ -314,6 +327,7 @@ attack_speed_delay = 0.55
 shooting_range = 200
 movement_speed = 200.0
 detection_range = 200
+sprite = ExtResource("9_x7tql")
 
 [node name="Enemy26" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(1536, 357)
@@ -324,6 +338,7 @@ attack_speed_delay = 0.55
 shooting_range = 200
 movement_speed = 200.0
 detection_range = 200
+sprite = ExtResource("10_302qr")
 
 [node name="Enemy27" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(1472, 372)
@@ -334,6 +349,7 @@ attack_speed_delay = 0.55
 shooting_range = 200
 movement_speed = 200.0
 detection_range = 200
+sprite = ExtResource("11_bj2d0")
 
 [node name="Enemy9" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(297, 357)
@@ -353,6 +369,7 @@ attack_speed_delay = 0.6
 shooting_range = 150
 movement_speed = 150.0
 detection_range = 150
+sprite = ExtResource("9_6xetl")
 
 [node name="Enemy6" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(343, 200)

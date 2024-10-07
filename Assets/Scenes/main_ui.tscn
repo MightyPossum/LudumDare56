@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bd3mdc4w83hhw"]
+[gd_scene load_steps=20 format=3 uid="uid://bd3mdc4w83hhw"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/main_ui.gd" id="1_noerh"]
 [ext_resource type="PackedScene" uid="uid://b3t2t6md2csxs" path="res://Assets/Scenes/upgrade_panel.tscn" id="2_ue1l5"]
@@ -11,6 +11,14 @@
 [ext_resource type="Texture2D" uid="uid://c4x21o3mm8xng" path="res://Assets/Sprites/Shield-hover.png" id="9_yharj"]
 [ext_resource type="Texture2D" uid="uid://ds1mlho2hles4" path="res://Assets/Sprites/Shield-disabled.png" id="10_dokmb"]
 [ext_resource type="AudioStream" uid="uid://bkqw4bg63utjs" path="res://Assets/Sounds/PowerUp.wav" id="11_iofbl"]
+[ext_resource type="Texture2D" uid="uid://ckcc6mwbcmblk" path="res://Assets/Sprites/PlayButtonNormal.png" id="12_83aqw"]
+[ext_resource type="Texture2D" uid="uid://bjjje4tl17133" path="res://Assets/Sprites/PlayButtonPressed.png" id="13_rhvw1"]
+[ext_resource type="Texture2D" uid="uid://c0ulcbymu4dtp" path="res://Assets/Sprites/PlayButtonHover.png" id="14_a7odq"]
+[ext_resource type="Texture2D" uid="uid://bigfqoaf6ub2e" path="res://Assets/Sprites/PlayButtonDisabled.png" id="15_wcd2d"]
+[ext_resource type="Texture2D" uid="uid://cfjuu1c27l1fg" path="res://Assets/Sprites/FfwdButtonNormal.png" id="16_n0m0l"]
+[ext_resource type="Texture2D" uid="uid://bidvrtlo70tjc" path="res://Assets/Sprites/FfwdButtonPressed.png" id="17_umkqu"]
+[ext_resource type="Texture2D" uid="uid://c4k0q3jg372vn" path="res://Assets/Sprites/FfwdButtonHover.png" id="18_huesp"]
+[ext_resource type="Texture2D" uid="uid://gtw110160x6q" path="res://Assets/Sprites/FfwdButtonDisabled.png" id="19_327v3"]
 
 [node name="MainUI" type="Control"]
 layout_mode = 3
@@ -118,6 +126,31 @@ unique_name_in_owner = true
 position = Vector2(-384, -505)
 stream = ExtResource("11_iofbl")
 
+[node name="Control" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 1016.0
+offset_top = 512.0
+offset_right = 1148.0
+offset_bottom = 576.0
+
+[node name="PlayButton" type="TextureButton" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("12_83aqw")
+texture_pressed = ExtResource("13_rhvw1")
+texture_hover = ExtResource("14_a7odq")
+texture_disabled = ExtResource("15_wcd2d")
+
+[node name="FFButton" type="TextureButton" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("16_n0m0l")
+texture_pressed = ExtResource("17_umkqu")
+texture_hover = ExtResource("18_huesp")
+texture_disabled = ExtResource("19_327v3")
+
 [connection signal="button_up" from="MarginContainer/StartWaveButton" to="." method="_on_start_wave_button_button_up"]
 [connection signal="pressed" from="GodPowers/BoostPower" to="." method="_on_power_up_pressed" binds= ["boost"]]
 [connection signal="pressed" from="GodPowers/ShieldPower" to="." method="_on_power_up_pressed" binds= ["shield"]]
+[connection signal="button_up" from="Control/PlayButton" to="." method="set_speed"]
+[connection signal="button_up" from="Control/FFButton" to="." method="set_speed"]

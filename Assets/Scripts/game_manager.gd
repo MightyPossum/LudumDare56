@@ -41,17 +41,18 @@ func _physics_process(_delta: float) -> void:
 	if Input.is_action_pressed("cheat"):
 		GLOBALVARIABLES.player_resource += 50000
 		GLOBALVARIABLES.main_ui.update_upgrade_costs()
+	if Input.is_action_just_pressed("cheat_speed"):
+		Engine.time_scale += 1
 	
 	if Input.is_action_just_pressed("speed_up"):
 		if Engine.time_scale <= 1:
-			Engine.time_scale += 1
-
-	if Input.is_action_just_pressed("cheat_speed"):
-		Engine.time_scale += 1
+			Engine.time_scale = 2
+		GLOBALVARIABLES.main_ui.set_speed_buttons()
 
 	if Input.is_action_just_pressed("speed_down"):
-		if Engine.time_scale >= 1:
-			Engine.time_scale -= 1
+		if Engine.time_scale >= 2:
+			Engine.time_scale = 1
+		GLOBALVARIABLES.main_ui.set_speed_buttons()
 
 func get_next_location() -> Vector2:
 	if not %NavigationRegion2D.is_baking():

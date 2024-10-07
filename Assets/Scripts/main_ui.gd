@@ -12,6 +12,7 @@ var in_upgrade_menu : bool = false
 func _ready():
 	GLOBALVARIABLES.main_ui = self
 	set_stats_visibility(false)
+	set_speed_buttons()
 
 func _process(_delta):
 	bosses_left.text = "Bosses Left: " + str(GLOBALVARIABLES.bosses_left)
@@ -99,3 +100,21 @@ func update_upgrade_costs() -> void:
 func update_gold_ui() -> void:
 	if in_upgrade_menu:
 		%UpgradePanel.update_gold_label()
+
+func set_speed_buttons() -> void:
+	if Engine.time_scale == 1:
+		%PlayButton.disabled = true
+		%FFButton.disabled = false
+	elif Engine.time_scale == 2:
+		%PlayButton.disabled = false
+		%FFButton.disabled = true
+	
+func set_speed() -> void:
+	print("set speed")
+	if Engine.time_scale <= 1:
+		Engine.time_scale = 2
+	
+	elif Engine.time_scale >= 2:
+		Engine.time_scale = 1
+
+	set_speed_buttons() 
