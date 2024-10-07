@@ -1,11 +1,12 @@
-[gd_scene load_steps=12 format=4 uid="uid://dutubfq3i05yk"]
+[gd_scene load_steps=13 format=4 uid="uid://dutubfq3i05yk"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/game_manager.gd" id="1_1m18h"]
 [ext_resource type="PackedScene" uid="uid://bd3mdc4w83hhw" path="res://Assets/Scenes/main_ui.tscn" id="2_b87o6"]
 [ext_resource type="Script" path="res://Assets/Scripts/camera.gd" id="2_hn1cj"]
+[ext_resource type="PackedScene" uid="uid://uf5lqqk6jeoy" path="res://Assets/Scenes/pause_menu.tscn" id="3_e70dw"]
 [ext_resource type="TileSet" uid="uid://cht8s0ttm77by" path="res://Assets/game_scene.tres" id="3_wkmjf"]
 [ext_resource type="PackedScene" uid="uid://dhkfonlnmcmr3" path="res://Assets/Scenes/enemy.tscn" id="4_1pvox"]
-[ext_resource type="PackedScene" path="res://Assets/Scenes/base.tscn" id="6_08l80"]
+[ext_resource type="PackedScene" uid="uid://lbo6xjbw7r3h" path="res://Assets/Scenes/base.tscn" id="6_08l80"]
 [ext_resource type="PackedScene" uid="uid://dqlbwctppngov" path="res://Assets/Scenes/BossWall.tscn" id="7_agkpi"]
 [ext_resource type="Texture2D" uid="uid://d342nyw4sifxk" path="res://Assets/Sprites/Boss.png" id="7_f7qsy"]
 [ext_resource type="Texture2D" uid="uid://6a63ch18r461" path="res://Assets/Background/Background.png" id="9_2u7at"]
@@ -24,10 +25,22 @@ distance_to_enemy = 230
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
+process_mode = 3
 visible = false
 
 [node name="MainUI" parent="CanvasLayer" instance=ExtResource("2_b87o6")]
 unique_name_in_owner = true
+
+[node name="Pause" parent="CanvasLayer" instance=ExtResource("3_e70dw")]
+z_index = 30
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(89, 40)
@@ -99,37 +112,16 @@ collision_mask = 7
 
 [node name="Boss4" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(864, 2016)
-max_health = 100
-kill_value = 1000
-attack_damage = 10
-attack_speed_delay = 0.7
-shooting_range = 100
-movement_speed = 100.0
-detection_range = 100
 is_boss = true
 sprite = ExtResource("7_f7qsy")
 
 [node name="Boss3" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(1280, 1656)
-max_health = 100
-kill_value = 1000
-attack_damage = 10
-attack_speed_delay = 0.7
-shooting_range = 100
-movement_speed = 100.0
-detection_range = 100
 is_boss = true
 sprite = ExtResource("7_f7qsy")
 
 [node name="Boss2" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(546, 888)
-max_health = 100
-kill_value = 1000
-attack_damage = 10
-attack_speed_delay = 0.7
-shooting_range = 100
-movement_speed = 100.0
-detection_range = 100
 is_boss = true
 sprite = ExtResource("7_f7qsy")
 
@@ -148,24 +140,15 @@ sprite = ExtResource("7_f7qsy")
 [node name="Enemy" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(104, 23)
 max_health = 40
-kill_value = 1000
 attack_damage = 1
-attack_speed_delay = 0.7
 shooting_range = 50
 movement_speed = 60.0
-detection_range = 100
-is_boss = false
 
 [node name="Enemy2" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(368, 167)
-max_health = 100
 kill_value = 1250
 attack_damage = 12
 attack_speed_delay = 0.65
-shooting_range = 100
-movement_speed = 100.0
-detection_range = 100
-is_boss = false
 
 [node name="Enemy3" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(232, 286)
@@ -175,8 +158,6 @@ attack_damage = 15
 attack_speed_delay = 0.6
 shooting_range = 150
 movement_speed = 150.0
-detection_range = 100
-is_boss = false
 
 [node name="Enemy5" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(295, 472)
@@ -186,8 +167,6 @@ attack_damage = 15
 attack_speed_delay = 0.6
 shooting_range = 150
 movement_speed = 150.0
-detection_range = 100
-is_boss = false
 
 [node name="Enemy7" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(432, 336)
@@ -197,8 +176,6 @@ attack_damage = 15
 attack_speed_delay = 0.6
 shooting_range = 150
 movement_speed = 150.0
-detection_range = 100
-is_boss = false
 
 [node name="Enemy8" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(392, 432)
@@ -208,8 +185,6 @@ attack_damage = 15
 attack_speed_delay = 0.6
 shooting_range = 150
 movement_speed = 150.0
-detection_range = 100
-is_boss = false
 
 [node name="Enemy11" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(448, 440)
@@ -219,8 +194,6 @@ attack_damage = 15
 attack_speed_delay = 0.6
 shooting_range = 150
 movement_speed = 150.0
-detection_range = 100
-is_boss = false
 
 [node name="Enemy12" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(562, 376)
@@ -230,8 +203,6 @@ attack_damage = 15
 attack_speed_delay = 0.6
 shooting_range = 150
 movement_speed = 150.0
-detection_range = 100
-is_boss = false
 
 [node name="Enemy13" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(566, 472)
@@ -241,8 +212,6 @@ attack_damage = 15
 attack_speed_delay = 0.6
 shooting_range = 150
 movement_speed = 150.0
-detection_range = 100
-is_boss = false
 
 [node name="Enemy14" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(536, 422)
@@ -252,8 +221,6 @@ attack_damage = 15
 attack_speed_delay = 0.6
 shooting_range = 150
 movement_speed = 150.0
-detection_range = 100
-is_boss = false
 
 [node name="Enemy17" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(640, 384)
@@ -263,8 +230,6 @@ attack_damage = 15
 attack_speed_delay = 0.6
 shooting_range = 150
 movement_speed = 150.0
-detection_range = 100
-is_boss = false
 
 [node name="Enemy18" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(636, 464)
@@ -274,8 +239,6 @@ attack_damage = 15
 attack_speed_delay = 0.6
 shooting_range = 150
 movement_speed = 150.0
-detection_range = 100
-is_boss = false
 
 [node name="Enemy19" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(712, 422)
@@ -286,7 +249,6 @@ attack_speed_delay = 0.55
 shooting_range = 200
 movement_speed = 200.0
 detection_range = 300
-is_boss = false
 
 [node name="Enemy20" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(832, 454)
@@ -297,7 +259,6 @@ attack_speed_delay = 0.55
 shooting_range = 200
 movement_speed = 200.0
 detection_range = 200
-is_boss = false
 
 [node name="Enemy22" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(784, 264)
@@ -308,7 +269,6 @@ attack_speed_delay = 0.55
 shooting_range = 250
 movement_speed = 200.0
 detection_range = 250
-is_boss = false
 
 [node name="Enemy24" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(856, 253)
@@ -319,7 +279,6 @@ attack_speed_delay = 0.55
 shooting_range = 250
 movement_speed = 200.0
 detection_range = 250
-is_boss = false
 
 [node name="Enemy23" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(848, 328)
@@ -330,7 +289,6 @@ attack_speed_delay = 0.55
 shooting_range = 250
 movement_speed = 200.0
 detection_range = 250
-is_boss = false
 
 [node name="Enemy21" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(768, 357)
@@ -341,7 +299,6 @@ attack_speed_delay = 0.55
 shooting_range = 200
 movement_speed = 200.0
 detection_range = 200
-is_boss = false
 
 [node name="Enemy9" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(297, 357)
@@ -351,8 +308,6 @@ attack_damage = 15
 attack_speed_delay = 0.6
 shooting_range = 150
 movement_speed = 150.0
-detection_range = 100
-is_boss = false
 
 [node name="Enemy4" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(128, 272)
@@ -363,51 +318,33 @@ attack_speed_delay = 0.6
 shooting_range = 150
 movement_speed = 150.0
 detection_range = 150
-is_boss = false
 
 [node name="Enemy6" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(343, 200)
-max_health = 100
 kill_value = 1250
 attack_damage = 15
 attack_speed_delay = 0.65
-shooting_range = 100
-movement_speed = 100.0
 detection_range = 120
-is_boss = false
 
 [node name="Enemy15" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(247, 218)
-max_health = 100
 kill_value = 1500
 attack_damage = 20
 attack_speed_delay = 0.5
-shooting_range = 100
-movement_speed = 100.0
 detection_range = 120
-is_boss = false
 
 [node name="Enemy16" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(289, 271)
-max_health = 100
 kill_value = 1500
 attack_damage = 20
 attack_speed_delay = 0.5
-shooting_range = 100
-movement_speed = 100.0
 detection_range = 120
-is_boss = false
 
 [node name="Enemy10" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(312, 23)
 max_health = 80
-kill_value = 1000
-attack_damage = 10
-attack_speed_delay = 0.7
 shooting_range = 60
 movement_speed = 70.0
-detection_range = 100
-is_boss = false
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -5
