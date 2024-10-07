@@ -42,8 +42,7 @@ func move_towards_target(delta: float):
 		var direction = (target_position - position).normalized()
 		position += direction * speed * delta
 	else:
-		if not target.is_alive:
-			queue_free()
+		queue_free()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group(attack_target) and not target_hit:
