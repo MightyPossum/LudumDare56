@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://uf5lqqk6jeoy"]
+[gd_scene load_steps=3 format=3 uid="uid://uf5lqqk6jeoy"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/pause_menu.gd" id="1_k4wyj"]
+[ext_resource type="AudioStream" uid="uid://1wbn8dxrpw8d" path="res://Assets/Sounds/MenuClick.ogg" id="2_v0d2s"]
 
 [node name="Pause" type="Panel"]
 process_mode = 3
@@ -25,16 +26,22 @@ layout_mode = 2
 alignment = 1
 
 [node name="Continue" type="Button" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 process_mode = 2
 process_priority = 1
 layout_mode = 2
 text = "Continue"
 
 [node name="MainMenu" type="Button" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 process_mode = 2
 process_priority = 1
 layout_mode = 2
 text = "Back to main menu"
+
+[node name="MenuClick" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("2_v0d2s")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]

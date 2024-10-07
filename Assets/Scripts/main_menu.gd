@@ -5,19 +5,23 @@ func _ready():
 	SaveGame.on_menu_initialized()
 
 func _on_new_game_pressed() -> void:
+	%MenuClick.play()
 	SaveGame.start_new_game()
 	get_tree().change_scene_to_file("res://Assets/Scenes/game_scene.tscn")
 
 
 func _on_load_game_pressed() -> void:
+	%MenuClick.play()
 	SaveGame.continue_game()
 	get_tree().change_scene_to_file("res://Assets/Scenes/game_scene.tscn")
 
 
 func _on_how_to_pressed() -> void:
+	%MenuClick.play()
 	get_tree().change_scene_to_file("res://Assets/Scenes/how_to.tscn")
 
 func _on_exit_game_pressed() -> void:
+	%MenuClick.play()
 	get_tree().quit()
 
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://bd3mdc4w83hhw"]
+[gd_scene load_steps=13 format=3 uid="uid://bd3mdc4w83hhw"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/main_ui.gd" id="1_noerh"]
 [ext_resource type="PackedScene" uid="uid://b3t2t6md2csxs" path="res://Assets/Scenes/upgrade_panel.tscn" id="2_ue1l5"]
 [ext_resource type="Texture2D" uid="uid://b2xeb6rwnny1v" path="res://Assets/Sprites/Power-up.png" id="3_buoig"]
+[ext_resource type="AudioStream" uid="uid://1wbn8dxrpw8d" path="res://Assets/Sounds/MenuClick.ogg" id="3_e0k84"]
 [ext_resource type="Texture2D" uid="uid://b1pcat75vnroe" path="res://Assets/Sprites/Power-up-clicked.png" id="4_iimdc"]
 [ext_resource type="Texture2D" uid="uid://bfa5qwwjo8ndi" path="res://Assets/Sprites/Power-up-hover.png" id="5_eril3"]
 [ext_resource type="Texture2D" uid="uid://cwqvfmyk5netl" path="res://Assets/Sprites/Power-up-disabled.png" id="6_qlmkd"]
@@ -43,6 +44,10 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 50
 text = "Start Round"
+
+[node name="MenuPressed" type="AudioStreamPlayer2D" parent="MarginContainer"]
+unique_name_in_owner = true
+stream = ExtResource("3_e0k84")
 
 [node name="StatsContainer" type="BoxContainer" parent="."]
 unique_name_in_owner = true

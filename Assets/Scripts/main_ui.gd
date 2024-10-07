@@ -21,6 +21,7 @@ func _process(_delta):
 
 	
 func _on_start_wave_button_button_up() -> void:
+	%MenuPressed.play()
 	GLOBALVARIABLES.game_manager.start_wave()
 	GLOBALVARIABLES.main_ui.set_upgrade_panel_visibility(false)
 	GLOBALVARIABLES.main_ui.set_start_wave_button_visibility(false)
