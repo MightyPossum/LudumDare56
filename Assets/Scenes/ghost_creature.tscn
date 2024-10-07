@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://c5ytjq2r38ket"]
+[gd_scene load_steps=16 format=3 uid="uid://c5ytjq2r38ket"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/player_creature.gd" id="1_5vaq2"]
 [ext_resource type="PackedScene" uid="uid://bff8t0np0n0fn" path="res://Assets/Scenes/attack_projectile.tscn" id="2_s5yfp"]
 [ext_resource type="Texture2D" uid="uid://ddkjdgyptqbwo" path="res://Assets/Sprites/Ghost.png" id="3_4wyju"]
 [ext_resource type="PackedScene" uid="uid://cgo87160hq6s6" path="res://Assets/Scenes/creature_attack.tscn" id="4_icsvh"]
+[ext_resource type="Texture2D" uid="uid://c76opdobd7787" path="res://Assets/Sprites/GostShadow.png" id="5_mcj3r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4etqh"]
 radius = 6.0
@@ -131,6 +132,10 @@ libraries = {
 
 [node name="CreatureAttack" parent="Sprite2D" instance=ExtResource("4_icsvh")]
 unique_name_in_owner = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(0, 15)
+texture = ExtResource("5_mcj3r")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_postprocessing = 1
