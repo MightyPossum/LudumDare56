@@ -4,9 +4,11 @@ extends Node2D
 @onready var main_ui : Control = %MainUI
 
 var next_location : Array
+var bosses : Array
 
 var ongoing_wave : bool = false
 var all_spawned :bool  = false
+
 
 func _ready():
 	next_location = [
@@ -16,6 +18,16 @@ func _ready():
 		get_node("Enemies/Boss4").global_position,
 		get_node("EnemyBase").global_position,
 	]
+
+	bosses = [
+		get_node("Enemies/Boss1"),
+		get_node("Enemies/Boss2"),
+		get_node("Enemies/Boss3"),
+		get_node("Enemies/Boss4"),
+	]
+	
+	GLOBALVARIABLES.bosses_left = bosses.size()
+	
 	GLOBALVARIABLES.game_manager = self
 	if GLOBALVARIABLES.round_counter == 0:
 		main_ui.set_upgrade_panel_visibility(false)

@@ -105,15 +105,23 @@ func die() -> void:
 	match name:
 		"Boss1":
 			GLOBALVARIABLES.game_manager.next_location.pop_front()
+			GLOBALVARIABLES.bosses_left -= 1
+			%WallBreak.play()
 			%Wall1.queue_free()
 		"Boss2":
 			GLOBALVARIABLES.game_manager.next_location.pop_front()
+			GLOBALVARIABLES.bosses_left -= 1
+			%WallBreak.play()
 			%Wall2.queue_free()
 		"Boss3":
 			GLOBALVARIABLES.game_manager.next_location.pop_front()
+			GLOBALVARIABLES.bosses_left -= 1
+			%WallBreak.play()
 			%Wall3.queue_free()
 		"Boss4":
 			GLOBALVARIABLES.game_manager.next_location.pop_front()
+			GLOBALVARIABLES.bosses_left -= 1
+			%WallBreak.play()
 			%Wall4.queue_free()
 
 	enemy_queue.clear()
