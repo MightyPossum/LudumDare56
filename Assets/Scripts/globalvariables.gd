@@ -70,7 +70,7 @@ var creature_upgrade_amount = {
 	CREATURE_TYPES.IMP : {
 		"health" : 50,
 		"summon_amount" : 1,
-		"damage" : 4,
+		"damage" : 5,
 		"attack_speed" : -0.03,
 	},
 	CREATURE_TYPES.GHOST : {

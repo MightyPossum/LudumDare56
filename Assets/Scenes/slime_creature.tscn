@@ -148,14 +148,14 @@ unique_name_in_owner = true
 shape = SubResource("CircleShape2D_tp6vr")
 
 [node name="health_bar" type="ProgressBar" parent="."]
-z_index = 1
+z_index = 10
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -6.0
-offset_top = -14.0
-offset_right = 6.0
-offset_bottom = -11.0
+offset_left = -12.0
+offset_top = -24.0
+offset_right = 12.0
+offset_bottom = -18.0
 grow_horizontal = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_h4ehh")
 theme_override_styles/fill = SubResource("StyleBoxFlat_hqvuu")

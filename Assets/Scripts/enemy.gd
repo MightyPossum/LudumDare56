@@ -49,7 +49,7 @@ func _physics_process(delta: float) -> void:
 			if not hurting:
 				$AnimationPlayer.play("Hurt")
 				hurting = true
-				await get_tree().create_timer(hurt_timer).timeout
+				await get_tree().create_timer(hurt_timer, false,true).timeout
 				hurting = false
 				has_been_damaged = false
 		elif not hurting:
@@ -60,10 +60,10 @@ func _physics_process(delta: float) -> void:
 		if enemy:
 			attack(enemy)
 			enemy_in_view = true
-			await get_tree().create_timer(attack_speed).timeout
+			await get_tree().create_timer(attack_speed, false,true).timeout
 		else:
 			enemy_in_view = false
-			await get_tree().create_timer(attack_speed/2).timeout
+			await get_tree().create_timer(attack_speed/2, false,true).timeout
 		in_combat = false
 	
 	if not is_boss and enemy_queue.size() > 0 and navgationAgent2D.is_target_reachable() and (int(navgationAgent2D.distance_to_target() > shooting_range) or not enemy_in_view):
@@ -136,6 +136,8 @@ func attack(enemy : RigidBody2D) -> void:
 
 func take_damage(damage: int, damager : RigidBody2D) -> void:
 	if is_alive:
+		if is_boss:
+			GLOBALVARIABLES.player_resource += int(kill_value/5000*damage)
 		if enemy_queue.size() <= 0:
 			enemy_queue.append(damager)
 		current_health = max(current_health - damage, 0)
