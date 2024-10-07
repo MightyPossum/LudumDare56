@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bd3mdc4w83hhw"]
+[gd_scene load_steps=25 format=3 uid="uid://bd3mdc4w83hhw"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/main_ui.gd" id="1_noerh"]
 [ext_resource type="PackedScene" uid="uid://b3t2t6md2csxs" path="res://Assets/Scenes/upgrade_panel.tscn" id="2_ue1l5"]
@@ -20,6 +20,18 @@
 [ext_resource type="Texture2D" uid="uid://bidvrtlo70tjc" path="res://Assets/Sprites/FfwdButtonPressed.png" id="17_umkqu"]
 [ext_resource type="Texture2D" uid="uid://c4k0q3jg372vn" path="res://Assets/Sprites/FfwdButtonHover.png" id="18_huesp"]
 [ext_resource type="Texture2D" uid="uid://gtw110160x6q" path="res://Assets/Sprites/FfwdButtonDisabled.png" id="19_327v3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3cc5s"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cr7hb"]
+bg_color = Color(0.462745, 0.00392157, 0.760784, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j3cm4"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_crvyg"]
+bg_color = Color(0.462599, 0.00234214, 0.760502, 1)
 
 [node name="MainUI" type="Control"]
 layout_mode = 3
@@ -104,7 +116,15 @@ grow_vertical = 0
 alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="BoostPower" type="TextureButton" parent="GodPowers"]
+[node name="GodPowerActivation" type="AudioStreamPlayer2D" parent="GodPowers"]
+unique_name_in_owner = true
+position = Vector2(-384, -505)
+stream = ExtResource("11_iofbl")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GodPowers"]
+layout_mode = 2
+
+[node name="BoostPower" type="TextureButton" parent="GodPowers/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
@@ -115,7 +135,19 @@ texture_pressed = ExtResource("4_iimdc")
 texture_hover = ExtResource("5_eril3")
 texture_disabled = ExtResource("6_qlmkd")
 
-[node name="ShieldPower" type="TextureButton" parent="GodPowers"]
+[node name="BoostProgressBar" type="ProgressBar" parent="GodPowers/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_3cc5s")
+theme_override_styles/fill = SubResource("StyleBoxFlat_cr7hb")
+max_value = 30.0
+show_percentage = false
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="GodPowers"]
+layout_mode = 2
+
+[node name="ShieldPower" type="TextureButton" parent="GodPowers/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
@@ -126,10 +158,14 @@ texture_pressed = ExtResource("8_ha4fv")
 texture_hover = ExtResource("9_yharj")
 texture_disabled = ExtResource("10_dokmb")
 
-[node name="GodPowerActivation" type="AudioStreamPlayer2D" parent="GodPowers"]
+[node name="ShieldProgressBar" type="ProgressBar" parent="GodPowers/VBoxContainer2"]
 unique_name_in_owner = true
-position = Vector2(-384, -505)
-stream = ExtResource("11_iofbl")
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_j3cm4")
+theme_override_styles/fill = SubResource("StyleBoxFlat_crvyg")
+max_value = 30.0
+show_percentage = false
 
 [node name="Control" type="HBoxContainer" parent="."]
 layout_mode = 0
@@ -156,7 +192,7 @@ texture_hover = ExtResource("18_huesp")
 texture_disabled = ExtResource("19_327v3")
 
 [connection signal="button_up" from="MarginContainer/StartWaveButton" to="." method="_on_start_wave_button_button_up"]
-[connection signal="pressed" from="GodPowers/BoostPower" to="." method="_on_power_up_pressed" binds= ["boost"]]
-[connection signal="pressed" from="GodPowers/ShieldPower" to="." method="_on_power_up_pressed" binds= ["shield"]]
+[connection signal="button_up" from="GodPowers/VBoxContainer/BoostPower" to="." method="_on_power_up_pressed" binds= ["boost"]]
+[connection signal="pressed" from="GodPowers/VBoxContainer2/ShieldPower" to="." method="_on_power_up_pressed" binds= ["shield"]]
 [connection signal="button_up" from="Control/PlayButton" to="." method="set_speed"]
 [connection signal="button_up" from="Control/FFButton" to="." method="set_speed"]
