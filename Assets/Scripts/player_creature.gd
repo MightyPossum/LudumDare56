@@ -31,6 +31,8 @@ var timer = 0.0;
 var has_boost : bool = false
 var has_shield : bool = false
 
+var in_hole : bool = false
+
 @export var attack_projectile: PackedScene
 
 # Called when the node enters the scene tree for the first time.
@@ -46,6 +48,12 @@ func _ready() -> void:
 	
 
 func _physics_process(delta: float) -> void:
+	
+	if in_hole:
+		scale -= Vector2(0.2, 0.2)
+		if scale < (Vector2(0,0)):
+			queue_free()
+	
 	if is_alive:
 		if has_been_damaged:
 			$Sprite2D/AnimationPlayer.play("Hurt")
