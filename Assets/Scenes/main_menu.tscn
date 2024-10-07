@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://dfmthxs828tpr" path="res://Assets/Sprites/MainMenuBttnExitHvr.png" id="10_uvh6q"]
 [ext_resource type="AudioStream" uid="uid://1wbn8dxrpw8d" path="res://Assets/Sounds/MenuClick.ogg" id="14_5rg6h"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m3as0"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_116yy"]
 texture = ExtResource("1_t5r1o")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
@@ -65,7 +65,7 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_8an0u"]
 tile_size = Vector2i(32, 32)
-sources/0 = SubResource("TileSetAtlasSource_m3as0")
+sources/0 = SubResource("TileSetAtlasSource_116yy")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3lqij"]
 texture = ExtResource("3_1g00r")

@@ -69,7 +69,7 @@ func is_location_base(current_next_location_vector : Vector2) -> bool:
 
 func win() -> void:
 	await get_tree().create_timer(2, false,true).timeout
-	get_tree().quit()
+	get_tree().change_scene_to_file("res://Assets/Scenes/game_over.tscn")
 	
 
 func lose() -> void:
@@ -119,4 +119,5 @@ func spawn_creatures() -> void:
 
 func _on_bass_range_body_entered(body: Node2D) -> void:
 	if body.is_in_group("ally"):
+		body.in_hole = true
 		win()

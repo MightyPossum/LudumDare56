@@ -1,7 +1,36 @@
-[gd_scene load_steps=3 format=3 uid="uid://uf5lqqk6jeoy"]
+[gd_scene load_steps=16 format=3 uid="uid://uf5lqqk6jeoy"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/pause_menu.gd" id="1_k4wyj"]
+[ext_resource type="Texture2D" uid="uid://c1wbemm0bimgh" path="res://Assets/Sprites/MainMenuBttnNewGameHvr.png" id="2_3qh1f"]
 [ext_resource type="AudioStream" uid="uid://1wbn8dxrpw8d" path="res://Assets/Sounds/MenuClick.ogg" id="2_v0d2s"]
+[ext_resource type="Texture2D" uid="uid://c1djgw5s5khpo" path="res://Assets/Sprites/MainMenuBttnNewGame.png" id="3_14t4r"]
+[ext_resource type="Texture2D" uid="uid://duhaqd3b2ulwj" path="res://Assets/Sprites/MainMenuBttnDeactivated.png" id="3_idsec"]
+[ext_resource type="Texture2D" uid="uid://dfmthxs828tpr" path="res://Assets/Sprites/MainMenuBttnExitHvr.png" id="5_4lejg"]
+[ext_resource type="Texture2D" uid="uid://b3eb87acgtycl" path="res://Assets/Sprites/MainMenuBttnExit.png" id="6_q3tsp"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jso8q"]
+texture = ExtResource("3_idsec")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hlwly"]
+texture = ExtResource("2_3qh1f")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_owxwq"]
+texture = ExtResource("3_idsec")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bclrd"]
+texture = ExtResource("3_14t4r")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g7141"]
+texture = ExtResource("3_idsec")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m28dd"]
+texture = ExtResource("5_4lejg")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e10su"]
+texture = ExtResource("3_idsec")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gxqgx"]
+texture = ExtResource("6_q3tsp")
 
 [node name="Pause" type="Panel"]
 process_mode = 3
@@ -30,6 +59,14 @@ unique_name_in_owner = true
 process_mode = 2
 process_priority = 1
 layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 0.501961)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0.501961)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 0.501961)
+theme_override_colors/font_color = Color(0, 0, 0, 0.501961)
+theme_override_styles/disabled = SubResource("StyleBoxTexture_jso8q")
+theme_override_styles/hover = SubResource("StyleBoxTexture_hlwly")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_owxwq")
+theme_override_styles/normal = SubResource("StyleBoxTexture_bclrd")
 text = "Continue"
 
 [node name="MainMenu" type="Button" parent="MarginContainer/VBoxContainer"]
@@ -37,6 +74,14 @@ unique_name_in_owner = true
 process_mode = 2
 process_priority = 1
 layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 0.501961)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0.501961)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 0.501961)
+theme_override_colors/font_color = Color(0, 0, 0, 0.501961)
+theme_override_styles/disabled = SubResource("StyleBoxTexture_g7141")
+theme_override_styles/hover = SubResource("StyleBoxTexture_m28dd")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_e10su")
+theme_override_styles/normal = SubResource("StyleBoxTexture_gxqgx")
 text = "Back to main menu"
 
 [node name="MenuClick" type="AudioStreamPlayer2D" parent="."]
