@@ -101,6 +101,10 @@ var shield_power_unlocked : bool = false
 
 var god_power_cooldown_time = 30
 
+var boost_power_factor_upgrade : float = 0.2
+var boost_power_time_upgrade : float= 1.5
+var shield_power_time_upgrade : float = 1.5
+
 func adjust_creature_default(creature_type: CREATURE_TYPES, key: String):
 	
 	if creature_defaults.get(creature_type):
@@ -116,13 +120,13 @@ func handle_god_power_upgrade(power_type : String):
 		if not boost_power_unlocked:
 			boost_power_unlocked = true
 		else:
-			boost_power_factor += 0.2
-			boost_power_time += 1.5
+			boost_power_factor += boost_power_factor_upgrade
+			boost_power_time += boost_power_time_upgrade
 		creature_upgrade_costs.get(CREATURE_TYPES.GOD).boost *= 2
 	elif power_type == "shield":
 		if not shield_power_unlocked:
 			shield_power_unlocked = true
 		else:
-			shield_power_time += 1.5
+			shield_power_time += shield_power_time_upgrade
 		creature_upgrade_costs.get(CREATURE_TYPES.GOD).shield *= 2
 

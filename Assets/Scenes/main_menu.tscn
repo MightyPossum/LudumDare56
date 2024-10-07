@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://c8vv25a3ekty7"]
+[gd_scene load_steps=36 format=4 uid="uid://c8vv25a3ekty7"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/main_menu.gd" id="1_bmx4v"]
 [ext_resource type="Texture2D" uid="uid://7yl7cyp24pqi" path="res://Assets/SpriteTests/Map.png" id="1_t5r1o"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://b3eb87acgtycl" path="res://Assets/Sprites/MainMenuBttnExit.png" id="7_f3tpj"]
 [ext_resource type="Texture2D" uid="uid://dh6sh8nbijsst" path="res://Assets/Sprites/MainMenuBttnHowToHvr.png" id="8_uty2f"]
 [ext_resource type="Texture2D" uid="uid://dfmthxs828tpr" path="res://Assets/Sprites/MainMenuBttnExitHvr.png" id="10_uvh6q"]
+[ext_resource type="AudioStream" uid="uid://1wbn8dxrpw8d" path="res://Assets/Sounds/MenuClick.ogg" id="14_5rg6h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m3as0"]
 texture = ExtResource("1_t5r1o")
@@ -285,6 +286,11 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Jumping Possum"
 horizontal_alignment = 1
+
+[node name="MenuClick" type="AudioStreamPlayer2D" parent="MainMenu"]
+unique_name_in_owner = true
+position = Vector2(-43.9999, -25)
+stream = ExtResource("14_5rg6h")
 
 [node name="MainMenuSlime" type="Sprite2D" parent="."]
 position = Vector2(-71, 178)
