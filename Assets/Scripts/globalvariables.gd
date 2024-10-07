@@ -10,7 +10,7 @@ enum CREATURE_TYPES {
 
 var creature_defaults = {
 	CREATURE_TYPES.SLIME : {
-		"health" : 30, #70
+		"health" : 3000000, #70
 		"movement_speed" : 120,
 		"attack_range" : 100,
 		"damage" : 5,#10
@@ -95,9 +95,9 @@ var ally_count: int = 0
 #god power upgrades
 var boost_power_factor : float = 1.21
 var boost_power_time : float = 3
-var boost_power_unlocked : bool = false
+var boost_power_unlocked : bool = true
 var shield_power_time : float = 3
-var shield_power_unlocked : bool = false
+var shield_power_unlocked : bool = true
 
 var god_power_cooldown_time = 30
 

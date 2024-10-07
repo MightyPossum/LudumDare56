@@ -9,6 +9,8 @@ var boost_on_cooldown : bool = false
 var shield_on_cooldown : bool = false
 var in_upgrade_menu : bool = false
 
+var tween : Tween
+
 func _ready():
 	GLOBALVARIABLES.main_ui = self
 	set_stats_visibility(false)
@@ -20,7 +22,6 @@ func _process(_delta):
 	ally_tracker.text = "Creatures Left: " + str(GLOBALVARIABLES.ally_count)
 	gold.text = "Gold: " + str(GLOBALVARIABLES.player_resource)
 
-	
 func _on_start_wave_button_button_up() -> void:
 	%MenuPressed.play()
 	GLOBALVARIABLES.game_manager.start_wave()
@@ -85,14 +86,33 @@ func toggle_powers(power_type : String, apply_cooldown : bool) -> void:
 	# we do this last, because of await
 	if apply_cooldown and power_type == "boost" and GLOBALVARIABLES.boost_power_unlocked:
 		boost_on_cooldown = true
-		await get_tree().create_timer(GLOBALVARIABLES.god_power_cooldown_time, false,true).timeout
-		boost_on_cooldown = false
-		%BoostPower.disabled = false
+
+		var boost_progress_bar =%BoostProgressBar
+		boost_progress_bar.visible = true
+		boost_progress_bar.value = 0
+		tween = get_tree().create_tween()
+		tween.tween_property(boost_progress_bar, "value", 30, 30)
+		tween.tween_callback(timer_done.bind(power_type))
+
 	elif apply_cooldown and power_type == "shield" and GLOBALVARIABLES.shield_power_unlocked:
 		shield_on_cooldown = true
-		await get_tree().create_timer(GLOBALVARIABLES.god_power_cooldown_time, false,true).timeout
+		var shield_progress_bar =%ShieldProgressBar
+		shield_progress_bar.visible = true
+		shield_progress_bar.value = 0
+		tween = get_tree().create_tween()
+		tween.tween_property(shield_progress_bar, "value", 30, 30)
+		tween.tween_callback(timer_done.bind(power_type))
+
+func timer_done(power_type : String) -> void:
+	if power_type == "shield":
+		%ShieldProgressBar.visible = false
 		shield_on_cooldown = false
 		%ShieldPower.disabled = false
+	elif power_type == "boost":
+		%BoostProgressBar.visible = false
+		boost_on_cooldown = false
+		%BoostPower.disabled = false
+
 
 func update_lables() -> void:
 	if in_upgrade_menu:
@@ -111,7 +131,6 @@ func set_speed_buttons() -> void:
 		%FFButton.disabled = true
 	
 func set_speed() -> void:
-	print("set speed")
 	if Engine.time_scale <= 1:
 		Engine.time_scale = 2
 	
