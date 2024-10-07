@@ -1,11 +1,12 @@
-[gd_scene load_steps=12 format=4 uid="uid://dutubfq3i05yk"]
+[gd_scene load_steps=13 format=4 uid="uid://dutubfq3i05yk"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/game_manager.gd" id="1_1m18h"]
 [ext_resource type="PackedScene" uid="uid://bd3mdc4w83hhw" path="res://Assets/Scenes/main_ui.tscn" id="2_b87o6"]
 [ext_resource type="Script" path="res://Assets/Scripts/camera.gd" id="2_hn1cj"]
+[ext_resource type="PackedScene" uid="uid://uf5lqqk6jeoy" path="res://Assets/Scenes/pause_menu.tscn" id="3_e70dw"]
 [ext_resource type="TileSet" uid="uid://cht8s0ttm77by" path="res://Assets/game_scene.tres" id="3_wkmjf"]
 [ext_resource type="PackedScene" uid="uid://dhkfonlnmcmr3" path="res://Assets/Scenes/enemy.tscn" id="4_1pvox"]
-[ext_resource type="PackedScene" path="res://Assets/Scenes/base.tscn" id="6_08l80"]
+[ext_resource type="PackedScene" uid="uid://lbo6xjbw7r3h" path="res://Assets/Scenes/base.tscn" id="6_08l80"]
 [ext_resource type="PackedScene" uid="uid://dqlbwctppngov" path="res://Assets/Scenes/BossWall.tscn" id="7_agkpi"]
 [ext_resource type="Texture2D" uid="uid://d342nyw4sifxk" path="res://Assets/Sprites/Boss.png" id="7_f7qsy"]
 [ext_resource type="Texture2D" uid="uid://6a63ch18r461" path="res://Assets/Background/Background.png" id="9_2u7at"]
@@ -24,10 +25,22 @@ distance_to_enemy = 230
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
+process_mode = 3
 visible = false
 
 [node name="MainUI" parent="CanvasLayer" instance=ExtResource("2_b87o6")]
 unique_name_in_owner = true
+
+[node name="Pause" parent="CanvasLayer" instance=ExtResource("3_e70dw")]
+z_index = 30
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(89, 40)
