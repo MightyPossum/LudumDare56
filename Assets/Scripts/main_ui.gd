@@ -5,8 +5,13 @@ extends Control
 @onready var ally_tracker: Label = %CreatureTracker
 @onready var gold: Label = %Gold
 
+var boost_on_cooldown : bool = false
+var shield_on_cooldown : bool = false
+var in_upgrade_menu : bool = false
+
 func _ready():
 	GLOBALVARIABLES.main_ui = self
+	set_stats_visibility(false)
 
 func _process(_delta):
 	bosses_left.text = "Bosses Left: " + str(GLOBALVARIABLES.bosses_left)
@@ -20,16 +25,21 @@ func _on_start_wave_button_button_up() -> void:
 	GLOBALVARIABLES.main_ui.set_upgrade_panel_visibility(false)
 	GLOBALVARIABLES.main_ui.set_start_wave_button_visibility(false)
 	GLOBALVARIABLES.main_ui.set_stats_visibility(true)
-	%GodPowers.visible = true
 
 func set_stats_visibility(toggle: bool):
 	%StatsContainer.visible = toggle
+	%GodPowers.visible = toggle
+	%BoostPower.disabled = true
+	%ShieldPower.disabled = true
+	await get_tree().create_timer(2).timeout
+	toggle_powers('null', true)
 
 func set_start_wave_button_visibility(toggle: bool):
 	%StartWaveButton.visible = toggle
 
 func set_upgrade_panel_visibility(toggle: bool):
 	%UpgradePanel.visible = toggle
+	in_upgrade_menu = toggle
 	%UpgradePanel.update_gold_label()
 	
 func _on_power_up_pressed(power_type : String) -> void:
@@ -43,9 +53,9 @@ func _on_power_up_pressed(power_type : String) -> void:
 
 	
 	handle_power(power_type, delay_time)
-	toggle_powers()
+	toggle_powers(power_type, false)
 	await get_tree().create_timer(delay_time).timeout
-	toggle_powers()
+	toggle_powers(power_type, true)
 
 func handle_power(power_type : String, delay_time : float) -> void:
 	match power_type:
@@ -54,6 +64,38 @@ func handle_power(power_type : String, delay_time : float) -> void:
 		"shield":
 			EVENTS.shield_activated.emit(delay_time)
 
-func toggle_powers() -> void:
-	%BoostPower.disabled = !%BoostPower.disabled
-	%ShieldPower.disabled = !%ShieldPower.disabled
+func toggle_powers(power_type : String, apply_cooldown : bool) -> void:
+	if apply_cooldown:
+		if power_type != "boost" and GLOBALVARIABLES.boost_power_unlocked and not boost_on_cooldown:
+			%BoostPower.disabled = false
+		elif not GLOBALVARIABLES.boost_power_unlocked:
+			%BoostPower.disabled = true
+
+		if power_type != "shield" and GLOBALVARIABLES.shield_power_unlocked and not shield_on_cooldown:
+			%ShieldPower.disabled = false
+		elif not GLOBALVARIABLES.shield_power_unlocked:
+			%ShieldPower.disabled = true
+
+	else:
+		%BoostPower.disabled = true
+		%ShieldPower.disabled = true
+
+	# we do this last, because of await
+	if apply_cooldown and power_type == "boost" and GLOBALVARIABLES.boost_power_unlocked:
+		boost_on_cooldown = true
+		await get_tree().create_timer(GLOBALVARIABLES.god_power_cooldown_time).timeout
+		boost_on_cooldown = false
+		%BoostPower.disabled = false
+	elif apply_cooldown and power_type == "shield" and GLOBALVARIABLES.shield_power_unlocked:
+		shield_on_cooldown = true
+		await get_tree().create_timer(GLOBALVARIABLES.god_power_cooldown_time).timeout
+		shield_on_cooldown = false
+		%ShieldPower.disabled = false
+
+func update_upgrade_costs() -> void:
+	if in_upgrade_menu:
+		%UpgradePanel.update_upgrade_costs()
+
+func update_gold_ui() -> void:
+	if in_upgrade_menu:
+		%UpgradePanel.update_gold_label()

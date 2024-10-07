@@ -20,7 +20,7 @@ func _ready():
 	if GLOBALVARIABLES.round_counter == 0:
 		main_ui.set_upgrade_panel_visibility(false)
 		main_ui.set_start_wave_button_visibility(true)
-		main_ui.set_stats_visibility(true)
+		main_ui.set_stats_visibility(false)
 	elif GLOBALVARIABLES.round_counter >= 1:
 		
 		main_ui.set_upgrade_panel_visibility(true)
@@ -31,10 +31,16 @@ func _ready():
 		main_ui.set_start_wave_button_visibility(false)
 		main_ui.set_stats_visibility(true)
 
+	%CanvasLayer.visible = true
+
 func _process(_delta):
 	if ongoing_wave && all_spawned:
 		if GLOBALVARIABLES.ally_count <= 0:
 			lose()
+	
+	if Input.is_action_pressed("cheat"):
+		GLOBALVARIABLES.player_resource += 50000
+		GLOBALVARIABLES.main_ui.update_upgrade_costs()
 
 func get_next_location() -> Vector2:
 	if not %NavigationRegion2D.is_baking():
@@ -54,13 +60,15 @@ func win() -> void:
 	
 
 func lose() -> void:
+	if GLOBALVARIABLES.round_counter == 0:
+		GLOBALVARIABLES.creature_defaults.get(GLOBALVARIABLES.CREATURE_TYPES.SLIME)["health"] += 70
+		GLOBALVARIABLES.creature_defaults.get(GLOBALVARIABLES.CREATURE_TYPES.SLIME)["damage"] += 5
 	GLOBALVARIABLES.round_counter += 1
 	get_tree().reload_current_scene()
 	
 func start_wave() -> void:
 	main_ui.set_start_wave_button_visibility(false)
 	ongoing_wave = true
-	setup_creature_defaults()
 	spawn_creatures()
 
 func spawn_creatures() -> void:
@@ -69,8 +77,8 @@ func spawn_creatures() -> void:
 	var imp_creature : PackedScene = load("res://Assets/Scenes/imp_creature.tscn")
 	var ghost_creature : PackedScene = load("res://Assets/Scenes/ghost_creature.tscn")
 
-	for creature in GLOBALVARIABLES.creature_manager:
-		var creature_values = GLOBALVARIABLES.creature_manager.get(creature)
+	for creature in GLOBALVARIABLES.creature_defaults:
+		var creature_values = GLOBALVARIABLES.creature_defaults.get(creature)
 		for i in range(0,creature_values.summon_amount):
 			var creature_type : PackedScene
 			if creature == GLOBALVARIABLES.CREATURE_TYPES.SLIME:
@@ -90,14 +98,12 @@ func spawn_creatures() -> void:
 			var spawn_creature = creature_type.instantiate()
 			spawn_creature.set_spawn_position(spawn_vector)
 			spawn_creature.initialize_values(creature_values)
+			spawn_creature.creature_type = creature
 			%Creatures.add_child(spawn_creature)
-			await get_tree().create_timer(.25).timeout
+			await get_tree().create_timer(.75).timeout
 	
 	all_spawned = true
 
 func _on_bass_range_body_entered(body: Node2D) -> void:
 	if body.is_in_group("ally"):
 		win()
-
-func setup_creature_defaults() -> void:
-	GLOBALVARIABLES.creature_manager = GLOBALVARIABLES.creature_defaults.duplicate(true)

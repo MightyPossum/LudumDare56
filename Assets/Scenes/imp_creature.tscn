@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://Assets/Scripts/player_creature.gd" id="1_qpk02"]
 [ext_resource type="Texture2D" uid="uid://ctwk5e08wbhdm" path="res://Assets/Sprites/Imp.png" id="2_8rxyb"]
 [ext_resource type="PackedScene" uid="uid://bff8t0np0n0fn" path="res://Assets/Scenes/attack_projectile.tscn" id="2_g6v02"]
-[ext_resource type="PackedScene" path="res://Assets/Scenes/creature_attack.tscn" id="4_tc2ak"]
+[ext_resource type="PackedScene" uid="uid://cgo87160hq6s6" path="res://Assets/Scenes/creature_attack.tscn" id="4_tc2ak"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4etqh"]
-radius = 16.0
+radius = 6.0
 
 [sub_resource type="Animation" id="Animation_cqfjv"]
 resource_name = "Hurt"
@@ -99,7 +99,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tp6vr"]
-radius = 200.0
+radius = 250.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h4ehh"]
 bg_color = Color(0.252028, 0.252028, 0.252028, 1)
@@ -109,14 +109,14 @@ bg_color = Color(0.207843, 0.713726, 0.231373, 1)
 
 [node name="Imp" type="RigidBody2D" groups=["ally"]]
 z_index = 1
+collision_layer = 2
 collision_mask = 3
-mass = 0.001
-gravity_scale = 0.0
 script = ExtResource("1_qpk02")
 attack_projectile = ExtResource("2_g6v02")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
+z_index = 2
 shape = SubResource("CircleShape2D_4etqh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -136,14 +136,14 @@ unique_name_in_owner = true
 path_postprocessing = 1
 simplify_path = true
 simplify_epsilon = 2.0
-avoidance_enabled = true
 radius = 16.0
 
 [node name="Area" type="Area2D" parent="."]
 unique_name_in_owner = true
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
+[node name="AreaShape" type="CollisionShape2D" parent="Area"]
+unique_name_in_owner = true
 shape = SubResource("CircleShape2D_tp6vr")
 
 [node name="health_bar" type="ProgressBar" parent="."]

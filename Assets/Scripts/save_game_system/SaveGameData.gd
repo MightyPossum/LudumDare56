@@ -3,7 +3,7 @@ class_name SaveGameData
 
 @export var save_name : String
 
-@export var creature_manager : Dictionary = {}
+@export var creature_defaults : Dictionary = {}
 
 
 @export var round_counter : int
@@ -12,7 +12,7 @@ class_name SaveGameData
 func save_data() -> void:
 	
 	save_name = SaveGame.save_config.get_current_save_file().split(".")[0]
-	creature_manager = GLOBALVARIABLES.creature_manager.duplicate(true)
+	creature_defaults = GLOBALVARIABLES.creature_defaults.duplicate(true)
 	round_counter = GLOBALVARIABLES.round_counter
 	player_resource = GLOBALVARIABLES.player_resource
 	
@@ -20,6 +20,6 @@ func save_data() -> void:
 # Currently just overwrites all quest data
 func load_data() -> void:
 	
-	GLOBALVARIABLES.creature_manager = creature_manager.duplicate(true)
+	GLOBALVARIABLES.creature_defaults = creature_defaults.duplicate(true)
 	GLOBALVARIABLES.round_counter = round_counter 
 	GLOBALVARIABLES.player_resource = player_resource

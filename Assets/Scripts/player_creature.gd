@@ -9,6 +9,8 @@ var attack_damage: float = 10
 var movement_speed : float = 100
 var shooting_range : int = 40
 
+var creature_type : int = 0
+
 @onready var health_bar: ProgressBar = $health_bar
 @onready var navgationAgent2D : NavigationAgent2D = get_node("NavigationAgent2D")
 
@@ -18,6 +20,7 @@ var targeted_enemy : bool = false
 var ongoing_wave : bool = false
 var in_combat : bool = false
 var is_alive : bool = true
+var enemy_in_view : bool = false
 
 var has_been_damaged = false;
 var damage_timer = 0.5;
@@ -38,6 +41,7 @@ func _ready() -> void:
 	EVENTS.trigger_path_calc.connect(calc_path)
 
 	$Sprite2D/AnimationPlayer.play("Walk")
+	
 
 func _physics_process(delta: float) -> void:
 	if is_alive:
@@ -60,19 +64,27 @@ func _physics_process(delta: float) -> void:
 
 			$Sprite2D/AnimationPlayer.play(walk_animation)
 
+		if enemy_queue.size() == 0 and targeted_enemy:
+			targeted_enemy = false
+		
+		if navgationAgent2D.is_target_reachable() and ((int(navgationAgent2D.distance_to_target() > shooting_range) or targeted_enemy) or (is_location_the_base and int(navgationAgent2D.distance_to_target() > 2))):
 
-		if navgationAgent2D.is_target_reachable() and ((int(navgationAgent2D.distance_to_target() > shooting_range)) or (is_location_the_base and int(navgationAgent2D.distance_to_target() > 2))):
-			var next_location = navgationAgent2D.get_next_path_position()
-			var direction = global_position.direction_to(next_location)
-
-			if direction.x < 0:
-				$Sprite2D.flip_h = true
-			else:
-				$Sprite2D.flip_h = false
+			if targeted_enemy and enemy_in_view:
 				pass
-			global_position += direction * delta * movement_speed
+			else:
+
+				var next_location = navgationAgent2D.get_next_path_position()
+				var direction = global_position.direction_to(next_location)
+
+				if direction.x < 0:
+					$Sprite2D.flip_h = true
+				else:
+					$Sprite2D.flip_h = false
+					pass
+				global_position += direction * delta * movement_speed
 
 		elif navgationAgent2D.is_target_reachable() and enemy_queue.size() == 0:
+			targeted_enemy = false
 			pathing_initalized = false
 
 		if !pathing_initalized:
@@ -85,8 +97,10 @@ func _physics_process(delta: float) -> void:
 			var enemy = enemy_in_range()
 			if enemy:
 				attack(enemy)
+				enemy_in_view = true
 				await get_tree().create_timer(attack_speed).timeout
 			else:
+				enemy_in_view = false
 				await get_tree().create_timer(attack_speed/2).timeout
 			in_combat = false
 
@@ -95,12 +109,12 @@ func enemy_in_range() -> RigidBody2D:
 		if not enemy.is_alive:
 			enemy_queue.erase(enemy)
 		if global_position.distance_to(enemy.global_position) < shooting_range:
-			#var space_state = get_world_2d().direct_space_state
-			#var query = PhysicsRayQueryParameters2D.create(global_position, enemy.global_position, collision_mask, [self])
-			#var result = space_state.intersect_ray(query)
-			#if result:
-			#	if result.get("collider").is_in_group(attack_target):
-			return enemy
+			var space_state = get_world_2d().direct_space_state
+			var query = PhysicsRayQueryParameters2D.create(global_position, enemy.global_position, collision_mask, [self])
+			var result = space_state.intersect_ray(query)
+			if result:
+				if result.get("collider").is_in_group(attack_target):
+					return enemy
 
 	return null
 
@@ -116,12 +130,12 @@ func die() -> void:
 
 func attack(enemy : RigidBody2D) -> void:
 	var bullet = attack_projectile.instantiate()
-	bullet.init(enemy, get_name(), global_position,attack_damage,attack_target)
+	bullet.init(enemy, self, global_position,attack_damage,attack_target)
 	%CreatureAttack.play()
 	get_parent().add_child(bullet)
 	
 	
-func take_damage(damage: int) -> void:
+func take_damage(damage: int, _damager : RigidBody2D) -> void:
 	if is_alive and not has_shield:
 		current_health = max(current_health - damage, 0)
 		health_bar.value = current_health
@@ -131,12 +145,8 @@ func take_damage(damage: int) -> void:
 			die()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	print("body entered")
-	print(body.get_groups())
-	print(attack_target)
 	if body.is_in_group(attack_target):
 		if body.is_alive:
-			print("adding body")
 			navgationAgent2D.set_target_position(body.global_position)
 			targeted_enemy = true
 			enemy_queue.append(body)
