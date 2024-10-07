@@ -33,14 +33,27 @@ func _ready():
 
 	%CanvasLayer.visible = true
 
-func _process(_delta):
+func _physics_process(_delta: float) -> void:
 	if ongoing_wave && all_spawned:
 		if GLOBALVARIABLES.ally_count <= 0:
 			lose()
 	
 	if Input.is_action_pressed("cheat"):
 		GLOBALVARIABLES.player_resource += 50000
-		GLOBALVARIABLES.main_ui.update_upgrade_costs()
+		GLOBALVARIABLES.main_ui.update_lables()
+
+	if Input.is_action_just_pressed("cheat_speed"):
+		Engine.time_scale += 1
+	
+	if Input.is_action_just_pressed("speed_up"):
+		if Engine.time_scale <= 1:
+			Engine.time_scale = 2
+		GLOBALVARIABLES.main_ui.set_speed_buttons()
+
+	if Input.is_action_just_pressed("speed_down"):
+		if Engine.time_scale >= 2:
+			Engine.time_scale = 1
+		GLOBALVARIABLES.main_ui.set_speed_buttons()
 
 func get_next_location() -> Vector2:
 	if not %NavigationRegion2D.is_baking():
@@ -55,7 +68,7 @@ func is_location_base(current_next_location_vector : Vector2) -> bool:
 
 
 func win() -> void:
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(2, false,true).timeout
 	get_tree().quit()
 	
 
@@ -100,7 +113,7 @@ func spawn_creatures() -> void:
 			spawn_creature.initialize_values(creature_values)
 			spawn_creature.creature_type = creature
 			%Creatures.add_child(spawn_creature)
-			await get_tree().create_timer(.75).timeout
+			await get_tree().create_timer(.75, false,true).timeout
 	
 	all_spawned = true
 

@@ -103,14 +103,16 @@ func upgrade_type(upgrade: int, creature: GLOBALVARIABLES.CREATURE_TYPES) -> voi
 			GLOBALVARIABLES.adjust_creature_default(creature, "attack_speed")
 			
 	update_lables()
+	update_upgrade_costs()
 
 
 func update_gold_label():
 	gold_lable.text = str("Gold: " + str(GLOBALVARIABLES.player_resource))
 
 func _on_god_upgrade_pressed(power_type:String) -> void:
-	GLOBALVARIABLES.handle_god_power_upgrade(power_type)
 	%MenuClick.play()
+	GLOBALVARIABLES.handle_god_power_upgrade(power_type)
+	update_upgrade_costs()
 	update_lables()
 
 func update_upgrade_costs():
@@ -132,9 +134,6 @@ func update_upgrade_costs():
 					button.disabled = true
 				else:
 					button.disabled = false		
-
-
-		#button.text = str(GLOBALVARIABLES.creature_upgrade_costs.get(buttons[button][0]).get(buttons.get(button)[1]))
 
 func update_lables():
 	for label in labels_current_stats:

@@ -70,7 +70,7 @@ var creature_upgrade_amount = {
 	CREATURE_TYPES.IMP : {
 		"health" : 50,
 		"summon_amount" : 1,
-		"damage" : 4,
+		"damage" : 5,
 		"attack_speed" : -0.03,
 	},
 	CREATURE_TYPES.GHOST : {
@@ -112,7 +112,6 @@ func adjust_creature_default(creature_type: CREATURE_TYPES, key: String):
 		creature_defaults.get(creature_type)[key] += upgrade_value
 		player_resource -= creature_upgrade_costs.get(creature_type)[key]
 		creature_upgrade_costs.get(creature_type)[key] *= 2
-	main_ui.update_upgrade_costs()
 
 func handle_god_power_upgrade(power_type : String):
 	player_resource -= creature_upgrade_costs.get(CREATURE_TYPES.GOD).get(power_type)
@@ -131,4 +130,3 @@ func handle_god_power_upgrade(power_type : String):
 			shield_power_time += shield_power_time_upgrade
 		creature_upgrade_costs.get(CREATURE_TYPES.GOD).shield *= 2
 
-	main_ui.update_upgrade_costs()

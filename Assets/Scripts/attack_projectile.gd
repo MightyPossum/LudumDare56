@@ -20,7 +20,7 @@ func _ready():
 		4:
 			sprite.texture = preload("res://Assets/Sprites/Enemy1.png")
 
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(2, false,true).timeout
 	queue_free()
 
 func init(_target : RigidBody2D, _shooter : RigidBody2D, _position : Vector2, _attack_damage : int, _attack_target : String) -> void:
