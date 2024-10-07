@@ -140,7 +140,7 @@ is_boss = true
 sprite = ExtResource("7_f7qsy")
 
 [node name="Boss1" parent="Enemies" instance=ExtResource("4_1pvox")]
-position = Vector2(1104, 271)
+position = Vector2(1152, 272)
 max_health = 5000
 kill_value = 25000
 attack_damage = 100
@@ -327,7 +327,7 @@ sprite = ExtResource("9_x7tql")
 [node name="Enemy21" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(1416, 404)
 max_health = 700
-kill_value = 6000
+kill_value = 7000
 attack_damage = 50
 attack_speed_delay = 0.55
 shooting_range = 200
@@ -338,7 +338,7 @@ sprite = ExtResource("9_x7tql")
 [node name="Enemy28" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(1488, 454)
 max_health = 700
-kill_value = 6000
+kill_value = 7000
 attack_damage = 50
 attack_speed_delay = 0.55
 shooting_range = 200
@@ -360,7 +360,7 @@ sprite = ExtResource("9_x7tql")
 [node name="Enemy30" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(1392, 480)
 max_health = 700
-kill_value = 6000
+kill_value = 7000
 attack_damage = 50
 attack_speed_delay = 0.55
 shooting_range = 200
@@ -371,7 +371,7 @@ sprite = ExtResource("9_x7tql")
 [node name="Enemy31" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(1520, 512)
 max_health = 800
-kill_value = 6500
+kill_value = 7000
 attack_damage = 75
 attack_speed_delay = 0.55
 shooting_range = 200
@@ -382,7 +382,7 @@ sprite = ExtResource("9_x7tql")
 [node name="Enemy32" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(1428, 544)
 max_health = 300
-kill_value = 6500
+kill_value = 7000
 attack_damage = 150
 attack_speed_delay = 0.45
 shooting_range = 200
@@ -393,7 +393,7 @@ sprite = ExtResource("9_x7tql")
 [node name="Enemy33" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(1520, 663)
 max_health = 800
-kill_value = 7000
+kill_value = 7500
 attack_damage = 75
 attack_speed_delay = 0.45
 shooting_range = 200
@@ -414,7 +414,7 @@ sprite = ExtResource("9_x7tql")
 
 [node name="Enemy35" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(1464, 600)
-max_health = 800
+max_health = 1200
 kill_value = 7800
 attack_speed_delay = 0.1
 shooting_range = 200
@@ -446,7 +446,7 @@ sprite = ExtResource("9_x7tql")
 
 [node name="Enemy39" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(1416, 952)
-max_health = 2500
+max_health = 1000
 kill_value = 8125
 attack_damage = 60
 attack_speed_delay = 0.45
@@ -490,7 +490,7 @@ sprite = ExtResource("9_x7tql")
 
 [node name="Enemy43" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(1240, 928)
-max_health = 2500
+max_health = 1000
 kill_value = 8125
 attack_damage = 60
 attack_speed_delay = 0.45
@@ -568,7 +568,7 @@ sprite = ExtResource("9_x7tql")
 [node name="Enemy26" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(1536, 357)
 max_health = 700
-kill_value = 6000
+kill_value = 7000
 attack_damage = 50
 attack_speed_delay = 0.55
 shooting_range = 200
@@ -579,7 +579,7 @@ sprite = ExtResource("10_302qr")
 [node name="Enemy27" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(1472, 372)
 max_health = 700
-kill_value = 6000
+kill_value = 7000
 attack_damage = 50
 attack_speed_delay = 0.55
 shooting_range = 200
