@@ -50,7 +50,7 @@ extends Control
 	%GhostAsUpgradeFuture: [GLOBALVARIABLES.CREATURE_TYPES.GHOST, "attack_speed"],
 }
 @onready var labels_upgrade_costs: Dictionary = {
-	 %SlimeHpUpgradeCost: [GLOBALVARIABLES.CREATURE_TYPES.SLIME, "health"],
+	%SlimeHpUpgradeCost: [GLOBALVARIABLES.CREATURE_TYPES.SLIME, "health"],
 	%SlimeSummonCost: [GLOBALVARIABLES.CREATURE_TYPES.SLIME, "summon_amount"],
 	%SlimeDmgCost: [GLOBALVARIABLES.CREATURE_TYPES.SLIME, "damage"],
 	%SlimeAsCost: [GLOBALVARIABLES.CREATURE_TYPES.SLIME, "attack_speed"],
@@ -65,8 +65,16 @@ extends Control
 	%GhostDmgCost: [GLOBALVARIABLES.CREATURE_TYPES.GHOST, "damage"],
 	%GhostAsCost: [GLOBALVARIABLES.CREATURE_TYPES.GHOST, "attack_speed"],
 	
-	%EmpowerCost: [GLOBALVARIABLES.CREATURE_TYPES.GOD, "boost"],
+	%BoostCost: [GLOBALVARIABLES.CREATURE_TYPES.GOD, "boost"],
 	%ShieldCost: [GLOBALVARIABLES.CREATURE_TYPES.GOD, "shield"],
+}
+@onready var god_power_factor_labels: Dictionary = {
+	"boost_power_factor": %BoostFactorUpgradeNow,
+	"boost_power_time": %BoostTimeUpgradeNow,
+	"boost_power_factor_upgrade": %BoostFactorUpgradeFuture,
+	"boost_power_time_upgrade": %BoostTimeUpgradeFuture,
+	"shield_power_time": %ShieldUpgradenow,
+	"shield_power_time_upgrade": %ShieldUpgradeFuture
 }
 
 func _ready():
@@ -102,8 +110,10 @@ func update_gold_label():
 	gold_lable.text = str("Gold: " + str(GLOBALVARIABLES.player_resource))
 
 func _on_god_upgrade_pressed(power_type:String) -> void:
+	%MenuClick.play()
 	GLOBALVARIABLES.handle_god_power_upgrade(power_type)
 	update_upgrade_costs()
+	update_lables()
 
 func update_upgrade_costs():
 	update_gold_label()
@@ -139,3 +149,29 @@ func update_lables():
 		else:
 			cost = str(cost)
 		label.text = "Cost: " + cost
+		
+	if GLOBALVARIABLES.boost_power_unlocked:
+		god_power_factor_labels["boost_power_factor"].show()
+		god_power_factor_labels["boost_power_time"].show()
+		god_power_factor_labels["boost_power_factor_upgrade"].show()
+		god_power_factor_labels["boost_power_time_upgrade"].show()
+		
+		god_power_factor_labels["boost_power_factor"].text = str(GLOBALVARIABLES.boost_power_factor)
+		god_power_factor_labels["boost_power_time"].text = str(GLOBALVARIABLES.boost_power_time)
+		god_power_factor_labels["boost_power_factor_upgrade"].text = str(GLOBALVARIABLES.boost_power_factor + GLOBALVARIABLES.boost_power_factor_upgrade)
+		god_power_factor_labels["boost_power_time_upgrade"].text = str(GLOBALVARIABLES.boost_power_time + GLOBALVARIABLES.boost_power_time_upgrade)
+	else:
+		god_power_factor_labels["boost_power_factor"].hide()
+		god_power_factor_labels["boost_power_time"].hide()
+		god_power_factor_labels["boost_power_factor_upgrade"].hide()
+		god_power_factor_labels["boost_power_time_upgrade"].hide()
+
+	if GLOBALVARIABLES.shield_power_unlocked:
+		god_power_factor_labels["shield_power_time"].show()
+		god_power_factor_labels["shield_power_time_upgrade"].show()
+
+		god_power_factor_labels["shield_power_time"].text = str(GLOBALVARIABLES.shield_power_time)
+		god_power_factor_labels["shield_power_time_upgrade"].text = str(GLOBALVARIABLES.shield_power_time + GLOBALVARIABLES.shield_power_time_upgrade)
+	else :
+		god_power_factor_labels["shield_power_time"].hide()
+		god_power_factor_labels["shield_power_time_upgrade"].hide()
