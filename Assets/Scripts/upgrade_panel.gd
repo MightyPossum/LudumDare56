@@ -95,6 +95,7 @@ func upgrade_type(upgrade: int, creature: GLOBALVARIABLES.CREATURE_TYPES) -> voi
 			GLOBALVARIABLES.adjust_creature_default(creature, "attack_speed")
 			
 	update_lables()
+	update_upgrade_costs()
 
 
 func update_gold_label():
@@ -102,6 +103,7 @@ func update_gold_label():
 
 func _on_god_upgrade_pressed(power_type:String) -> void:
 	GLOBALVARIABLES.handle_god_power_upgrade(power_type)
+	update_upgrade_costs()
 
 func update_upgrade_costs():
 	update_gold_label()
