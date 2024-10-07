@@ -106,10 +106,10 @@ horizontal_alignment = 1
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.150174
-anchor_top = 0.33642
-anchor_right = 0.850694
-anchor_bottom = 0.779321
+anchor_left = 0.0434028
+anchor_top = 0.233025
+anchor_right = 0.957465
+anchor_bottom = 0.884259
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 30
@@ -121,6 +121,7 @@ layout_mode = 2
 
 [node name="GridContainer" type="GridContainer" parent="HBoxContainer/SlimUpgrads"]
 layout_mode = 2
+theme_override_constants/v_separation = 20
 
 [node name="Title" type="Label" parent="HBoxContainer/SlimUpgrads/GridContainer"]
 layout_mode = 2
@@ -128,7 +129,22 @@ text = "Slime Upgrades
 "
 horizontal_alignment = 1
 
-[node name="HpUpgradeSlime" type="TextureButton" parent="HBoxContainer/SlimUpgrads/GridContainer"]
+[node name="BoxContainer" type="BoxContainer" parent="HBoxContainer/SlimUpgrads/GridContainer"]
+layout_mode = 2
+alignment = 1
+vertical = true
+
+[node name="BoxContainer" type="BoxContainer" parent="HBoxContainer/SlimUpgrads/GridContainer/BoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="HpUpgradeNow" type="Label" parent="HBoxContainer/SlimUpgrads/GridContainer/BoxContainer/BoxContainer"]
+layout_mode = 2
+text = "1"
+horizontal_alignment = 1
+
+[node name="HpUpgradeSlime" type="TextureButton" parent="HBoxContainer/SlimUpgrads/GridContainer/BoxContainer/BoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
@@ -140,7 +156,32 @@ texture_hover = ExtResource("5_q3ib7")
 texture_disabled = ExtResource("6_04kk0")
 stretch_mode = 3
 
-[node name="AllyUpgradeSlime" type="TextureButton" parent="HBoxContainer/SlimUpgrads/GridContainer"]
+[node name="HpUpgradeFuture" type="Label" parent="HBoxContainer/SlimUpgrads/GridContainer/BoxContainer/BoxContainer"]
+layout_mode = 2
+text = "1"
+horizontal_alignment = 1
+
+[node name="HpUpgradeCost" type="Label" parent="HBoxContainer/SlimUpgrads/GridContainer/BoxContainer"]
+layout_mode = 2
+text = "Cost:"
+horizontal_alignment = 1
+
+[node name="BoxContainer2" type="BoxContainer" parent="HBoxContainer/SlimUpgrads/GridContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+vertical = true
+
+[node name="BoxContainer3" type="BoxContainer" parent="HBoxContainer/SlimUpgrads/GridContainer/BoxContainer2"]
+layout_mode = 2
+alignment = 1
+
+[node name="UpgradeNow" type="Label" parent="HBoxContainer/SlimUpgrads/GridContainer/BoxContainer2/BoxContainer3"]
+layout_mode = 2
+text = "1"
+horizontal_alignment = 1
+
+[node name="AllyUpgradeSlime" type="TextureButton" parent="HBoxContainer/SlimUpgrads/GridContainer/BoxContainer2/BoxContainer3"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
@@ -150,8 +191,34 @@ texture_normal = ExtResource("6_uxo3s")
 texture_pressed = ExtResource("7_sxcqq")
 texture_hover = ExtResource("8_ibf00")
 texture_disabled = ExtResource("9_b13hc")
+stretch_mode = 5
 
-[node name="DamageUpgradeSlime" type="TextureButton" parent="HBoxContainer/SlimUpgrads/GridContainer"]
+[node name="UpgradeFuture" type="Label" parent="HBoxContainer/SlimUpgrads/GridContainer/BoxContainer2/BoxContainer3"]
+layout_mode = 2
+text = "1"
+horizontal_alignment = 1
+
+[node name="Cost" type="Label" parent="HBoxContainer/SlimUpgrads/GridContainer/BoxContainer2"]
+layout_mode = 2
+text = "Cost:"
+horizontal_alignment = 1
+
+[node name="BoxContainer3" type="BoxContainer" parent="HBoxContainer/SlimUpgrads/GridContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+vertical = true
+
+[node name="BoxContainer3" type="BoxContainer" parent="HBoxContainer/SlimUpgrads/GridContainer/BoxContainer3"]
+layout_mode = 2
+alignment = 1
+
+[node name="UpgradeNow" type="Label" parent="HBoxContainer/SlimUpgrads/GridContainer/BoxContainer3/BoxContainer3"]
+layout_mode = 2
+text = "1"
+horizontal_alignment = 1
+
+[node name="DamageUpgradeSlime" type="TextureButton" parent="HBoxContainer/SlimUpgrads/GridContainer/BoxContainer3/BoxContainer3"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
@@ -161,8 +228,33 @@ texture_normal = ExtResource("11_7sdmo")
 texture_pressed = ExtResource("12_8tmys")
 texture_hover = ExtResource("13_ek2wx")
 texture_disabled = ExtResource("14_n1tnk")
+stretch_mode = 5
 
-[node name="AttackSpeedUpgradeSlime" type="TextureButton" parent="HBoxContainer/SlimUpgrads/GridContainer"]
+[node name="UpgradeFuture" type="Label" parent="HBoxContainer/SlimUpgrads/GridContainer/BoxContainer3/BoxContainer3"]
+layout_mode = 2
+text = "1"
+horizontal_alignment = 2
+
+[node name="Cost" type="Label" parent="HBoxContainer/SlimUpgrads/GridContainer/BoxContainer3"]
+layout_mode = 2
+text = "Cost:"
+horizontal_alignment = 1
+
+[node name="BoxContainer4" type="BoxContainer" parent="HBoxContainer/SlimUpgrads/GridContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+vertical = true
+
+[node name="BoxContainer3" type="BoxContainer" parent="HBoxContainer/SlimUpgrads/GridContainer/BoxContainer4"]
+layout_mode = 2
+alignment = 1
+
+[node name="UpgradeNow" type="Label" parent="HBoxContainer/SlimUpgrads/GridContainer/BoxContainer4/BoxContainer3"]
+layout_mode = 2
+text = "1"
+
+[node name="AttackSpeedUpgradeSlime" type="TextureButton" parent="HBoxContainer/SlimUpgrads/GridContainer/BoxContainer4/BoxContainer3"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
@@ -171,12 +263,24 @@ texture_normal = ExtResource("15_ft80v")
 texture_pressed = ExtResource("16_cpdyg")
 texture_hover = ExtResource("17_24knv")
 texture_disabled = ExtResource("18_00t43")
+stretch_mode = 5
+
+[node name="UpgradeFuture" type="Label" parent="HBoxContainer/SlimUpgrads/GridContainer/BoxContainer4/BoxContainer3"]
+layout_mode = 2
+text = "1"
+horizontal_alignment = 2
+
+[node name="Cost" type="Label" parent="HBoxContainer/SlimUpgrads/GridContainer/BoxContainer4"]
+layout_mode = 2
+text = "Cost:"
+horizontal_alignment = 1
 
 [node name="ImpUpgrade" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
 
 [node name="GridContainer" type="GridContainer" parent="HBoxContainer/ImpUpgrade"]
 layout_mode = 2
+theme_override_constants/v_separation = 20
 
 [node name="Title" type="Label" parent="HBoxContainer/ImpUpgrade/GridContainer"]
 layout_mode = 2
@@ -184,7 +288,22 @@ text = "Imp Upgrades
 "
 horizontal_alignment = 1
 
-[node name="HpUpgradeImp" type="TextureButton" parent="HBoxContainer/ImpUpgrade/GridContainer"]
+[node name="BoxContainer2" type="BoxContainer" parent="HBoxContainer/ImpUpgrade/GridContainer"]
+layout_mode = 2
+alignment = 1
+vertical = true
+
+[node name="BoxContainer3" type="BoxContainer" parent="HBoxContainer/ImpUpgrade/GridContainer/BoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="UpgradeNow" type="Label" parent="HBoxContainer/ImpUpgrade/GridContainer/BoxContainer2/BoxContainer3"]
+layout_mode = 2
+text = "1"
+horizontal_alignment = 1
+
+[node name="HpUpgradeImp" type="TextureButton" parent="HBoxContainer/ImpUpgrade/GridContainer/BoxContainer2/BoxContainer3"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
@@ -196,7 +315,31 @@ texture_hover = ExtResource("5_q3ib7")
 texture_disabled = ExtResource("6_04kk0")
 stretch_mode = 3
 
-[node name="AllyUpgradeImp" type="TextureButton" parent="HBoxContainer/ImpUpgrade/GridContainer"]
+[node name="UpgradeFuture" type="Label" parent="HBoxContainer/ImpUpgrade/GridContainer/BoxContainer2/BoxContainer3"]
+layout_mode = 2
+text = "1"
+horizontal_alignment = 2
+
+[node name="Cost" type="Label" parent="HBoxContainer/ImpUpgrade/GridContainer/BoxContainer2"]
+layout_mode = 2
+text = "Cost:"
+horizontal_alignment = 1
+
+[node name="BoxContainer3" type="BoxContainer" parent="HBoxContainer/ImpUpgrade/GridContainer"]
+layout_mode = 2
+alignment = 1
+vertical = true
+
+[node name="BoxContainer3" type="BoxContainer" parent="HBoxContainer/ImpUpgrade/GridContainer/BoxContainer3"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="UpgradeNow" type="Label" parent="HBoxContainer/ImpUpgrade/GridContainer/BoxContainer3/BoxContainer3"]
+layout_mode = 2
+text = "1"
+
+[node name="AllyUpgradeImp" type="TextureButton" parent="HBoxContainer/ImpUpgrade/GridContainer/BoxContainer3/BoxContainer3"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
@@ -208,7 +351,31 @@ texture_hover = ExtResource("13_i00mp")
 texture_disabled = ExtResource("14_1em6i")
 stretch_mode = 3
 
-[node name="DamageUpgradeImp" type="TextureButton" parent="HBoxContainer/ImpUpgrade/GridContainer"]
+[node name="UpgradeFuture" type="Label" parent="HBoxContainer/ImpUpgrade/GridContainer/BoxContainer3/BoxContainer3"]
+layout_mode = 2
+text = "1"
+horizontal_alignment = 2
+
+[node name="Cost" type="Label" parent="HBoxContainer/ImpUpgrade/GridContainer/BoxContainer3"]
+layout_mode = 2
+text = "Cost:"
+horizontal_alignment = 1
+
+[node name="BoxContainer4" type="BoxContainer" parent="HBoxContainer/ImpUpgrade/GridContainer"]
+layout_mode = 2
+alignment = 1
+vertical = true
+
+[node name="BoxContainer3" type="BoxContainer" parent="HBoxContainer/ImpUpgrade/GridContainer/BoxContainer4"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="UpgradeNow" type="Label" parent="HBoxContainer/ImpUpgrade/GridContainer/BoxContainer4/BoxContainer3"]
+layout_mode = 2
+text = "1"
+
+[node name="DamageUpgradeImp" type="TextureButton" parent="HBoxContainer/ImpUpgrade/GridContainer/BoxContainer4/BoxContainer3"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
@@ -219,7 +386,31 @@ texture_pressed = ExtResource("20_ld377")
 texture_hover = ExtResource("21_7kppt")
 texture_disabled = ExtResource("22_6apn2")
 
-[node name="AttackSpeedUpgradeImp" type="TextureButton" parent="HBoxContainer/ImpUpgrade/GridContainer"]
+[node name="UpgradeFuture" type="Label" parent="HBoxContainer/ImpUpgrade/GridContainer/BoxContainer4/BoxContainer3"]
+layout_mode = 2
+text = "1"
+horizontal_alignment = 2
+
+[node name="Cost" type="Label" parent="HBoxContainer/ImpUpgrade/GridContainer/BoxContainer4"]
+layout_mode = 2
+text = "Cost: "
+horizontal_alignment = 1
+
+[node name="BoxContainer5" type="BoxContainer" parent="HBoxContainer/ImpUpgrade/GridContainer"]
+layout_mode = 2
+alignment = 1
+vertical = true
+
+[node name="BoxContainer3" type="BoxContainer" parent="HBoxContainer/ImpUpgrade/GridContainer/BoxContainer5"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="UpgradeNow" type="Label" parent="HBoxContainer/ImpUpgrade/GridContainer/BoxContainer5/BoxContainer3"]
+layout_mode = 2
+text = "1"
+
+[node name="AttackSpeedUpgradeImp" type="TextureButton" parent="HBoxContainer/ImpUpgrade/GridContainer/BoxContainer5/BoxContainer3"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
@@ -229,11 +420,22 @@ texture_pressed = ExtResource("28_s8rpb")
 texture_hover = ExtResource("29_65ded")
 texture_disabled = ExtResource("30_nvm11")
 
+[node name="UpgradeFuture" type="Label" parent="HBoxContainer/ImpUpgrade/GridContainer/BoxContainer5/BoxContainer3"]
+layout_mode = 2
+text = "1"
+horizontal_alignment = 2
+
+[node name="Cost" type="Label" parent="HBoxContainer/ImpUpgrade/GridContainer/BoxContainer5"]
+layout_mode = 2
+text = "Cost:"
+horizontal_alignment = 1
+
 [node name="GhostUpgrade" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
 
 [node name="GridContainer" type="GridContainer" parent="HBoxContainer/GhostUpgrade"]
 layout_mode = 2
+theme_override_constants/v_separation = 20
 
 [node name="Title" type="Label" parent="HBoxContainer/GhostUpgrade/GridContainer"]
 layout_mode = 2
@@ -241,7 +443,22 @@ text = "Ghost Upgrades
 "
 horizontal_alignment = 1
 
-[node name="HpUpgradeGhost" type="TextureButton" parent="HBoxContainer/GhostUpgrade/GridContainer"]
+[node name="BoxContainer2" type="BoxContainer" parent="HBoxContainer/GhostUpgrade/GridContainer"]
+layout_mode = 2
+alignment = 1
+vertical = true
+
+[node name="BoxContainer3" type="BoxContainer" parent="HBoxContainer/GhostUpgrade/GridContainer/BoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="UpgradeNow" type="Label" parent="HBoxContainer/GhostUpgrade/GridContainer/BoxContainer2/BoxContainer3"]
+layout_mode = 2
+text = "1"
+horizontal_alignment = 1
+
+[node name="HpUpgradeGhost" type="TextureButton" parent="HBoxContainer/GhostUpgrade/GridContainer/BoxContainer2/BoxContainer3"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
@@ -253,7 +470,31 @@ texture_hover = ExtResource("5_q3ib7")
 texture_disabled = ExtResource("6_04kk0")
 stretch_mode = 3
 
-[node name="AllyUpgradeGhost" type="TextureButton" parent="HBoxContainer/GhostUpgrade/GridContainer"]
+[node name="UpgradeFuture" type="Label" parent="HBoxContainer/GhostUpgrade/GridContainer/BoxContainer2/BoxContainer3"]
+layout_mode = 2
+text = "1"
+horizontal_alignment = 1
+
+[node name="Cost" type="Label" parent="HBoxContainer/GhostUpgrade/GridContainer/BoxContainer2"]
+layout_mode = 2
+text = "Cost:"
+horizontal_alignment = 1
+
+[node name="BoxContainer3" type="BoxContainer" parent="HBoxContainer/GhostUpgrade/GridContainer"]
+layout_mode = 2
+alignment = 1
+vertical = true
+
+[node name="BoxContainer3" type="BoxContainer" parent="HBoxContainer/GhostUpgrade/GridContainer/BoxContainer3"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="UpgradeNow" type="Label" parent="HBoxContainer/GhostUpgrade/GridContainer/BoxContainer3/BoxContainer3"]
+layout_mode = 2
+text = "1"
+
+[node name="AllyUpgradeGhost" type="TextureButton" parent="HBoxContainer/GhostUpgrade/GridContainer/BoxContainer3/BoxContainer3"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
@@ -264,7 +505,31 @@ texture_pressed = ExtResource("16_dshk3")
 texture_hover = ExtResource("17_b7l7q")
 texture_disabled = ExtResource("18_s2ctv")
 
-[node name="DamageUpgradeGhost" type="TextureButton" parent="HBoxContainer/GhostUpgrade/GridContainer"]
+[node name="UpgradeFuture" type="Label" parent="HBoxContainer/GhostUpgrade/GridContainer/BoxContainer3/BoxContainer3"]
+layout_mode = 2
+text = "1"
+horizontal_alignment = 2
+
+[node name="Cost" type="Label" parent="HBoxContainer/GhostUpgrade/GridContainer/BoxContainer3"]
+layout_mode = 2
+text = "Cost:"
+horizontal_alignment = 1
+
+[node name="BoxContainer4" type="BoxContainer" parent="HBoxContainer/GhostUpgrade/GridContainer"]
+layout_mode = 2
+alignment = 1
+vertical = true
+
+[node name="BoxContainer3" type="BoxContainer" parent="HBoxContainer/GhostUpgrade/GridContainer/BoxContainer4"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="UpgradeNow" type="Label" parent="HBoxContainer/GhostUpgrade/GridContainer/BoxContainer4/BoxContainer3"]
+layout_mode = 2
+text = "1"
+
+[node name="DamageUpgradeGhost" type="TextureButton" parent="HBoxContainer/GhostUpgrade/GridContainer/BoxContainer4/BoxContainer3"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
@@ -275,7 +540,31 @@ texture_pressed = ExtResource("28_n876g")
 texture_hover = ExtResource("29_16xxm")
 texture_disabled = ExtResource("30_h1vpa")
 
-[node name="AttackSpeedUpgradeGhost" type="TextureButton" parent="HBoxContainer/GhostUpgrade/GridContainer"]
+[node name="UpgradeFuture" type="Label" parent="HBoxContainer/GhostUpgrade/GridContainer/BoxContainer4/BoxContainer3"]
+layout_mode = 2
+text = "1"
+horizontal_alignment = 2
+
+[node name="Cost" type="Label" parent="HBoxContainer/GhostUpgrade/GridContainer/BoxContainer4"]
+layout_mode = 2
+text = "Cost:"
+horizontal_alignment = 1
+
+[node name="BoxContainer5" type="BoxContainer" parent="HBoxContainer/GhostUpgrade/GridContainer"]
+layout_mode = 2
+alignment = 1
+vertical = true
+
+[node name="BoxContainer3" type="BoxContainer" parent="HBoxContainer/GhostUpgrade/GridContainer/BoxContainer5"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="UpgradeNow" type="Label" parent="HBoxContainer/GhostUpgrade/GridContainer/BoxContainer5/BoxContainer3"]
+layout_mode = 2
+text = "1"
+
+[node name="AttackSpeedUpgradeGhost" type="TextureButton" parent="HBoxContainer/GhostUpgrade/GridContainer/BoxContainer5/BoxContainer3"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
@@ -285,18 +574,38 @@ texture_pressed = ExtResource("40_x5oye")
 texture_hover = ExtResource("41_fwd4m")
 texture_disabled = ExtResource("42_8vbwt")
 
+[node name="UpgradeFuture" type="Label" parent="HBoxContainer/GhostUpgrade/GridContainer/BoxContainer5/BoxContainer3"]
+layout_mode = 2
+text = "1"
+horizontal_alignment = 2
+
+[node name="Cost" type="Label" parent="HBoxContainer/GhostUpgrade/GridContainer/BoxContainer5"]
+layout_mode = 2
+text = "Cost:"
+horizontal_alignment = 1
+
 [node name="GodPowers" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
 
 [node name="GridContainer" type="GridContainer" parent="HBoxContainer/GodPowers"]
 layout_mode = 2
+theme_override_constants/v_separation = 20
 
 [node name="Title" type="Label" parent="HBoxContainer/GodPowers/GridContainer"]
 layout_mode = 2
 text = "God Powers"
 horizontal_alignment = 1
 
-[node name="EmpowerUpgrade" type="TextureButton" parent="HBoxContainer/GodPowers/GridContainer"]
+[node name="BoxContainer2" type="BoxContainer" parent="HBoxContainer/GodPowers/GridContainer"]
+layout_mode = 2
+alignment = 1
+vertical = true
+
+[node name="BoxContainer3" type="BoxContainer" parent="HBoxContainer/GodPowers/GridContainer/BoxContainer2"]
+layout_mode = 2
+alignment = 1
+
+[node name="EmpowerUpgrade" type="TextureButton" parent="HBoxContainer/GodPowers/GridContainer/BoxContainer2/BoxContainer3"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
@@ -305,7 +614,22 @@ texture_pressed = ExtResource("44_ufaf1")
 texture_hover = ExtResource("45_jy6t0")
 texture_disabled = ExtResource("46_ydqfl")
 
-[node name="ShieldUpgrade" type="TextureButton" parent="HBoxContainer/GodPowers/GridContainer"]
+[node name="Cost" type="Label" parent="HBoxContainer/GodPowers/GridContainer/BoxContainer2"]
+layout_mode = 2
+text = "Cost: 
+10000g"
+horizontal_alignment = 1
+
+[node name="BoxContainer3" type="BoxContainer" parent="HBoxContainer/GodPowers/GridContainer"]
+layout_mode = 2
+alignment = 1
+vertical = true
+
+[node name="BoxContainer3" type="BoxContainer" parent="HBoxContainer/GodPowers/GridContainer/BoxContainer3"]
+layout_mode = 2
+alignment = 1
+
+[node name="ShieldUpgrade" type="TextureButton" parent="HBoxContainer/GodPowers/GridContainer/BoxContainer3/BoxContainer3"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
@@ -314,17 +638,23 @@ texture_pressed = ExtResource("48_7gs1k")
 texture_hover = ExtResource("49_ngw7e")
 texture_disabled = ExtResource("50_up0gj")
 
-[connection signal="pressed" from="HBoxContainer/SlimUpgrads/GridContainer/HpUpgradeSlime" to="." method="_on_upgrade_pressed" binds= ["Slime", 1]]
-[connection signal="pressed" from="HBoxContainer/SlimUpgrads/GridContainer/AllyUpgradeSlime" to="." method="_on_upgrade_pressed" binds= ["Slime", 2]]
-[connection signal="pressed" from="HBoxContainer/SlimUpgrads/GridContainer/DamageUpgradeSlime" to="." method="_on_upgrade_pressed" binds= ["Slime", 3]]
-[connection signal="pressed" from="HBoxContainer/SlimUpgrads/GridContainer/AttackSpeedUpgradeSlime" to="." method="_on_upgrade_pressed" binds= ["Slime", 4]]
-[connection signal="pressed" from="HBoxContainer/ImpUpgrade/GridContainer/HpUpgradeImp" to="." method="_on_upgrade_pressed" binds= ["Imp", 1]]
-[connection signal="pressed" from="HBoxContainer/ImpUpgrade/GridContainer/AllyUpgradeImp" to="." method="_on_upgrade_pressed" binds= ["Imp", 2]]
-[connection signal="pressed" from="HBoxContainer/ImpUpgrade/GridContainer/DamageUpgradeImp" to="." method="_on_upgrade_pressed" binds= ["Imp", 3]]
-[connection signal="pressed" from="HBoxContainer/ImpUpgrade/GridContainer/AttackSpeedUpgradeImp" to="." method="_on_upgrade_pressed" binds= ["Imp", 4]]
-[connection signal="pressed" from="HBoxContainer/GhostUpgrade/GridContainer/HpUpgradeGhost" to="." method="_on_upgrade_pressed" binds= ["Ghost", 1]]
-[connection signal="pressed" from="HBoxContainer/GhostUpgrade/GridContainer/AllyUpgradeGhost" to="." method="_on_upgrade_pressed" binds= ["Ghost", 2]]
-[connection signal="pressed" from="HBoxContainer/GhostUpgrade/GridContainer/DamageUpgradeGhost" to="." method="_on_upgrade_pressed" binds= ["Ghost", 3]]
-[connection signal="pressed" from="HBoxContainer/GhostUpgrade/GridContainer/AttackSpeedUpgradeGhost" to="." method="_on_upgrade_pressed" binds= ["Ghost", 4]]
-[connection signal="pressed" from="HBoxContainer/GodPowers/GridContainer/EmpowerUpgrade" to="." method="_on_god_upgrade_pressed" binds= ["boost"]]
-[connection signal="pressed" from="HBoxContainer/GodPowers/GridContainer/ShieldUpgrade" to="." method="_on_god_upgrade_pressed" binds= ["shield"]]
+[node name="Cost" type="Label" parent="HBoxContainer/GodPowers/GridContainer/BoxContainer3"]
+layout_mode = 2
+text = "Cost: 
+10000g"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="HBoxContainer/SlimUpgrads/GridContainer/BoxContainer/BoxContainer/HpUpgradeSlime" to="." method="_on_upgrade_pressed" binds= ["Slime", 1]]
+[connection signal="pressed" from="HBoxContainer/SlimUpgrads/GridContainer/BoxContainer2/BoxContainer3/AllyUpgradeSlime" to="." method="_on_upgrade_pressed" binds= ["Slime", 2]]
+[connection signal="pressed" from="HBoxContainer/SlimUpgrads/GridContainer/BoxContainer3/BoxContainer3/DamageUpgradeSlime" to="." method="_on_upgrade_pressed" binds= ["Slime", 3]]
+[connection signal="pressed" from="HBoxContainer/SlimUpgrads/GridContainer/BoxContainer4/BoxContainer3/AttackSpeedUpgradeSlime" to="." method="_on_upgrade_pressed" binds= ["Slime", 4]]
+[connection signal="pressed" from="HBoxContainer/ImpUpgrade/GridContainer/BoxContainer2/BoxContainer3/HpUpgradeImp" to="." method="_on_upgrade_pressed" binds= ["Imp", 1]]
+[connection signal="pressed" from="HBoxContainer/ImpUpgrade/GridContainer/BoxContainer3/BoxContainer3/AllyUpgradeImp" to="." method="_on_upgrade_pressed" binds= ["Imp", 2]]
+[connection signal="pressed" from="HBoxContainer/ImpUpgrade/GridContainer/BoxContainer4/BoxContainer3/DamageUpgradeImp" to="." method="_on_upgrade_pressed" binds= ["Imp", 3]]
+[connection signal="pressed" from="HBoxContainer/ImpUpgrade/GridContainer/BoxContainer5/BoxContainer3/AttackSpeedUpgradeImp" to="." method="_on_upgrade_pressed" binds= ["Imp", 4]]
+[connection signal="pressed" from="HBoxContainer/GhostUpgrade/GridContainer/BoxContainer2/BoxContainer3/HpUpgradeGhost" to="." method="_on_upgrade_pressed" binds= ["Ghost", 1]]
+[connection signal="pressed" from="HBoxContainer/GhostUpgrade/GridContainer/BoxContainer3/BoxContainer3/AllyUpgradeGhost" to="." method="_on_upgrade_pressed" binds= ["Ghost", 2]]
+[connection signal="pressed" from="HBoxContainer/GhostUpgrade/GridContainer/BoxContainer4/BoxContainer3/DamageUpgradeGhost" to="." method="_on_upgrade_pressed" binds= ["Ghost", 3]]
+[connection signal="pressed" from="HBoxContainer/GhostUpgrade/GridContainer/BoxContainer5/BoxContainer3/AttackSpeedUpgradeGhost" to="." method="_on_upgrade_pressed" binds= ["Ghost", 4]]
+[connection signal="pressed" from="HBoxContainer/GodPowers/GridContainer/BoxContainer2/BoxContainer3/EmpowerUpgrade" to="." method="_on_god_upgrade_pressed" binds= ["boost"]]
+[connection signal="pressed" from="HBoxContainer/GodPowers/GridContainer/BoxContainer3/BoxContainer3/ShieldUpgrade" to="." method="_on_god_upgrade_pressed" binds= ["shield"]]
