@@ -77,7 +77,7 @@ text = "Bosses Left: 0"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 6
-text = "Attampt Nr: 0"
+text = "Attempt Nr: 0"
 
 [node name="CreatureTracker" type="Label" parent="StatsContainer"]
 unique_name_in_owner = true
@@ -142,6 +142,7 @@ metadata/_edit_use_anchors_ = true
 [node name="PlayButton" type="TextureButton" parent="Control"]
 unique_name_in_owner = true
 layout_mode = 2
+tooltip_text = "Normal Speed"
 texture_normal = ExtResource("12_83aqw")
 texture_pressed = ExtResource("13_rhvw1")
 texture_hover = ExtResource("14_a7odq")
@@ -150,6 +151,7 @@ texture_disabled = ExtResource("15_wcd2d")
 [node name="FFButton" type="TextureButton" parent="Control"]
 unique_name_in_owner = true
 layout_mode = 2
+tooltip_text = "Double Speed"
 texture_normal = ExtResource("16_n0m0l")
 texture_pressed = ExtResource("17_umkqu")
 texture_hover = ExtResource("18_huesp")
