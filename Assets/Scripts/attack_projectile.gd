@@ -32,9 +32,9 @@ func init(_target : RigidBody2D, _shooter : RigidBody2D, _position : Vector2, _a
 	attack_damage = _attack_damage
 	attack_target = _attack_target
 
-func _process(delta: float):
+func _physics_process(delta: float) -> void:
 	move_towards_target(delta)
-	if global_position == target.global_position:
+	if global_position.distance_to(target.global_position) <= 8:
 		queue_free()
 
 func move_towards_target(delta: float):
@@ -42,7 +42,8 @@ func move_towards_target(delta: float):
 		var direction = (target_position - position).normalized()
 		position += direction * speed * delta
 	else:
-		queue_free()
+		if not target.is_alive:
+			queue_free()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group(attack_target) and not target_hit:
@@ -51,7 +52,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 				target_hit = true
 		else:
 			target_hit = true
-		
+
 		body.call_deferred("take_damage",attack_damage, shooter)
 		
 		if not target_hit:
