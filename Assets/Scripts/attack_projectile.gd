@@ -8,6 +8,7 @@ var attack_target
 var projectile_sprite
 @onready var sprite = $Sprite
 
+
 func _ready():
 	match shooter.creature_type:
 		0:
