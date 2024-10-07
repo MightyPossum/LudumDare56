@@ -129,4 +129,3 @@ func handle_god_power_upgrade(power_type : String):
 		else:
 			shield_power_time += shield_power_time_upgrade
 		creature_upgrade_costs.get(CREATURE_TYPES.GOD).shield *= 2
-
