@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cgo87160hq6s6" path="res://Assets/Scenes/creature_attack.tscn" id="4_tc2ak"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4etqh"]
-radius = 16.0
+radius = 6.0
 
 [sub_resource type="Animation" id="Animation_cqfjv"]
 resource_name = "Hurt"
@@ -107,7 +107,7 @@ bg_color = Color(0.252028, 0.252028, 0.252028, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hqvuu"]
 bg_color = Color(0.207843, 0.713726, 0.231373, 1)
 
-[node name="Imp" type="CharacterBody2D" groups=["ally"]]
+[node name="Imp" type="RigidBody2D" groups=["ally"]]
 z_index = 1
 collision_layer = 2
 collision_mask = 3
@@ -116,6 +116,7 @@ attack_projectile = ExtResource("2_g6v02")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
+z_index = 2
 shape = SubResource("CircleShape2D_4etqh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends RigidBody2D
 
 var max_health: int = 100
 var enemy_queue: Array = []
@@ -104,7 +104,7 @@ func _physics_process(delta: float) -> void:
 				await get_tree().create_timer(attack_speed/2).timeout
 			in_combat = false
 
-func enemy_in_range() -> CharacterBody2D:
+func enemy_in_range() -> RigidBody2D:
 	for enemy in enemy_queue:
 		if not enemy.is_alive:
 			enemy_queue.erase(enemy)
@@ -128,14 +128,14 @@ func die() -> void:
 	%Area.monitorable = false
 	%Collider.disabled = true
 
-func attack(enemy : CharacterBody2D) -> void:
+func attack(enemy : RigidBody2D) -> void:
 	var bullet = attack_projectile.instantiate()
 	bullet.init(enemy, self, global_position,attack_damage,attack_target)
 	%CreatureAttack.play()
 	get_parent().add_child(bullet)
 	
 	
-func take_damage(damage: int, _damager : CharacterBody2D) -> void:
+func take_damage(damage: int, _damager : RigidBody2D) -> void:
 	if is_alive and not has_shield:
 		current_health = max(current_health - damage, 0)
 		health_bar.value = current_health

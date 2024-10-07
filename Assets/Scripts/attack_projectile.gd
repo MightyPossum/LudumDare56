@@ -1,7 +1,7 @@
 extends Node2D
 @export var speed: float = 200.0
-var shooter : CharacterBody2D
-var target: CharacterBody2D
+var shooter : RigidBody2D
+var target: RigidBody2D
 var target_position : Vector2
 var attack_damage = 0
 var attack_target
@@ -23,7 +23,7 @@ func _ready():
 	await get_tree().create_timer(2).timeout
 	queue_free()
 
-func init(_target : CharacterBody2D, _shooter : CharacterBody2D, _position : Vector2, _attack_damage : int, _attack_target : String) -> void:
+func init(_target : RigidBody2D, _shooter : RigidBody2D, _position : Vector2, _attack_damage : int, _attack_target : String) -> void:
 	target = _target
 	target_position = target.global_position
 	shooter = _shooter

@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends RigidBody2D
 
 @export var max_health : int = 100
 @export var kill_value : int = 1000
@@ -88,7 +88,7 @@ func _physics_process(delta: float) -> void:
 
 
 
-func enemy_in_range() -> CharacterBody2D:
+func enemy_in_range() -> RigidBody2D:
 	for enemy in enemy_queue:
 		if not enemy.is_alive:
 			enemy_queue.erase(enemy)
@@ -126,7 +126,7 @@ func die() -> void:
 	%Area.monitorable = false
 	%Collider.disabled = true
 	
-func attack(enemy : CharacterBody2D) -> void:
+func attack(enemy : RigidBody2D) -> void:
 	if enemy:
 		var bullet = attack_projectile.instantiate()
 		bullet.init(enemy, self, global_position,attack_damage,attack_target)
@@ -134,7 +134,7 @@ func attack(enemy : CharacterBody2D) -> void:
 
 		get_parent().add_child(bullet)
 
-func take_damage(damage: int, damager : CharacterBody2D) -> void:
+func take_damage(damage: int, damager : RigidBody2D) -> void:
 	if is_alive:
 		if enemy_queue.size() <= 0:
 			enemy_queue.append(damager)

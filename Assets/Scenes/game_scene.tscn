@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" path="res://Assets/Scenes/base.tscn" id="6_08l80"]
 [ext_resource type="PackedScene" uid="uid://dqlbwctppngov" path="res://Assets/Scenes/BossWall.tscn" id="7_agkpi"]
 [ext_resource type="Texture2D" uid="uid://d342nyw4sifxk" path="res://Assets/Sprites/Boss.png" id="7_f7qsy"]
-[ext_resource type="Texture2D" uid="uid://bfy4vbu66bwyu" path="res://Assets/Background/Background.png" id="9_2u7at"]
+[ext_resource type="Texture2D" uid="uid://6a63ch18r461" path="res://Assets/Background/Background.png" id="9_2u7at"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_57g3h"]
 vertices = PackedVector2Array(225, 3099.07, -322.117, 3102.92, -323.867, 2967.93, -3, 2965.94, 225, 3002.94, -2.99219, 2904.94, 261, 2903.36, 261, 3003.16, 549, 3005.07, 505, 3004.78, 505, 2901.89, 549, 2901.62, 452.992, 3004.44, 409, 3004.15, 409, 2902.47, 452.992, 2902.2, 357, 3003.8, 313, 3003.51, 313, 2903.04, 357, 2902.77, 1821.55, 1168.26, 1814, 1399.84, 1322.08, 1390, 1121, 1341, 1600.82, 1181, 765, 1489, 729.32, 1489, 731, 1437, 737, 1437, 765, 1401.31, 737, 1241, 1599.46, 2456.99, 1407.13, 2459.84, 1416.87, 1732.57, 1588.7, 1809, 1602.29, 2264, 512.602, 688.781, 161, 696.758, 161, 669, 353, 669, 1601, 1521, 1321.08, 1521, 1186, 2361.98, 1186, 2495, 930.906, 2495, 667.938, 2361.01, 664.938, 2900.94, 934.094, 2839.07, 688.07, 3006, 609, 1241, 609, 1213, 777, 1213, 353, 573, 545, 573, 545, 441, 65, 441, 65, 413, 661.219, 413, 669.219, 765, 520.602, 888.867, 1109.5, 881.117, 993, 765, 1117.5, 729.156, 993, 637, 1813.16, 637, 1609.19, 720.828, 1141, 1181, 1121, 1177, 1141, 1117.21, 777, 1124.79, 829, 1177, 829, 1341, 1119.84, 1390, 1601, 1724.57, 1814, 1544, 1805.33, 1809, 1823.03, 2264, 1824.97, 3006, 1655.92, 2463, 601, 3005.41, 601, 2901.32, 1659.08, 2833.93)
@@ -99,16 +99,37 @@ collision_mask = 7
 
 [node name="Boss4" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(864, 2016)
+max_health = 100
+kill_value = 1000
+attack_damage = 10
+attack_speed_delay = 0.7
+shooting_range = 100
+movement_speed = 100.0
+detection_range = 100
 is_boss = true
 sprite = ExtResource("7_f7qsy")
 
 [node name="Boss3" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(1280, 1656)
+max_health = 100
+kill_value = 1000
+attack_damage = 10
+attack_speed_delay = 0.7
+shooting_range = 100
+movement_speed = 100.0
+detection_range = 100
 is_boss = true
 sprite = ExtResource("7_f7qsy")
 
 [node name="Boss2" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(546, 888)
+max_health = 100
+kill_value = 1000
+attack_damage = 10
+attack_speed_delay = 0.7
+shooting_range = 100
+movement_speed = 100.0
+detection_range = 100
 is_boss = true
 sprite = ExtResource("7_f7qsy")
 
@@ -127,15 +148,24 @@ sprite = ExtResource("7_f7qsy")
 [node name="Enemy" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(104, 23)
 max_health = 40
+kill_value = 1000
 attack_damage = 1
+attack_speed_delay = 0.7
 shooting_range = 50
 movement_speed = 60.0
+detection_range = 100
+is_boss = false
 
 [node name="Enemy2" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(368, 167)
+max_health = 100
 kill_value = 1250
 attack_damage = 12
 attack_speed_delay = 0.65
+shooting_range = 100
+movement_speed = 100.0
+detection_range = 100
+is_boss = false
 
 [node name="Enemy3" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(232, 286)
@@ -145,6 +175,8 @@ attack_damage = 15
 attack_speed_delay = 0.6
 shooting_range = 150
 movement_speed = 150.0
+detection_range = 100
+is_boss = false
 
 [node name="Enemy5" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(295, 472)
@@ -154,6 +186,8 @@ attack_damage = 15
 attack_speed_delay = 0.6
 shooting_range = 150
 movement_speed = 150.0
+detection_range = 100
+is_boss = false
 
 [node name="Enemy7" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(432, 336)
@@ -163,6 +197,8 @@ attack_damage = 15
 attack_speed_delay = 0.6
 shooting_range = 150
 movement_speed = 150.0
+detection_range = 100
+is_boss = false
 
 [node name="Enemy8" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(392, 432)
@@ -172,6 +208,8 @@ attack_damage = 15
 attack_speed_delay = 0.6
 shooting_range = 150
 movement_speed = 150.0
+detection_range = 100
+is_boss = false
 
 [node name="Enemy11" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(448, 440)
@@ -181,6 +219,8 @@ attack_damage = 15
 attack_speed_delay = 0.6
 shooting_range = 150
 movement_speed = 150.0
+detection_range = 100
+is_boss = false
 
 [node name="Enemy12" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(562, 376)
@@ -190,6 +230,8 @@ attack_damage = 15
 attack_speed_delay = 0.6
 shooting_range = 150
 movement_speed = 150.0
+detection_range = 100
+is_boss = false
 
 [node name="Enemy13" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(566, 472)
@@ -199,6 +241,8 @@ attack_damage = 15
 attack_speed_delay = 0.6
 shooting_range = 150
 movement_speed = 150.0
+detection_range = 100
+is_boss = false
 
 [node name="Enemy14" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(536, 422)
@@ -208,6 +252,8 @@ attack_damage = 15
 attack_speed_delay = 0.6
 shooting_range = 150
 movement_speed = 150.0
+detection_range = 100
+is_boss = false
 
 [node name="Enemy17" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(640, 384)
@@ -217,6 +263,8 @@ attack_damage = 15
 attack_speed_delay = 0.6
 shooting_range = 150
 movement_speed = 150.0
+detection_range = 100
+is_boss = false
 
 [node name="Enemy18" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(636, 464)
@@ -226,6 +274,8 @@ attack_damage = 15
 attack_speed_delay = 0.6
 shooting_range = 150
 movement_speed = 150.0
+detection_range = 100
+is_boss = false
 
 [node name="Enemy19" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(712, 422)
@@ -236,6 +286,7 @@ attack_speed_delay = 0.55
 shooting_range = 200
 movement_speed = 200.0
 detection_range = 300
+is_boss = false
 
 [node name="Enemy20" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(832, 454)
@@ -246,6 +297,7 @@ attack_speed_delay = 0.55
 shooting_range = 200
 movement_speed = 200.0
 detection_range = 200
+is_boss = false
 
 [node name="Enemy22" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(784, 264)
@@ -256,6 +308,7 @@ attack_speed_delay = 0.55
 shooting_range = 250
 movement_speed = 200.0
 detection_range = 250
+is_boss = false
 
 [node name="Enemy24" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(856, 253)
@@ -266,6 +319,7 @@ attack_speed_delay = 0.55
 shooting_range = 250
 movement_speed = 200.0
 detection_range = 250
+is_boss = false
 
 [node name="Enemy23" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(848, 328)
@@ -276,6 +330,7 @@ attack_speed_delay = 0.55
 shooting_range = 250
 movement_speed = 200.0
 detection_range = 250
+is_boss = false
 
 [node name="Enemy21" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(768, 357)
@@ -286,6 +341,7 @@ attack_speed_delay = 0.55
 shooting_range = 200
 movement_speed = 200.0
 detection_range = 200
+is_boss = false
 
 [node name="Enemy9" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(297, 357)
@@ -295,6 +351,8 @@ attack_damage = 15
 attack_speed_delay = 0.6
 shooting_range = 150
 movement_speed = 150.0
+detection_range = 100
+is_boss = false
 
 [node name="Enemy4" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(128, 272)
@@ -305,33 +363,51 @@ attack_speed_delay = 0.6
 shooting_range = 150
 movement_speed = 150.0
 detection_range = 150
+is_boss = false
 
 [node name="Enemy6" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(343, 200)
+max_health = 100
 kill_value = 1250
 attack_damage = 15
 attack_speed_delay = 0.65
+shooting_range = 100
+movement_speed = 100.0
 detection_range = 120
+is_boss = false
 
 [node name="Enemy15" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(247, 218)
+max_health = 100
 kill_value = 1500
 attack_damage = 20
 attack_speed_delay = 0.5
+shooting_range = 100
+movement_speed = 100.0
 detection_range = 120
+is_boss = false
 
 [node name="Enemy16" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(289, 271)
+max_health = 100
 kill_value = 1500
 attack_damage = 20
 attack_speed_delay = 0.5
+shooting_range = 100
+movement_speed = 100.0
 detection_range = 120
+is_boss = false
 
 [node name="Enemy10" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(312, 23)
 max_health = 80
+kill_value = 1000
+attack_damage = 10
+attack_speed_delay = 0.7
 shooting_range = 60
 movement_speed = 70.0
+detection_range = 100
+is_boss = false
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -5

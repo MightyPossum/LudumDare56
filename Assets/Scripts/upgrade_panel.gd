@@ -66,7 +66,7 @@ func update_upgrade_costs():
 				if not GLOBALVARIABLES.creature_defaults.get(buttons[button][0]).get("summon_amount"):
 					button.disabled = true
 				else:
-					button.disabled = false
+					button.disabled = false		
 
 
 		#button.text = str(GLOBALVARIABLES.creature_upgrade_costs.get(buttons[button][0]).get(buttons.get(button)[1]))
