@@ -67,18 +67,6 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_116yy")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3lqij"]
-texture = ExtResource("3_1g00r")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kndfy"]
-texture = ExtResource("4_xybg5")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_74gj5"]
-texture = ExtResource("3_1g00r")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1ggge"]
-texture = ExtResource("4_1s3jq")
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_olfad"]
 texture = ExtResource("3_1g00r")
 
@@ -90,6 +78,18 @@ texture = ExtResource("3_1g00r")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iaf0f"]
 texture = ExtResource("5_y0kwh")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3lqij"]
+texture = ExtResource("3_1g00r")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kndfy"]
+texture = ExtResource("4_xybg5")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_74gj5"]
+texture = ExtResource("3_1g00r")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1ggge"]
+texture = ExtResource("4_1s3jq")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ubrqn"]
 texture = ExtResource("3_1g00r")
@@ -218,20 +218,6 @@ layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="NewGame" type="Button" parent="MainMenu/HBoxContainer/VBoxContainer/MenuOptions"]
-layout_mode = 2
-theme_override_colors/font_disabled_color = Color(0, 0, 0, 0.501961)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 0.501961)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 0.501961)
-theme_override_colors/font_color = Color(0, 0, 0, 0.521569)
-theme_override_font_sizes/font_size = 30
-theme_override_styles/disabled = SubResource("StyleBoxTexture_3lqij")
-theme_override_styles/hover = SubResource("StyleBoxTexture_kndfy")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_74gj5")
-theme_override_styles/normal = SubResource("StyleBoxTexture_1ggge")
-text = "New Game"
-
 [node name="LoadGame" type="Button" parent="MainMenu/HBoxContainer/VBoxContainer/MenuOptions"]
 unique_name_in_owner = true
 layout_mode = 2
@@ -246,6 +232,20 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_ix6fs")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_cogry")
 theme_override_styles/normal = SubResource("StyleBoxTexture_iaf0f")
 text = "Continue"
+
+[node name="NewGame" type="Button" parent="MainMenu/HBoxContainer/VBoxContainer/MenuOptions"]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 0.501961)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0.501961)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 0.501961)
+theme_override_colors/font_color = Color(0, 0, 0, 0.521569)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/disabled = SubResource("StyleBoxTexture_3lqij")
+theme_override_styles/hover = SubResource("StyleBoxTexture_kndfy")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_74gj5")
+theme_override_styles/normal = SubResource("StyleBoxTexture_1ggge")
+text = "New Game"
 
 [node name="HowTo" type="Button" parent="MainMenu/HBoxContainer/VBoxContainer/MenuOptions"]
 layout_mode = 2
@@ -303,7 +303,7 @@ libraries = {
 "": SubResource("AnimationLibrary_dltme")
 }
 
-[connection signal="pressed" from="MainMenu/HBoxContainer/VBoxContainer/MenuOptions/NewGame" to="MainMenu" method="_on_new_game_pressed"]
 [connection signal="pressed" from="MainMenu/HBoxContainer/VBoxContainer/MenuOptions/LoadGame" to="MainMenu" method="_on_load_game_pressed"]
+[connection signal="pressed" from="MainMenu/HBoxContainer/VBoxContainer/MenuOptions/NewGame" to="MainMenu" method="_on_new_game_pressed"]
 [connection signal="pressed" from="MainMenu/HBoxContainer/VBoxContainer/MenuOptions/HowTo" to="MainMenu" method="_on_how_to_pressed"]
 [connection signal="pressed" from="MainMenu/HBoxContainer/VBoxContainer/MenuOptions/ExitGame" to="MainMenu" method="_on_exit_game_pressed"]
