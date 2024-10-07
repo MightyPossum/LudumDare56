@@ -18,7 +18,7 @@ func _ready():
 
 func _process(_delta):
 	bosses_left.text = "Bosses Left: " + str(GLOBALVARIABLES.bosses_left)
-	attempt_tracker.text = "Attampt Nr: " + str(GLOBALVARIABLES.round_counter)
+	attempt_tracker.text = "Attempt Nr: " + str(GLOBALVARIABLES.round_counter)
 	ally_tracker.text = "Creatures Left: " + str(GLOBALVARIABLES.ally_count)
 	gold.text = "Gold: " + str(GLOBALVARIABLES.player_resource)
 
