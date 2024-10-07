@@ -3,7 +3,7 @@ extends Node2D
 var shooter : RigidBody2D
 var target: RigidBody2D
 var target_position : Vector2
-var attack_damage = 0
+var attack_damage : float = 0
 var attack_target
 var projectile_sprite
 var target_hit = false
@@ -24,7 +24,7 @@ func _ready():
 	await get_tree().create_timer(2, false,true).timeout
 	queue_free()
 
-func init(_target : RigidBody2D, _shooter : RigidBody2D, _position : Vector2, _attack_damage : int, _attack_target : String) -> void:
+func init(_target : RigidBody2D, _shooter : RigidBody2D, _position : Vector2, _attack_damage : float, _attack_target : String) -> void:
 	target = _target
 	target_position = target.global_position
 	shooter = _shooter
@@ -54,5 +54,9 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			target_hit = true
 		
 		body.call_deferred("take_damage",attack_damage, shooter)
+		
+		if not target_hit:
+			attack_damage = attack_damage/1.25
+
 		queue_free();
 	
