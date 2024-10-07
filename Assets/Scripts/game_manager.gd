@@ -40,7 +40,8 @@ func _physics_process(_delta: float) -> void:
 	
 	if Input.is_action_pressed("cheat"):
 		GLOBALVARIABLES.player_resource += 50000
-		GLOBALVARIABLES.main_ui.update_upgrade_costs()
+		GLOBALVARIABLES.main_ui.update_lables()
+
 	if Input.is_action_just_pressed("cheat_speed"):
 		Engine.time_scale += 1
 	

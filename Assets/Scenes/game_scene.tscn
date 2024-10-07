@@ -1,12 +1,12 @@
-[gd_scene load_steps=13 format=4 uid="uid://dutubfq3i05yk"]
+[gd_scene load_steps=17 format=4 uid="uid://dutubfq3i05yk"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/game_manager.gd" id="1_1m18h"]
 [ext_resource type="PackedScene" uid="uid://bd3mdc4w83hhw" path="res://Assets/Scenes/main_ui.tscn" id="2_b87o6"]
 [ext_resource type="Script" path="res://Assets/Scripts/camera.gd" id="2_hn1cj"]
-[ext_resource type="PackedScene" uid="uid://uf5lqqk6jeoy" path="res://Assets/Scenes/pause_menu.tscn" id="3_e70dw"]
+[ext_resource type="PackedScene" path="res://Assets/Scenes/pause_menu.tscn" id="3_e70dw"]
 [ext_resource type="TileSet" uid="uid://cht8s0ttm77by" path="res://Assets/game_scene.tres" id="3_wkmjf"]
 [ext_resource type="PackedScene" uid="uid://dhkfonlnmcmr3" path="res://Assets/Scenes/enemy.tscn" id="4_1pvox"]
-[ext_resource type="PackedScene" uid="uid://lbo6xjbw7r3h" path="res://Assets/Scenes/base.tscn" id="6_08l80"]
+[ext_resource type="PackedScene" path="res://Assets/Scenes/base.tscn" id="6_08l80"]
 [ext_resource type="PackedScene" uid="uid://dqlbwctppngov" path="res://Assets/Scenes/BossWall.tscn" id="7_agkpi"]
 [ext_resource type="Texture2D" uid="uid://d342nyw4sifxk" path="res://Assets/Sprites/Boss.png" id="7_f7qsy"]
 [ext_resource type="Texture2D" uid="uid://6a63ch18r461" path="res://Assets/Background/Background.png" id="9_2u7at"]
@@ -130,6 +130,12 @@ sprite = ExtResource("7_f7qsy")
 
 [node name="Boss2" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(546, 888)
+max_health = 50000
+kill_value = 100000
+attack_damage = 1000
+attack_speed_delay = 1.0
+shooting_range = 275
+detection_range = 275
 is_boss = true
 sprite = ExtResource("7_f7qsy")
 
@@ -320,7 +326,29 @@ sprite = ExtResource("9_x7tql")
 
 [node name="Enemy21" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(1416, 404)
-max_health = 500
+max_health = 700
+kill_value = 6000
+attack_damage = 50
+attack_speed_delay = 0.55
+shooting_range = 200
+movement_speed = 200.0
+detection_range = 200
+sprite = ExtResource("9_x7tql")
+
+[node name="Enemy28" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(1488, 454)
+max_health = 700
+kill_value = 6000
+attack_damage = 50
+attack_speed_delay = 0.55
+shooting_range = 200
+movement_speed = 200.0
+detection_range = 200
+sprite = ExtResource("9_x7tql")
+
+[node name="Enemy29" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(1532, 430)
+max_health = 700
 kill_value = 5000
 attack_damage = 50
 attack_speed_delay = 0.55
@@ -329,10 +357,218 @@ movement_speed = 200.0
 detection_range = 200
 sprite = ExtResource("9_x7tql")
 
+[node name="Enemy30" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(1392, 480)
+max_health = 700
+kill_value = 6000
+attack_damage = 50
+attack_speed_delay = 0.55
+shooting_range = 200
+movement_speed = 200.0
+detection_range = 200
+sprite = ExtResource("9_x7tql")
+
+[node name="Enemy31" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(1520, 512)
+max_health = 800
+kill_value = 6500
+attack_damage = 75
+attack_speed_delay = 0.55
+shooting_range = 200
+movement_speed = 200.0
+detection_range = 200
+sprite = ExtResource("9_x7tql")
+
+[node name="Enemy32" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(1428, 544)
+max_health = 300
+kill_value = 6500
+attack_damage = 150
+attack_speed_delay = 0.45
+shooting_range = 200
+movement_speed = 200.0
+detection_range = 200
+sprite = ExtResource("9_x7tql")
+
+[node name="Enemy33" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(1520, 663)
+max_health = 800
+kill_value = 7000
+attack_damage = 75
+attack_speed_delay = 0.45
+shooting_range = 200
+movement_speed = 200.0
+detection_range = 200
+sprite = ExtResource("9_x7tql")
+
+[node name="Enemy34" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(1416, 680)
+max_health = 800
+kill_value = 8250
+attack_damage = 75
+attack_speed_delay = 0.45
+shooting_range = 200
+movement_speed = 200.0
+detection_range = 200
+sprite = ExtResource("9_x7tql")
+
+[node name="Enemy35" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(1464, 600)
+max_health = 800
+kill_value = 7800
+attack_speed_delay = 0.1
+shooting_range = 200
+movement_speed = 200.0
+detection_range = 200
+sprite = ExtResource("9_x7tql")
+
+[node name="Enemy36" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(1520, 768)
+max_health = 750
+kill_value = 7500
+attack_damage = 85
+attack_speed_delay = 0.45
+shooting_range = 200
+movement_speed = 200.0
+detection_range = 200
+sprite = ExtResource("9_x7tql")
+
+[node name="Enemy38" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(1264, 808)
+max_health = 1000
+kill_value = 5550
+attack_damage = 50
+attack_speed_delay = 0.55
+shooting_range = 200
+movement_speed = 200.0
+detection_range = 200
+sprite = ExtResource("9_x7tql")
+
+[node name="Enemy39" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(1416, 952)
+max_health = 2500
+kill_value = 8125
+attack_damage = 60
+attack_speed_delay = 0.45
+shooting_range = 200
+movement_speed = 200.0
+detection_range = 200
+sprite = ExtResource("9_x7tql")
+
+[node name="Enemy40" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(1476, 1080)
+max_health = 2500
+kill_value = 8125
+attack_damage = 60
+attack_speed_delay = 0.45
+shooting_range = 200
+movement_speed = 200.0
+detection_range = 200
+sprite = ExtResource("9_x7tql")
+
+[node name="Enemy41" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(1276, 1072)
+max_health = 2500
+kill_value = 8125
+attack_damage = 60
+attack_speed_delay = 0.45
+shooting_range = 200
+movement_speed = 200.0
+detection_range = 200
+sprite = ExtResource("9_x7tql")
+
+[node name="Enemy42" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(1152, 1040)
+max_health = 2500
+kill_value = 8125
+attack_damage = 60
+attack_speed_delay = 0.45
+shooting_range = 200
+movement_speed = 200.0
+detection_range = 200
+sprite = ExtResource("9_x7tql")
+
+[node name="Enemy43" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(1240, 928)
+max_health = 2500
+kill_value = 8125
+attack_damage = 60
+attack_speed_delay = 0.45
+shooting_range = 200
+movement_speed = 200.0
+detection_range = 200
+sprite = ExtResource("9_x7tql")
+
+[node name="Enemy44" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(1120, 824)
+max_health = 2500
+kill_value = 8125
+attack_damage = 60
+attack_speed_delay = 0.45
+shooting_range = 200
+movement_speed = 200.0
+detection_range = 200
+sprite = ExtResource("9_x7tql")
+
+[node name="Enemy45" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(992, 936)
+max_health = 2500
+kill_value = 8125
+attack_damage = 60
+attack_speed_delay = 0.45
+shooting_range = 200
+movement_speed = 200.0
+detection_range = 200
+sprite = ExtResource("9_x7tql")
+
+[node name="Enemy46" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(968, 824)
+max_health = 2500
+kill_value = 8125
+attack_damage = 60
+attack_speed_delay = 0.45
+shooting_range = 200
+movement_speed = 200.0
+detection_range = 200
+sprite = ExtResource("9_x7tql")
+
+[node name="Enemy47" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(792, 736)
+max_health = 5000
+kill_value = 8125
+attack_damage = 100
+attack_speed_delay = 0.45
+shooting_range = 200
+movement_speed = 200.0
+detection_range = 200
+sprite = ExtResource("9_x7tql")
+
+[node name="Enemy48" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(792, 960)
+max_health = 5000
+kill_value = 8125
+attack_damage = 100
+attack_speed_delay = 0.45
+shooting_range = 200
+movement_speed = 200.0
+detection_range = 200
+sprite = ExtResource("9_x7tql")
+
+[node name="Enemy37" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(1380, 824)
+max_health = 750
+kill_value = 7500
+attack_damage = 75
+attack_speed_delay = 0.35
+shooting_range = 200
+movement_speed = 200.0
+detection_range = 200
+sprite = ExtResource("9_x7tql")
+
 [node name="Enemy26" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(1536, 357)
-max_health = 500
-kill_value = 5000
+max_health = 700
+kill_value = 6000
 attack_damage = 50
 attack_speed_delay = 0.55
 shooting_range = 200
@@ -342,8 +578,8 @@ sprite = ExtResource("10_302qr")
 
 [node name="Enemy27" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(1472, 372)
-max_health = 500
-kill_value = 5000
+max_health = 700
+kill_value = 6000
 attack_damage = 50
 attack_speed_delay = 0.55
 shooting_range = 200

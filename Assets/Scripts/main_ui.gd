@@ -93,9 +93,9 @@ func toggle_powers(power_type : String, apply_cooldown : bool) -> void:
 		shield_on_cooldown = false
 		%ShieldPower.disabled = false
 
-func update_upgrade_costs() -> void:
+func update_lables() -> void:
 	if in_upgrade_menu:
-		%UpgradePanel.update_upgrade_costs()
+		%UpgradePanel.update_lables()
 
 func update_gold_ui() -> void:
 	if in_upgrade_menu:
