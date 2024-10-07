@@ -122,18 +122,17 @@ func update_upgrade_costs():
 		if upgrade_cost > GLOBALVARIABLES.player_resource:
 			button.disabled = true
 		else:
-
-			if buttons[button][1] == "attack_speed":
-				if GLOBALVARIABLES.creature_defaults.get(buttons[button][0]).get("attack_speed") <= 0.12:
-					button.disabled = true
-				else:
-					button.disabled = false
 			
 			if buttons[button][0] <= 2 and buttons[button][1] != "summon_amount":
 				if not GLOBALVARIABLES.creature_defaults.get(buttons[button][0]).get("summon_amount"):
 					button.disabled = true
 				else:
-					button.disabled = false		
+					button.disabled = false
+			if buttons[button][1] == "attack_speed":
+				if GLOBALVARIABLES.creature_defaults.get(buttons[button][0]).get("attack_speed") <= 0.12:
+					button.disabled = true
+				else:
+					button.disabled = false
 
 func update_lables():
 	for label in labels_current_stats:

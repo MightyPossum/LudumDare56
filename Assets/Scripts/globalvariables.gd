@@ -64,20 +64,20 @@ var creature_upgrade_amount = {
 	CREATURE_TYPES.SLIME : {
 		"health" : 100, 
 		"summon_amount" : 1,
-		"damage" : 2,
-		"attack_speed" : -0.02,
+		"damage" : 5,
+		"attack_speed" : -0.003,
 	},
 	CREATURE_TYPES.IMP : {
 		"health" : 50,
 		"summon_amount" : 1,
-		"damage" : 5,
-		"attack_speed" : -0.03,
+		"damage" : 10,
+		"attack_speed" : -0.005,
 	},
 	CREATURE_TYPES.GHOST : {
 		"health" : 75,
 		"summon_amount" : 1,
-		"damage" : 3,
-		"attack_speed" : -0.035,
+		"damage" : 15,
+		"attack_speed" : -0.006,
 	},
 }
 
