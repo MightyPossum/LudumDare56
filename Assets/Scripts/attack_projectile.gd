@@ -6,6 +6,7 @@ var target_position : Vector2
 var attack_damage = 0
 var attack_target
 var projectile_sprite
+var target_hit = false
 @onready var sprite = $Sprite
 
 
@@ -45,7 +46,13 @@ func move_towards_target(delta: float):
 			queue_free()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group(attack_target):
+	if body.is_in_group(attack_target) and not target_hit:
+		if shooter.is_in_group("enemy"):
+			if not shooter.is_boss:
+				target_hit = true
+		else:
+			target_hit = true
+		
 		body.call_deferred("take_damage",attack_damage, shooter)
 		queue_free();
 	
