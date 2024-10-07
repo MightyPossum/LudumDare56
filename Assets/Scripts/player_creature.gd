@@ -9,6 +9,8 @@ var attack_damage: float = 10
 var movement_speed : float = 100
 var shooting_range : int = 40
 
+var exlusion_list : Array = [self]
+
 var creature_type : int = 0
 
 @onready var health_bar: ProgressBar = $health_bar
@@ -67,7 +69,7 @@ func _physics_process(delta: float) -> void:
 		if enemy_queue.size() == 0 and targeted_enemy:
 			targeted_enemy = false
 		
-		if navgationAgent2D.is_target_reachable() and ((int(navgationAgent2D.distance_to_target() > shooting_range) or targeted_enemy) or (is_location_the_base and int(navgationAgent2D.distance_to_target() > 2))):
+		if navgationAgent2D.is_target_reachable() and ((int(navgationAgent2D.distance_to_target() >= shooting_range) or targeted_enemy) or (is_location_the_base and int(navgationAgent2D.distance_to_target() > 2))):
 
 			if targeted_enemy and enemy_in_view:
 				pass
@@ -98,10 +100,10 @@ func _physics_process(delta: float) -> void:
 			if enemy:
 				attack(enemy)
 				enemy_in_view = true
-				await get_tree().create_timer(attack_speed).timeout
+				await get_tree().create_timer(attack_speed, false,true).timeout
 			else:
 				enemy_in_view = false
-				await get_tree().create_timer(attack_speed/2).timeout
+			
 			in_combat = false
 
 func enemy_in_range() -> RigidBody2D:
@@ -110,9 +112,12 @@ func enemy_in_range() -> RigidBody2D:
 			enemy_queue.erase(enemy)
 		if global_position.distance_to(enemy.global_position) < shooting_range:
 			var space_state = get_world_2d().direct_space_state
-			var query = PhysicsRayQueryParameters2D.create(global_position, enemy.global_position, collision_mask, [self])
+			var query = PhysicsRayQueryParameters2D.create(global_position, enemy.global_position, collision_mask, exlusion_list)
 			var result = space_state.intersect_ray(query)
-			if result:
+			if result.get("collider"):
+				if result.get("collider").is_in_group('ally'):
+					exlusion_list.append(result.collider)
+			if result.get("collider"):
 				if result.get("collider").is_in_group(attack_target):
 					return enemy
 
@@ -171,7 +176,7 @@ func handle_boost_activation(boost_time : float) -> void:
 	movement_speed = movement_speed*boost_power_factor
 	attack_speed = attack_speed/boost_power_factor
 
-	await get_tree().create_timer(boost_time).timeout
+	await get_tree().create_timer(boost_time, false,true).timeout
 	
 	has_boost = false
 
@@ -181,7 +186,7 @@ func handle_boost_activation(boost_time : float) -> void:
 
 func handle_shield_activation(shield_time : float) -> void:
 	has_shield = true
-	await get_tree().create_timer(shield_time).timeout
+	await get_tree().create_timer(shield_time, false,true).timeout
 	has_shield = false
 
 func calc_path():

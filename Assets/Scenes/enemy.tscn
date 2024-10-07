@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://4db6x5r4uy60" path="res://Assets/Sounds/EnemyAttack.ogg" id="4_11hsb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4etqh"]
-radius = 2.0
+radius = 12.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8kcvb"]
 resource_local_to_scene = true
@@ -103,13 +103,14 @@ visibility_layer = 3
 shape = SubResource("CircleShape2D_8kcvb")
 
 [node name="health_bar" type="ProgressBar" parent="."]
+z_index = 10
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -4.0
-offset_top = -18.0
-offset_right = 4.0
-offset_bottom = -16.0
+offset_left = -12.0
+offset_top = -24.0
+offset_right = 12.0
+offset_bottom = -18.0
 grow_horizontal = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_yl7d8")
 theme_override_styles/fill = SubResource("StyleBoxFlat_mgfq0")

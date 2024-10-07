@@ -12,6 +12,7 @@ var in_upgrade_menu : bool = false
 func _ready():
 	GLOBALVARIABLES.main_ui = self
 	set_stats_visibility(false)
+	set_speed_buttons()
 
 func _process(_delta):
 	bosses_left.text = "Bosses Left: " + str(GLOBALVARIABLES.bosses_left)
@@ -31,7 +32,7 @@ func set_stats_visibility(toggle: bool):
 	%GodPowers.visible = toggle
 	%BoostPower.disabled = true
 	%ShieldPower.disabled = true
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(2, false,true).timeout
 	toggle_powers('null', true)
 
 func set_start_wave_button_visibility(toggle: bool):
@@ -54,7 +55,7 @@ func _on_power_up_pressed(power_type : String) -> void:
 	
 	handle_power(power_type, delay_time)
 	toggle_powers(power_type, false)
-	await get_tree().create_timer(delay_time).timeout
+	await get_tree().create_timer(delay_time, false,true).timeout
 	toggle_powers(power_type, true)
 
 func handle_power(power_type : String, delay_time : float) -> void:
@@ -83,19 +84,37 @@ func toggle_powers(power_type : String, apply_cooldown : bool) -> void:
 	# we do this last, because of await
 	if apply_cooldown and power_type == "boost" and GLOBALVARIABLES.boost_power_unlocked:
 		boost_on_cooldown = true
-		await get_tree().create_timer(GLOBALVARIABLES.god_power_cooldown_time).timeout
+		await get_tree().create_timer(GLOBALVARIABLES.god_power_cooldown_time, false,true).timeout
 		boost_on_cooldown = false
 		%BoostPower.disabled = false
 	elif apply_cooldown and power_type == "shield" and GLOBALVARIABLES.shield_power_unlocked:
 		shield_on_cooldown = true
-		await get_tree().create_timer(GLOBALVARIABLES.god_power_cooldown_time).timeout
+		await get_tree().create_timer(GLOBALVARIABLES.god_power_cooldown_time, false,true).timeout
 		shield_on_cooldown = false
 		%ShieldPower.disabled = false
 
-func update_upgrade_costs() -> void:
+func update_lables() -> void:
 	if in_upgrade_menu:
-		%UpgradePanel.update_upgrade_costs()
+		%UpgradePanel.update_lables()
 
 func update_gold_ui() -> void:
 	if in_upgrade_menu:
 		%UpgradePanel.update_gold_label()
+
+func set_speed_buttons() -> void:
+	if Engine.time_scale == 1:
+		%PlayButton.disabled = true
+		%FFButton.disabled = false
+	elif Engine.time_scale == 2:
+		%PlayButton.disabled = false
+		%FFButton.disabled = true
+	
+func set_speed() -> void:
+	print("set speed")
+	if Engine.time_scale <= 1:
+		Engine.time_scale = 2
+	
+	elif Engine.time_scale >= 2:
+		Engine.time_scale = 1
+
+	set_speed_buttons() 
