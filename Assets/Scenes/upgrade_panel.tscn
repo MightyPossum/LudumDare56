@@ -121,7 +121,6 @@ layout_mode = 2
 
 [node name="GridContainer" type="GridContainer" parent="HBoxContainer/SlimUpgrads"]
 layout_mode = 2
-theme_override_constants/v_separation = 20
 
 [node name="Title" type="Label" parent="HBoxContainer/SlimUpgrads/GridContainer"]
 layout_mode = 2
@@ -280,7 +279,6 @@ layout_mode = 2
 
 [node name="GridContainer" type="GridContainer" parent="HBoxContainer/ImpUpgrade"]
 layout_mode = 2
-theme_override_constants/v_separation = 20
 
 [node name="Title" type="Label" parent="HBoxContainer/ImpUpgrade/GridContainer"]
 layout_mode = 2
@@ -435,7 +433,6 @@ layout_mode = 2
 
 [node name="GridContainer" type="GridContainer" parent="HBoxContainer/GhostUpgrade"]
 layout_mode = 2
-theme_override_constants/v_separation = 20
 
 [node name="Title" type="Label" parent="HBoxContainer/GhostUpgrade/GridContainer"]
 layout_mode = 2
