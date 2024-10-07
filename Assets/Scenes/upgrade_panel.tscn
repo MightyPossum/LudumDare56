@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b3t2t6md2csxs"]
+[gd_scene load_steps=32 format=3 uid="uid://b3t2t6md2csxs"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/upgrade_panel.gd" id="1_a1e3g"]
 [ext_resource type="AudioStream" uid="uid://1wbn8dxrpw8d" path="res://Assets/Sounds/MenuClick.ogg" id="2_i3pi7"]
@@ -10,14 +10,26 @@
 [ext_resource type="Texture2D" uid="uid://bnb22ljq650t5" path="res://Assets/Sprites/SlimeButtonPressed.png" id="7_sxcqq"]
 [ext_resource type="Texture2D" uid="uid://ccs8q2i6ixpv3" path="res://Assets/Sprites/SlimeButtonHover.png" id="8_ibf00"]
 [ext_resource type="Texture2D" uid="uid://dt8kfq2h77tn2" path="res://Assets/Sprites/SlimeButtonDisabled.png" id="9_b13hc"]
+[ext_resource type="Texture2D" uid="uid://75q3o1lqolgm" path="res://Assets/Sprites/SlimeDamageButtonNormal.png" id="11_7sdmo"]
 [ext_resource type="Texture2D" uid="uid://chjkrc6vxxmqf" path="res://Assets/Sprites/ImpButtonNormal.png" id="11_8g4n3"]
 [ext_resource type="Texture2D" uid="uid://dkch5awg7x7t3" path="res://Assets/Sprites/ImpButtonPressed.png" id="12_8g0or"]
+[ext_resource type="Texture2D" uid="uid://b8cye0x7etqag" path="res://Assets/Sprites/SlimeDamageButtonPressed.png" id="12_8tmys"]
+[ext_resource type="Texture2D" uid="uid://fstlicj3alw4" path="res://Assets/Sprites/SlimeDamageButtonHover.png" id="13_ek2wx"]
 [ext_resource type="Texture2D" uid="uid://dvfnyqgvmcm08" path="res://Assets/Sprites/ImpButtonHover.png" id="13_i00mp"]
 [ext_resource type="Texture2D" uid="uid://upj577gkeo5n" path="res://Assets/Sprites/ImpButtonDisabled.png" id="14_1em6i"]
+[ext_resource type="Texture2D" uid="uid://dow4j1mduoi4s" path="res://Assets/Sprites/SlimeDamageButtonDisabled.png" id="14_n1tnk"]
 [ext_resource type="Texture2D" uid="uid://wn7kg5o86ajt" path="res://Assets/Sprites/GhostButtonNormal.png" id="15_up7jq"]
 [ext_resource type="Texture2D" uid="uid://bu5hy84umglry" path="res://Assets/Sprites/GhostButtonPressed.png" id="16_dshk3"]
 [ext_resource type="Texture2D" uid="uid://bcrqmtts65tkm" path="res://Assets/Sprites/GhostButtonHover.png" id="17_b7l7q"]
 [ext_resource type="Texture2D" uid="uid://j5l32ht2ix6k" path="res://Assets/Sprites/GhostButtonDisabled.png" id="18_s2ctv"]
+[ext_resource type="Texture2D" uid="uid://csfjr8sxwomf0" path="res://Assets/Sprites/ImpDamageButtonNormal.png" id="19_curhn"]
+[ext_resource type="Texture2D" uid="uid://lnf803yon78f" path="res://Assets/Sprites/ImpDamageButtonPressed.png" id="20_ld377"]
+[ext_resource type="Texture2D" uid="uid://cnakpuflmvxvo" path="res://Assets/Sprites/ImpDamageButtonHover.png" id="21_7kppt"]
+[ext_resource type="Texture2D" uid="uid://bx7iiprt4utqe" path="res://Assets/Sprites/ImpDamageButtonDisabled.png" id="22_6apn2"]
+[ext_resource type="Texture2D" uid="uid://ddbjvkpbwetdh" path="res://Assets/Sprites/GhostDamageButtonNormal.png" id="27_neh2o"]
+[ext_resource type="Texture2D" uid="uid://10hiuxpj3spl" path="res://Assets/Sprites/GhostDamageButtonPressed.png" id="28_n876g"]
+[ext_resource type="Texture2D" uid="uid://fgc5xme8x0y4" path="res://Assets/Sprites/GhostDamageButtonHover.png" id="29_16xxm"]
+[ext_resource type="Texture2D" uid="uid://cjkvgelad2sds" path="res://Assets/Sprites/GhostDamageButtonDisabled.png" id="30_h1vpa"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vr7u1"]
 font_size = 60
@@ -119,11 +131,16 @@ texture_pressed = ExtResource("7_sxcqq")
 texture_hover = ExtResource("8_ibf00")
 texture_disabled = ExtResource("9_b13hc")
 
-[node name="DamageUpgradeSlime" type="Button" parent="HBoxContainer/SlimUpgrads/GridContainer"]
+[node name="DamageUpgradeSlime" type="TextureButton" parent="HBoxContainer/SlimUpgrads/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Damage: +2
-Buy: 10g"
+size_flags_horizontal = 4
+tooltip_text = "Increase the damage the Slime deals"
+keep_pressed_outside = true
+texture_normal = ExtResource("11_7sdmo")
+texture_pressed = ExtResource("12_8tmys")
+texture_hover = ExtResource("13_ek2wx")
+texture_disabled = ExtResource("14_n1tnk")
 
 [node name="AttackSpeedUpgradeSlime" type="Button" parent="HBoxContainer/SlimUpgrads/GridContainer"]
 unique_name_in_owner = true
@@ -166,11 +183,15 @@ texture_pressed = ExtResource("12_8g0or")
 texture_hover = ExtResource("13_i00mp")
 texture_disabled = ExtResource("14_1em6i")
 
-[node name="DamageUpgradeImp" type="Button" parent="HBoxContainer/ImpUpgrade/GridContainer"]
+[node name="DamageUpgradeImp" type="TextureButton" parent="HBoxContainer/ImpUpgrade/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Damage: +2
-Buy: 10g"
+size_flags_horizontal = 4
+keep_pressed_outside = true
+texture_normal = ExtResource("19_curhn")
+texture_pressed = ExtResource("20_ld377")
+texture_hover = ExtResource("21_7kppt")
+texture_disabled = ExtResource("22_6apn2")
 
 [node name="AttackSpeedUpgradeImp" type="Button" parent="HBoxContainer/ImpUpgrade/GridContainer"]
 unique_name_in_owner = true
@@ -213,11 +234,15 @@ texture_pressed = ExtResource("16_dshk3")
 texture_hover = ExtResource("17_b7l7q")
 texture_disabled = ExtResource("18_s2ctv")
 
-[node name="DamageUpgradeGhost" type="Button" parent="HBoxContainer/GhostUpgrade/GridContainer"]
+[node name="DamageUpgradeGhost" type="TextureButton" parent="HBoxContainer/GhostUpgrade/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Damage: +2
-Buy: 10g"
+size_flags_horizontal = 4
+keep_pressed_outside = true
+texture_normal = ExtResource("27_neh2o")
+texture_pressed = ExtResource("28_n876g")
+texture_hover = ExtResource("29_16xxm")
+texture_disabled = ExtResource("30_h1vpa")
 
 [node name="AttackSpeedUpgradeGhost" type="Button" parent="HBoxContainer/GhostUpgrade/GridContainer"]
 unique_name_in_owner = true
