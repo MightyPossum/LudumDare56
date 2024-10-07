@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cgo87160hq6s6" path="res://Assets/Scenes/creature_attack.tscn" id="4_15hg8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4etqh"]
-radius = 16.0
+radius = 6.0
 
 [sub_resource type="Animation" id="Animation_vtiro"]
 resource_name = "Hurt"
@@ -99,7 +99,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tp6vr"]
-radius = 200.0
+radius = 250.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h4ehh"]
 bg_color = Color(0.252028, 0.252028, 0.252028, 1)
@@ -109,13 +109,12 @@ bg_color = Color(0.207843, 0.713726, 0.231373, 1)
 
 [node name="Slime" type="RigidBody2D" groups=["ally"]]
 collision_mask = 3
-mass = 0.001
-gravity_scale = 0.0
 script = ExtResource("1_34ym2")
 attack_projectile = ExtResource("2_k862t")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
+z_index = 2
 shape = SubResource("CircleShape2D_4etqh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -144,7 +143,8 @@ avoidance_mask = 2
 unique_name_in_owner = true
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
+[node name="AreaShape" type="CollisionShape2D" parent="Area"]
+unique_name_in_owner = true
 shape = SubResource("CircleShape2D_tp6vr")
 
 [node name="health_bar" type="ProgressBar" parent="."]

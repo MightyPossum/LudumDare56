@@ -41,6 +41,7 @@ func _ready() -> void:
 	EVENTS.trigger_path_calc.connect(calc_path)
 
 	$Sprite2D/AnimationPlayer.play("Walk")
+	
 
 func _physics_process(delta: float) -> void:
 	if is_alive:
@@ -65,12 +66,11 @@ func _physics_process(delta: float) -> void:
 
 		if enemy_queue.size() == 0 and targeted_enemy:
 			targeted_enemy = false
-
+		
 		if navgationAgent2D.is_target_reachable() and ((int(navgationAgent2D.distance_to_target() > shooting_range) or targeted_enemy) or (is_location_the_base and int(navgationAgent2D.distance_to_target() > 2))):
+
 			if targeted_enemy and enemy_in_view:
 				pass
-			#elif targeted_enemy and int(navgationAgent2D.distance_to_target() > shooting_range):
-			#	pass
 			else:
 
 				var next_location = navgationAgent2D.get_next_path_position()

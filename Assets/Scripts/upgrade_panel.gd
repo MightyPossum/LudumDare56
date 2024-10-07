@@ -34,13 +34,13 @@ func _on_upgrade_pressed(creature: String, upgrade: int) -> void:
 func upgrade_type(upgrade: int, creature: GLOBALVARIABLES.CREATURE_TYPES) -> void:
 	match upgrade:
 		1:
-			GLOBALVARIABLES.adjust_creature_default(creature, "health", 50)
+			GLOBALVARIABLES.adjust_creature_default(creature, "health")
 		2:
-			GLOBALVARIABLES.adjust_creature_default(creature, "summon_amount", 1)
+			GLOBALVARIABLES.adjust_creature_default(creature, "summon_amount")
 		3:
-			GLOBALVARIABLES.adjust_creature_default(creature, "damage", 2)
+			GLOBALVARIABLES.adjust_creature_default(creature, "damage")
 		4:
-			GLOBALVARIABLES.adjust_creature_default(creature, "attack_speed", -0.05)
+			GLOBALVARIABLES.adjust_creature_default(creature, "attack_speed")
 
 func update_gold_label():
 	gold_lable.text = str("Gold: " + str(GLOBALVARIABLES.player_resource))
@@ -51,14 +51,22 @@ func _on_god_upgrade_pressed(power_type:String) -> void:
 func update_upgrade_costs():
 	update_gold_label()
 	for button in buttons:
-		print(button)
-		print(buttons[button])
-		print(buttons[button][1])
-		var power_cost = GLOBALVARIABLES.creature_upgrade_costs.get(buttons[button][0]).get(buttons.get(button)[1])
-		if power_cost > GLOBALVARIABLES.player_resource:
+		var upgrade_cost = GLOBALVARIABLES.creature_upgrade_costs.get(buttons[button][0]).get(buttons.get(button)[1])
+		if upgrade_cost > GLOBALVARIABLES.player_resource:
 			button.disabled = true
-		elif buttons[button][0] <= 2:
-			if buttons[button][1] != "summon_amount" and not GLOBALVARIABLES.creature_defaults.get(buttons[button][0]).get("summon_amount"):
-				button.disabled = true
+		else:
 
-	#	button.text = str(GLOBALVARIABLES.creature_upgrade_costs.get(buttons[button][0]).get(buttons.get(button)[1]))
+			if buttons[button][1] == "attack_speed":
+				if GLOBALVARIABLES.creature_defaults.get(buttons[button][0]).get("attack_speed") <= 0.12:
+					button.disabled = true
+				else:
+					button.disabled = false
+			
+			if buttons[button][0] <= 2 and buttons[button][1] != "summon_amount":
+				if not GLOBALVARIABLES.creature_defaults.get(buttons[button][0]).get("summon_amount"):
+					button.disabled = true
+				else:
+					button.disabled = false		
+
+
+		#button.text = str(GLOBALVARIABLES.creature_upgrade_costs.get(buttons[button][0]).get(buttons.get(button)[1]))

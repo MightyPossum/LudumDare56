@@ -60,6 +60,27 @@ var creature_upgrade_costs = {
 	},
 }
 
+var creature_upgrade_amount = {
+	CREATURE_TYPES.SLIME : {
+		"health" : 100, 
+		"summon_amount" : 1,
+		"damage" : 2,
+		"attack_speed" : -0.02,
+	},
+	CREATURE_TYPES.IMP : {
+		"health" : 50,
+		"summon_amount" : 1,
+		"damage" : 4,
+		"attack_speed" : -0.03,
+	},
+	CREATURE_TYPES.GHOST : {
+		"health" : 75,
+		"summon_amount" : 1,
+		"damage" : 3,
+		"attack_speed" : -0.035,
+	},
+}
+
 var game_manager : Node2D
 var main_ui : Control
 var main_menu_node : Control
@@ -80,10 +101,11 @@ var shield_power_unlocked : bool = false
 
 var god_power_cooldown_time = 30
 
-func adjust_creature_default(creature_type: CREATURE_TYPES, key: String, value):
+func adjust_creature_default(creature_type: CREATURE_TYPES, key: String):
 	
 	if creature_defaults.get(creature_type):
-		creature_defaults.get(creature_type)[key] += value
+		var upgrade_value = creature_upgrade_amount.get(creature_type).get(key)
+		creature_defaults.get(creature_type)[key] += upgrade_value
 		player_resource -= creature_upgrade_costs.get(creature_type)[key]
 		creature_upgrade_costs.get(creature_type)[key] *= 2
 	main_ui.update_upgrade_costs()

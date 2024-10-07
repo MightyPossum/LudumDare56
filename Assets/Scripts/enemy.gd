@@ -66,7 +66,7 @@ func _physics_process(delta: float) -> void:
 			await get_tree().create_timer(attack_speed/2).timeout
 		in_combat = false
 	
-	if enemy_queue.size() > 0 and navgationAgent2D.is_target_reachable() and (int(navgationAgent2D.distance_to_target() > shooting_range) or not enemy_in_view):
+	if not is_boss and enemy_queue.size() > 0 and navgationAgent2D.is_target_reachable() and (int(navgationAgent2D.distance_to_target() > shooting_range) or not enemy_in_view):
 		var next_location = navgationAgent2D.get_next_path_position()
 		var direction = global_position.direction_to(next_location)
 
