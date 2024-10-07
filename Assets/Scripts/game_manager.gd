@@ -89,6 +89,7 @@ func lose() -> void:
 		GLOBALVARIABLES.creature_defaults.get(GLOBALVARIABLES.CREATURE_TYPES.SLIME)["health"] += 70
 		GLOBALVARIABLES.creature_defaults.get(GLOBALVARIABLES.CREATURE_TYPES.SLIME)["damage"] += 5
 	GLOBALVARIABLES.round_counter += 1
+	SaveGame.save_game()
 	get_tree().reload_current_scene()
 	
 func start_wave() -> void:
