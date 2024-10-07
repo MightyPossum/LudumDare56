@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://uf5lqqk6jeoy" path="res://Assets/Scenes/pause_menu.tscn" id="3_e70dw"]
 [ext_resource type="TileSet" uid="uid://cht8s0ttm77by" path="res://Assets/game_scene.tres" id="3_wkmjf"]
 [ext_resource type="PackedScene" uid="uid://dhkfonlnmcmr3" path="res://Assets/Scenes/enemy.tscn" id="4_1pvox"]
-[ext_resource type="PackedScene" path="res://Assets/Scenes/base.tscn" id="6_08l80"]
+[ext_resource type="PackedScene" uid="uid://lbo6xjbw7r3h" path="res://Assets/Scenes/base.tscn" id="6_08l80"]
 [ext_resource type="PackedScene" uid="uid://dqlbwctppngov" path="res://Assets/Scenes/BossWall.tscn" id="7_agkpi"]
 [ext_resource type="Texture2D" uid="uid://d342nyw4sifxk" path="res://Assets/Sprites/Boss.png" id="7_f7qsy"]
 [ext_resource type="Texture2D" uid="uid://6a63ch18r461" path="res://Assets/Background/Background.png" id="9_2u7at"]
