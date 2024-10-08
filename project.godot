@@ -13,6 +13,7 @@ config_version=5
 config/name="LudumDare56"
 run/main_scene="res://Assets/Scenes/main_menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
+boot_splash/show_image=false
 config/icon="res://icon.svg"
 
 [autoload]
@@ -24,6 +25,7 @@ EVENTS="*res://Assets/Scripts/events.gd"
 [display]
 
 window/size/always_on_top=true
+window/stretch/mode="canvas_items"
 
 [global_group]
 

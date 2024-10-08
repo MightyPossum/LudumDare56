@@ -92,7 +92,7 @@ func enemy_in_range() -> RigidBody2D:
 	for enemy in enemy_queue:
 		if not enemy.is_alive:
 			enemy_queue.erase(enemy)
-		if global_position.distance_to(enemy.global_position) < shooting_range:
+		if global_position.distance_to(enemy.global_position) < detection_range:
 			var space_state = get_world_2d().direct_space_state
 			var query = PhysicsRayQueryParameters2D.create(global_position, enemy.global_position, collision_mask, [self])
 			var result = space_state.intersect_ray(query)
@@ -159,5 +159,4 @@ func take_damage(damage: int, damager : RigidBody2D) -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	
 	if body.is_in_group(attack_target):
-		if not enemy_queue.has(body):
-			enemy_queue.append(body)
+		enemy_queue.append(body)
