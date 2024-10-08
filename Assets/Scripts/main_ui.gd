@@ -8,6 +8,7 @@ extends Control
 var boost_on_cooldown : bool = false
 var shield_on_cooldown : bool = false
 var in_upgrade_menu : bool = false
+var power_active : bool = false
 
 var tween : Tween
 
@@ -16,11 +17,16 @@ func _ready():
 	set_stats_visibility(false)
 	set_speed_buttons()
 
-func _process(_delta):
+func _physics_process(_delta: float) -> void:
 	bosses_left.text = "Bosses Left: " + str(GLOBALVARIABLES.bosses_left)
 	attempt_tracker.text = "Attempt Nr: " + str(GLOBALVARIABLES.round_counter)
 	ally_tracker.text = "Creatures Left: " + str(GLOBALVARIABLES.ally_count)
 	gold.text = "Gold: " + str(GLOBALVARIABLES.player_resource)
+
+	if power_active:
+		%BoostPower.disabled = true
+		%ShieldPower.disabled = true
+
 
 func _on_start_wave_button_button_up() -> void:
 	%MenuPressed.play()
@@ -35,7 +41,12 @@ func set_stats_visibility(toggle: bool):
 	%BoostPower.disabled = true
 	%ShieldPower.disabled = true
 	await get_tree().create_timer(2, false,true).timeout
-	toggle_powers('null', true)
+	if GLOBALVARIABLES.boost_power_unlocked:
+		%BoostPower.disabled = false
+	if GLOBALVARIABLES.shield_power_unlocked:
+		%ShieldPower.disabled = false
+	boost_on_cooldown = false
+	shield_on_cooldown = false
 
 func set_start_wave_button_visibility(toggle: bool):
 	%StartWaveButton.visible = toggle
@@ -57,7 +68,9 @@ func _on_power_up_pressed(power_type : String) -> void:
 	
 	handle_power(power_type, delay_time)
 	toggle_powers(power_type, false)
+	power_active = true
 	await get_tree().create_timer(delay_time, false,true).timeout
+	power_active = false
 	toggle_powers(power_type, true)
 
 func handle_power(power_type : String, delay_time : float) -> void:
@@ -68,23 +81,26 @@ func handle_power(power_type : String, delay_time : float) -> void:
 			EVENTS.shield_activated.emit(delay_time)
 
 func toggle_powers(power_type : String, apply_cooldown : bool) -> void:
+	
 	if apply_cooldown:
-		if power_type != "boost" and GLOBALVARIABLES.boost_power_unlocked and not boost_on_cooldown:
+		if not boost_on_cooldown and GLOBALVARIABLES.boost_power_unlocked:
 			%BoostPower.disabled = false
-		elif not GLOBALVARIABLES.boost_power_unlocked:
-			%BoostPower.disabled = true
-
-		if power_type != "shield" and GLOBALVARIABLES.shield_power_unlocked and not shield_on_cooldown:
+		if not shield_on_cooldown and GLOBALVARIABLES.shield_power_unlocked:
 			%ShieldPower.disabled = false
-		elif not GLOBALVARIABLES.shield_power_unlocked:
-			%ShieldPower.disabled = true
+			
+		if power_type == "boost" or power_type == "null":
+			%BoostPower.disabled = true
+			handle_boost_power()
 
+		if power_type == "shield" or power_type == "null":
+			%ShieldPower.disabled = true
+			handle_shield_power()
 	else:
 		%BoostPower.disabled = true
 		%ShieldPower.disabled = true
 
-	# we do this last, because of await
-	if apply_cooldown and power_type == "boost" and GLOBALVARIABLES.boost_power_unlocked:
+func handle_boost_power():
+	if not boost_on_cooldown:
 		boost_on_cooldown = true
 
 		var boost_progress_bar =%BoostProgressBar
@@ -92,16 +108,28 @@ func toggle_powers(power_type : String, apply_cooldown : bool) -> void:
 		boost_progress_bar.value = 0
 		tween = get_tree().create_tween()
 		tween.tween_property(boost_progress_bar, "value", 30, 30)
-		tween.tween_callback(timer_done.bind(power_type))
+		tween.tween_callback(timer_done.bind("boost"))
+	else:
+		if GLOBALVARIABLES.boost_power_unlocked:
+			%BoostPower.disabled = false
+		elif not GLOBALVARIABLES.boost_power_unlocked:
+			%BoostPower.disabled = true
 
-	elif apply_cooldown and power_type == "shield" and GLOBALVARIABLES.shield_power_unlocked:
+func handle_shield_power():
+	if not shield_on_cooldown:
 		shield_on_cooldown = true
 		var shield_progress_bar =%ShieldProgressBar
 		shield_progress_bar.visible = true
 		shield_progress_bar.value = 0
 		tween = get_tree().create_tween()
 		tween.tween_property(shield_progress_bar, "value", 30, 30)
-		tween.tween_callback(timer_done.bind(power_type))
+		tween.tween_callback(timer_done.bind("shield"))
+	else:
+		if GLOBALVARIABLES.shield_power_unlocked:
+			%ShieldPower.disabled = false
+		elif not GLOBALVARIABLES.shield_power_unlocked:
+			%ShieldPower.disabled = true
+		
 
 func timer_done(power_type : String) -> void:
 	if power_type == "shield":

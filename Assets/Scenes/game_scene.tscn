@@ -121,6 +121,12 @@ collision_mask = 7
 
 [node name="Boss4" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(864, 2016)
+max_health = 2500000
+kill_value = 10000000
+attack_damage = 50000
+attack_speed_delay = 0.45
+shooting_range = 300
+detection_range = 300
 is_boss = true
 sprite = ExtResource("7_f7qsy")
 
@@ -572,7 +578,7 @@ detection_range = 200
 sprite = ExtResource("9_x7tql")
 
 [node name="Enemy50" parent="Enemies" instance=ExtResource("4_1pvox")]
-position = Vector2(1388, 1270)
+position = Vector2(1408, 1304)
 max_health = 7000
 kill_value = 15000
 attack_damage = 100
@@ -647,6 +653,246 @@ shooting_range = 300
 movement_speed = 200.0
 detection_range = 300
 
+[node name="Enemy61" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(1456, 2136)
+max_health = 35000
+kill_value = 30000
+attack_damage = 200
+attack_speed_delay = 0.5
+shooting_range = 300
+movement_speed = 200.0
+detection_range = 300
+
+[node name="Enemy62" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(1552, 2151)
+max_health = 35000
+kill_value = 30000
+attack_damage = 200
+attack_speed_delay = 0.5
+shooting_range = 300
+movement_speed = 200.0
+detection_range = 300
+
+[node name="Enemy63" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(1556, 2255)
+max_health = 35000
+kill_value = 30000
+attack_damage = 200
+attack_speed_delay = 0.5
+shooting_range = 300
+movement_speed = 200.0
+detection_range = 300
+
+[node name="Enemy65" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(1552, 2352)
+max_health = 35000
+kill_value = 30000
+attack_damage = 200
+attack_speed_delay = 0.5
+shooting_range = 300
+movement_speed = 200.0
+detection_range = 300
+
+[node name="Enemy66" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(1452, 2352)
+max_health = 35000
+kill_value = 30000
+attack_damage = 200
+attack_speed_delay = 0.5
+shooting_range = 300
+movement_speed = 200.0
+detection_range = 300
+
+[node name="Enemy73" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(1320, 2456)
+max_health = 50000
+kill_value = 45000
+attack_damage = 200
+attack_speed_delay = 0.5
+shooting_range = 300
+movement_speed = 200.0
+detection_range = 300
+
+[node name="Enemy74" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(1272, 2528)
+max_health = 50000
+kill_value = 45000
+attack_damage = 200
+attack_speed_delay = 0.5
+shooting_range = 300
+movement_speed = 200.0
+detection_range = 350
+
+[node name="Enemy75" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(1188, 2584)
+max_health = 50000
+kill_value = 45000
+attack_damage = 200
+attack_speed_delay = 0.5
+shooting_range = 300
+movement_speed = 200.0
+detection_range = 370
+
+[node name="Enemy76" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(1184, 2496)
+max_health = 50000
+kill_value = 45000
+attack_damage = 200
+attack_speed_delay = 0.5
+shooting_range = 300
+movement_speed = 200.0
+detection_range = 370
+
+[node name="Enemy77" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(1128, 2448)
+max_health = 50000
+kill_value = 45000
+attack_damage = 200
+attack_speed_delay = 0.5
+shooting_range = 300
+movement_speed = 200.0
+detection_range = 390
+
+[node name="Enemy78" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(1056, 2496)
+max_health = 50000
+kill_value = 45000
+attack_damage = 200
+attack_speed_delay = 0.5
+shooting_range = 300
+movement_speed = 200.0
+detection_range = 420
+
+[node name="Enemy79" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(1008, 2566)
+max_health = 50000
+kill_value = 45000
+attack_damage = 200
+attack_speed_delay = 0.5
+shooting_range = 300
+movement_speed = 200.0
+detection_range = 450
+
+[node name="Enemy80" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(960, 2512)
+max_health = 50000
+kill_value = 45000
+attack_damage = 200
+attack_speed_delay = 0.5
+shooting_range = 300
+movement_speed = 200.0
+detection_range = 470
+
+[node name="Enemy81" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(904, 2456)
+max_health = 50000
+kill_value = 45000
+attack_damage = 200
+attack_speed_delay = 0.5
+shooting_range = 300
+movement_speed = 200.0
+detection_range = 480
+
+[node name="Enemy82" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(868, 2560)
+max_health = 50000
+kill_value = 45000
+attack_damage = 200
+attack_speed_delay = 0.5
+shooting_range = 300
+movement_speed = 200.0
+detection_range = 490
+
+[node name="Enemy83" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(808, 2464)
+max_health = 50000
+kill_value = 45000
+attack_damage = 200
+attack_speed_delay = 0.5
+shooting_range = 300
+movement_speed = 200.0
+detection_range = 510
+
+[node name="Enemy84" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(768, 2560)
+max_health = 50000
+kill_value = 45000
+attack_damage = 200
+attack_speed_delay = 0.5
+shooting_range = 300
+movement_speed = 200.0
+detection_range = 550
+
+[node name="Enemy69" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(1572, 2528)
+max_health = 75000
+kill_value = 50000
+attack_damage = 300
+attack_speed_delay = 0.15
+shooting_range = 300
+movement_speed = 200.0
+detection_range = 300
+
+[node name="Enemy70" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(1516, 2590)
+max_health = 75000
+kill_value = 50000
+attack_damage = 300
+attack_speed_delay = 0.15
+shooting_range = 300
+movement_speed = 200.0
+detection_range = 300
+
+[node name="Enemy72" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(1544, 2560)
+max_health = 75000
+kill_value = 50000
+attack_damage = 300
+attack_speed_delay = 0.15
+shooting_range = 300
+movement_speed = 200.0
+detection_range = 300
+
+[node name="Enemy71" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(1576, 2592)
+max_health = 100000
+kill_value = 300000
+attack_damage = 500
+attack_speed_delay = 0.5
+shooting_range = 300
+movement_speed = 200.0
+detection_range = 300
+
+[node name="Enemy67" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(1508, 2296)
+max_health = 35000
+kill_value = 30000
+attack_damage = 200
+attack_speed_delay = 0.5
+shooting_range = 300
+movement_speed = 200.0
+detection_range = 300
+
+[node name="Enemy68" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(1512, 2184)
+max_health = 35000
+kill_value = 30000
+attack_damage = 200
+attack_speed_delay = 0.5
+shooting_range = 300
+movement_speed = 200.0
+detection_range = 300
+
+[node name="Enemy64" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(1480, 2240)
+max_health = 35000
+kill_value = 30000
+attack_damage = 200
+attack_speed_delay = 0.5
+shooting_range = 300
+movement_speed = 200.0
+detection_range = 300
+
 [node name="Enemy59" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(1312, 1640)
 max_health = 15000
@@ -657,6 +903,681 @@ shooting_range = 250
 movement_speed = 200.0
 detection_range = 250
 sprite = ExtResource("9_x7tql")
+
+[node name="Enemy86" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(471, 2160)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+
+[node name="Enemy87" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(512, 2160)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+
+[node name="Enemy88" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(550, 2160)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+
+[node name="Enemy89" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(578, 2160)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+
+[node name="Enemy90" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(608, 2160)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+
+[node name="Enemy91" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(632, 2160)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+
+[node name="Enemy92" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(656, 2160)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+
+[node name="Enemy93" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(491, 2160)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+
+[node name="Enemy94" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(532, 2160)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+
+[node name="Enemy95" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(471, 2184)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+sprite = ExtResource("9_6xetl")
+
+[node name="Enemy96" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(512, 2184)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+sprite = ExtResource("9_6xetl")
+
+[node name="Enemy97" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(550, 2184)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+sprite = ExtResource("9_6xetl")
+
+[node name="Enemy98" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(578, 2184)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+sprite = ExtResource("9_6xetl")
+
+[node name="Enemy99" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(608, 2184)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+sprite = ExtResource("9_6xetl")
+
+[node name="Enemy100" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(632, 2184)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+sprite = ExtResource("9_6xetl")
+
+[node name="Enemy101" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(656, 2184)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+sprite = ExtResource("9_6xetl")
+
+[node name="Enemy102" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(488, 2184)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+sprite = ExtResource("9_6xetl")
+
+[node name="Enemy103" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(532, 2184)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+sprite = ExtResource("9_6xetl")
+
+[node name="Enemy104" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(471, 2216)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+sprite = ExtResource("10_302qr")
+
+[node name="Enemy105" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(512, 2216)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+sprite = ExtResource("10_302qr")
+
+[node name="Enemy106" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(550, 2216)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+sprite = ExtResource("10_302qr")
+
+[node name="Enemy107" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(578, 2216)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+sprite = ExtResource("10_302qr")
+
+[node name="Enemy108" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(608, 2216)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+sprite = ExtResource("10_302qr")
+
+[node name="Enemy109" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(632, 2216)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+sprite = ExtResource("10_302qr")
+
+[node name="Enemy110" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(656, 2216)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+sprite = ExtResource("10_302qr")
+
+[node name="Enemy111" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(488, 2216)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+sprite = ExtResource("10_302qr")
+
+[node name="Enemy112" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(532, 2216)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+sprite = ExtResource("10_302qr")
+
+[node name="Enemy113" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(472, 2248)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+sprite = ExtResource("11_bj2d0")
+
+[node name="Enemy114" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(513, 2248)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+sprite = ExtResource("11_bj2d0")
+
+[node name="Enemy115" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(551, 2248)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+sprite = ExtResource("11_bj2d0")
+
+[node name="Enemy116" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(579, 2248)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+sprite = ExtResource("11_bj2d0")
+
+[node name="Enemy117" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(609, 2248)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+sprite = ExtResource("11_bj2d0")
+
+[node name="Enemy118" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(633, 2248)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+sprite = ExtResource("11_bj2d0")
+
+[node name="Enemy119" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(657, 2248)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+sprite = ExtResource("11_bj2d0")
+
+[node name="Enemy120" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(489, 2248)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+sprite = ExtResource("11_bj2d0")
+
+[node name="Enemy121" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(533, 2248)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+sprite = ExtResource("11_bj2d0")
+
+[node name="Enemy122" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(464, 2280)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+sprite = ExtResource("9_x7tql")
+
+[node name="Enemy123" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(505, 2280)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+sprite = ExtResource("9_x7tql")
+
+[node name="Enemy124" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(543, 2280)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+sprite = ExtResource("9_x7tql")
+
+[node name="Enemy125" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(571, 2280)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+sprite = ExtResource("9_x7tql")
+
+[node name="Enemy126" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(601, 2280)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+sprite = ExtResource("9_x7tql")
+
+[node name="Enemy127" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(625, 2280)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+sprite = ExtResource("9_x7tql")
+
+[node name="Enemy128" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(649, 2280)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+sprite = ExtResource("9_x7tql")
+
+[node name="Enemy129" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(481, 2280)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+sprite = ExtResource("9_x7tql")
+
+[node name="Enemy130" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(525, 2280)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+sprite = ExtResource("9_x7tql")
+
+[node name="Enemy131" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(477, 2311)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+
+[node name="Enemy132" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(518, 2311)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+
+[node name="Enemy133" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(556, 2311)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+
+[node name="Enemy134" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(584, 2311)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+
+[node name="Enemy135" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(614, 2311)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+
+[node name="Enemy136" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(638, 2311)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+
+[node name="Enemy137" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(662, 2311)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+
+[node name="Enemy138" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(494, 2311)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+
+[node name="Enemy139" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(538, 2311)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+
+[node name="Enemy140" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(478, 2352)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+sprite = ExtResource("9_6xetl")
+
+[node name="Enemy141" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(519, 2352)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+sprite = ExtResource("9_6xetl")
+
+[node name="Enemy142" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(557, 2352)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+sprite = ExtResource("9_6xetl")
+
+[node name="Enemy143" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(585, 2352)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+sprite = ExtResource("9_6xetl")
+
+[node name="Enemy144" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(615, 2352)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+sprite = ExtResource("9_6xetl")
+
+[node name="Enemy145" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(639, 2352)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+sprite = ExtResource("9_6xetl")
+
+[node name="Enemy146" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(663, 2352)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+sprite = ExtResource("9_6xetl")
+
+[node name="Enemy147" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(495, 2352)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+sprite = ExtResource("9_6xetl")
+
+[node name="Enemy148" parent="Enemies" instance=ExtResource("4_1pvox")]
+position = Vector2(539, 2352)
+max_health = 10000
+kill_value = 250000
+attack_damage = 40
+attack_speed_delay = 0.15
+shooting_range = 250
+movement_speed = 200.0
+detection_range = 250
+sprite = ExtResource("9_6xetl")
 
 [node name="Enemy56" parent="Enemies" instance=ExtResource("4_1pvox")]
 position = Vector2(1192, 1360)
@@ -670,7 +1591,7 @@ detection_range = 250
 sprite = ExtResource("11_bj2d0")
 
 [node name="Enemy51" parent="Enemies" instance=ExtResource("4_1pvox")]
-position = Vector2(1536, 1280)
+position = Vector2(1544, 1296)
 max_health = 7000
 kill_value = 15000
 attack_damage = 100
@@ -681,7 +1602,7 @@ detection_range = 250
 sprite = ExtResource("9_6xetl")
 
 [node name="Enemy52" parent="Enemies" instance=ExtResource("4_1pvox")]
-position = Vector2(1460, 1256)
+position = Vector2(1464, 1296)
 max_health = 7000
 kill_value = 15000
 attack_damage = 100
