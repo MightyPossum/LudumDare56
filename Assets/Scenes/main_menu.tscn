@@ -210,7 +210,7 @@ metadata/_edit_use_anchors_ = true
 [node name="Title" type="Label" parent="MainMenu/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
-text = "LudumDare56"
+text = "Sammy's Playground"
 horizontal_alignment = 1
 
 [node name="MenuOptions" type="VBoxContainer" parent="MainMenu/HBoxContainer/VBoxContainer"]
@@ -278,7 +278,7 @@ text = "Exit Game"
 [node name="Version" type="Label" parent="MainMenu/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "ver 0.3-fc1"
+text = "ver 1.0"
 horizontal_alignment = 1
 
 [node name="DevTeam" type="Label" parent="MainMenu/HBoxContainer/VBoxContainer"]
